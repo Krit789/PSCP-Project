@@ -1,4 +1,20 @@
 # PSCP Project
-## Project <ins>fill in the blanks</ins>
+## Project &lt;e&gt;Notes
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum euismod erat in viverra. Sed sed consequat elit. Curabitur dui lectus, tincidunt eget cursus vel, convallis nec massa. Proin interdum pharetra fermentum. Morbi hendrerit et lacus eget ornare. Vestibulum vehicula, mi quis sollicitudin sodales, erat ipsum bibendum augue, vel blandit nibh erat at nibh. Fusce ut semper elit, gravida auctor diam. Cras eu quam et nisl consectetur pharetra eu vitae lacus. Nulla facilisi. Vivamus bibendum non ex eget gravida. In hac habitasse platea dictumst. Sed vel ante risus. Mauris bibendum nisl ac sem efficitur, at cursus dui tincidunt. Nulla vestibulum scelerisque sodales.
+Versitile, beautiful, personalized just for you.
+
+&lt;e&gt;Notes is more than a note it's a personal diary with  privacy in mind.
+
+### Features 
+<li>Stay secure with encrypted credentials storage</li>
+<li>Write away with unlimited about of notes creations</li>
+<li>Customized your notes with markdown formatting</li>
+<li>Keep your eye safe with dark mode</li>
+<li>And more to come!</li>
+
+### Built with
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+
+
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
