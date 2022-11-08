@@ -1,16 +1,55 @@
 # PSCP Project
-## Project &lt;e&gt;Notes
+## Project &lt;e&gt;Note
 
 Versitile, beautiful, personalized just for you.
 
-&lt;e&gt;Notes is more than a note it's a personal diary with  privacy in mind.
+&lt;e&gt;Note is more than a note it's a personal diary.
 
 ### Features 
-<li>Stay secure with encrypted credentials storage</li>
-<li>Write away with unlimited about of notes creations</li>
-<li>Customized your notes with markdown formatting</li>
-<li>Keep your eye safe with dark mode</li>
+<li>Keep your credentials safe with salted-encrypted storage.</li>
+<li>You can create an infinite number of notes.</li>
+<li>Markdown formatting allowed you to personalize your notes.</li>
+<li>Use dark mode to protect your eyes.</li>
 <li>And more to come!</li>
+
+<br>
+
+### Setup (In order)
+#### <b>Projects</b>
+Start by cloning the repository
+
+    git clone https://github.com/Krit789/PSCP-Project.git
+
+Enter project directory
+
+    cd PSCP-Project
+
+#### <b>Environments</b>
+It's strongly recommended that you work under python virtual environment
+
+Make sure you have <code>venv</code> installed.
+
+    pip install virtualenv
+
+Creating virtual environment
+
+    py -m venv <virtual-environment-name>
+
+Activating virtual environment
+
+(Windows - Powershell)
+
+    env/Scripts/Activate.ps1
+
+(macOS / Linux)
+
+    .\/env/Scripts/activate
+
+Now you're set to begin the next step<br />
+
+### <b>Getting all the Requirements</b>
+
+    pip install -r requirements.txt
 
 ### Built with
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
