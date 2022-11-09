@@ -6,6 +6,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 # VSCode
 .vscode/*
 !.vscode/settings.json
@@ -13,8 +14,10 @@ venv.bak/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
 # Local History for Visual Studio Code
 .history/
+
 # Common credential files
 **/credentials.json
 **/client_secrets.json
@@ -23,8 +26,10 @@ venv.bak/
 *.dat
 *password*
 *.httr-oauth*
+
 # Mac/OSX
 .DS_Store
+
 # Distribution / packaging
 .Python
 build/
@@ -44,9 +49,11 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
 # Flask stuff:
 instance/
 .webassets-cache
+
 # Private Files
 *.json
 *.csv
@@ -54,3 +61,18 @@ instance/
 *.tsv
 *.tsv.gz
 *.xlsx
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Database
+db.sqlite3
