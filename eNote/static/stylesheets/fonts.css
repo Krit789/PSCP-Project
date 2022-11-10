@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "SukumvitBold";
+  src: url("sukhumvitset-bold-webfont.woff2") format("woff2"),
+    url("sukhumvitset-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SukumvitLight";
+  src: url("sukhumvitset-light-webfont.woff2") format("woff2"),
+    url("sukhumvitset-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SukumvitMedium";
+  src: url("sukhumvitset-medium-webfont.woff2") format("woff2"),
+    url("sukhumvitset-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SukumvitSemiBold";
+  src: url("sukhumvitset-semibold-webfont.woff2") format("woff2"),
+    url("sukhumvitset-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sukumvit";
+  src: url("sukhumvitset-text-webfont.woff2") format("woff2"),
+    url("sukhumvitset-text-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SukumvitThin";
+  src: url("sukhumvitset-thin-webfont.woff2") format("woff2"),
+    url("sukhumvitset-thin-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
