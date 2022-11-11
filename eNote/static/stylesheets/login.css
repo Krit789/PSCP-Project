@@ -15,7 +15,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  background-image: url("/static/images/login_bg.jpeg");
+  background-image: url("../images/login_bg02.webp");
   padding: 5px;
 }
 
