@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, min-heigth=480" />
     <!--CSS for fonts-->
     <link rel="stylesheet" href="../static/stylesheets/fonts.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,7 +77,6 @@
             <input
               type="text"
               class="form-control"
-              id="user"
               name="user"
               aria-describedby="emailHelp"
             />
@@ -89,7 +88,6 @@
             <input
               type="password"
               class="form-control"
-              id="passwd"
               name="passwd"
             />
           </div>
@@ -97,13 +95,16 @@
             <label class="form-check-label" for="exampleCheck1"
               >Remember me</label
             >
-            <input type="checkbox" class="form-check-input" id="remember" />
+            <input type="checkbox" class="form-check-input" name="remember" />
           </div>
           <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <div class="account">
+        <span>Don't have an account yet? <a href="/register">Register here!</a></span>
+      </div>
         <br />
         {% if data %}
-        <p>Hello, {{ var1 }}. Your password is <code>{{ var2 }}</code></p>
+        <p>Hello, {{ var[0] }}. Your password is <code>{{ var[1] }}</code><br />Remember me is {{ var[2] }}</p>
         {% endif %}
       </div>
     </div>

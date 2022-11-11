@@ -3,13 +3,11 @@ from flask_compress import Compress
 
 compress = Compress()
 
-
-
 def create_app():
     app = Flask(__name__)
+    
+    from .auth import auth
+
+    app.register_blueprint(auth, url_prefix='/')
     compress.init_app(app)
-
-    from .login import login
-
-    app.register_blueprint(login, url_prefix='/')
     return app
