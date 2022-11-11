@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../static/stylesheets/login.css" />
+  <link rel="stylesheet" href="../static/stylesheets/register.css" />
+
   <!--AVIF WebP support detection script-->
   <script src="../static/scripts/avif-webp.min.js"></script>
 
@@ -63,21 +64,33 @@
       <h1 class="e_title">&lt;e&gt;Note</h1>
       <form action="/login" method="POST">
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
+          <label for="exampleInputEmail1" class="form-label">Your Name:</label>
           <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
         </div>
+
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputEmail1" class="form-label">Username:</label>
+          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
+        </div>
+
+        <div class="mb-3 ms-4 me-4 align-left form-label">
+          <label for="exampleInputEmail1" class="form-label">Email Address:</label>
+          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
+        </div>
+
+        <div class="mb-3 ms-4 me-4 align-left form-label">
+          <label for="exampleInputEmail1" class="form-label">Password:</label>
+          <input type="password" class="form-control" name="user" aria-describedby="emailHelp" />
+        </div>
+
+        <div class="mb-3 ms-4 me-4 align-left form-label">
+          <label for="exampleInputPassword1" class="form-label">Re-Type Password:</label>
           <input type="password" class="form-control" name="passwd" />
         </div>
-        <div class="mb-3 ms-4 me-4 form-check align-left">
-          <label class="form-check-label" for="exampleCheck1">Remember me</label>
-          <input type="checkbox" class="form-check-input" name="remember" />
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Create account</button>
       </form>
       <div class="account">
-        <span>Don't have an account yet? <a href="/register">Register here!</a></span>
+        <span>Aready have an account? <a href="/login">Log-in here!</a></span>
       </div>
       <br />
       {% if data %}
