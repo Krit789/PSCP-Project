@@ -62,35 +62,35 @@
   <div class="box_center">
     <div class="login_blur_box">
       <h1 class="e_title">&lt;e&gt;Note</h1>
-      <form action="/login" method="POST">
+      <form action="/register" method="POST">
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Your Name:</label>
-          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
+          <label for="exampleInputEmail1" class="form-label">Your Name</label>
+          <input type="text" class="form-control" name="name" aria-describedby="emailHelp" required/>
         </div>
 
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Username:</label>
-          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required/>
         </div>
 
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Email Address:</label>
-          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" />
+          <label for="exampleInputEmail1" class="form-label">Email Address</label>
+          <input type="text" class="form-control" name="email" aria-describedby="emailHelp" required/>
         </div>
 
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Password:</label>
-          <input type="password" class="form-control" name="user" aria-describedby="emailHelp" />
+          <label for="exampleInputEmail1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="passwd" aria-describedby="emailHelp" required/>
         </div>
 
         <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputPassword1" class="form-label">Re-Type Password:</label>
-          <input type="password" class="form-control" name="passwd" />
+          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" name="passwdconfirmed" required/>
         </div>
         <button type="submit" class="btn btn-primary">Create account</button>
       </form>
       <div class="account">
-        <span>Aready have an account? <a href="/login">Log-in here!</a></span>
+        <span>Already have an account? <a href="/login">Log-in here!</a></span>
       </div>
       <br />
       {% if data %}
