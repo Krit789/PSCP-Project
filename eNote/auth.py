@@ -4,6 +4,10 @@ from time import time as tme
 
 auth = Blueprint('auth', __name__)
 
+@auth.route('/', methods=['GET', 'POST'])
+def home_page():
+    return render_template('home.html')
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():

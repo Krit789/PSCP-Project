@@ -64,20 +64,20 @@
       <form action="/login" method="POST">
         <div class="mb-3 ms-4 me-4 align-left form-label">
           <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
-          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required/>
+          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required />
         </div>
         <div class="mb-3 ms-4 me-4 align-left form-label">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" name="passwd" required/>
+          <input type="password" class="form-control" name="passwd" required />
         </div>
         <div class="mb-3 ms-4 me-4 form-check align-left">
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
-          <input type="checkbox" class="form-check-input" name="remember"/>
+          <input type="checkbox" class="form-check-input" name="remember" />
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
       <div class="account">
-        <span>Don't have an account yet? <a href="register.html">Register here!</a></span>
+        <span>Don't have an account yet? <a href="/register">Register here!</a></span>
       </div>
       <br />
       {% if data %}
