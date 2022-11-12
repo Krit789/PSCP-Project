@@ -14,8 +14,10 @@ Versitile, beautiful, personalized just for you.
 
 <br>
 
-### Setup (In order)
-#### <b>Projects</b>
+## <mark style="background-color: #FF5632">Please read the instruction before commiting your edits.</mark>
+
+# Setup
+## <b>Projects</b>
 Start by cloning the repository
 
     git clone https://github.com/Krit789/PSCP-Project.git
@@ -24,7 +26,7 @@ Enter project directory
 
     cd PSCP-Project
 
-#### <b>Environments</b>
+## <b>Environments</b>
 It's strongly recommended that you work under python virtual environment
 
 Make sure you have <code>venv</code> installed.
@@ -47,11 +49,18 @@ Activating virtual environment
 
 Now you're set to begin the next step<br />
 
-### <b>Getting all the Requirements</b>
+## <b>Getting all the Requirements</b>
 
     pip install -r requirements.txt
 
-### Built with
+## <b>Running the app</b>
+
+    flask --app eNote --debug run
+
+or
+
+    python main.py
+## Built with
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 
 
