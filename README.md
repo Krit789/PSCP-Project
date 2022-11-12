@@ -54,10 +54,11 @@ Now you're set to begin the next step<br />
     pip install -r requirements.txt
 
 ## <b>Running the app</b>
+(Only accessible from <code>127.0.0.1:5000</code>)
 
     flask --app eNote --debug run
 
-or
+or (Accessible from all network interfaces)
 
     python main.py
 ## Built with
