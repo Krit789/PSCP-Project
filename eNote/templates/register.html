@@ -1,106 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, min-heigth=480" />
-  <!--CSS for fonts-->
-  <link rel="stylesheet" href="../static/stylesheets/fonts.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="../static/stylesheets/register.css" />
-
-  <!--AVIF WebP support detection script-->
-  <script src="../static/scripts/avif-webp.min.js"></script>
-
-
-  <title>&lt;e&gt;Note Login</title>
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
-  <!-- MDB -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
-  <style>
-    .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.jpeg");
-    }
-
-    .webp .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.webp");
-    }
-
-    .avif .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.avif");
-    }
-
-    /* retina support */
-    @media screen and (-webkit-min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-      .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.jpeg");
-      }
-
-      .webp .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.webp");
-      }
-
-      .avif .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.avif");
-      }
-    }
-  </style>
-</head>
-
-<body class="img1">
-  <div class="box_center">
-    <div class="login_blur_box">
-      <h1 class="e_title">&lt;e&gt;Note</h1>
-      <form action="/register" method="POST">
-        <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Your Name</label>
-          <input type="text" class="form-control" name="name" aria-describedby="emailHelp" required />
-        </div>
-
-        <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Username</label>
-          <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required />
-        </div>
-
-        <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Email Address</label>
-          <input type="text" class="form-control" name="email" aria-describedby="emailHelp" required />
-        </div>
-
-        <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputEmail1" class="form-label">Password</label>
-          <input type="password" class="form-control" name="passwd" aria-describedby="emailHelp" required />
-        </div>
-
-        <div class="mb-3 ms-4 me-4 align-left form-label">
-          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" name="passwdconfirmed" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Create account</button>
-      </form>
-      <div class="account">
-        <span>Already have an account? <a href="/login">Log-in here!</a></span>
-      </div>
-      <br />
-      {% if data %}
-      <p>Hello, {{ var[0] }}. Your password is <code>{{ var[1] }}</code><br />Remember me is {{ var[2] }}</p>
-      {% endif %}
+{% extends "authen.html" %}
+{% block title %}Registration{% endblock %}
+{% block form %}
+<form action="/register" method="POST">
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputEmail1" class="form-label">Your Name</label>
+      <input type="text" class="form-control" name="name" aria-describedby="emailHelp" required />
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-</body>
 
-</html>
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required />
+    </div>
+
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputEmail1" class="form-label">Email Address</label>
+      <input type="text" class="form-control" name="email" aria-describedby="emailHelp" required />
+    </div>
+
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputEmail1" class="form-label">Password</label>
+      <input type="password" class="form-control" name="passwd" aria-describedby="emailHelp" required />
+    </div>
+
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" name="passwdconfirmed" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Create account</button>
+  </form>
+{% endblock %}
+{% block form_desc %}Already have an account? <a href="/login">Log-in here!</a>{% endblock %}
