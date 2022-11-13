@@ -3,15 +3,45 @@
 
 <head>
     <title>&lt;e&gt;Note</title>
+    <style>
+        .child {
+        display: inline-block;
+        vertical-align: bottom;
+        }
+        .button {
+            float: right;
+            padding-right: 1%;
+            padding-left: 1%;
+        }
+        .brand {
+            float: left;
+            padding-right: 1%;
+            font-family: "Roboto" !important;
+            font-weight: 700;
+            font-size: 50px;
+        }
+        .parent{
+            background-color: #DDF0FE;
+            width: 100%;
+            height: 8%px;
+            white-space: normal;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 
 <!--Just temporary-->
 
 <body>
-    <form action="/login">
-        <input style="font-size: 70px;" type="submit" value="Login" />
-    </form>
-    <form action="/register">
-        <input style="font-size: 70px;" type="submit" value="Register" />
-    </form>
+    <div class="parent">
+        <header class="child brand">&lt;e&gt;<span style="color: blue;">Note</span></header>
+        <form class="child button" action="/login">
+            <input style="font-size: 70px;" type="submit" value="Login" />
+        </form>
+        <form class="child button" action="/register">
+            <input style="font-size: 70px;" type="submit" value="Register" />
+        </form>
+    </div>
+    
+    
 </body>
