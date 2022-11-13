@@ -129,3 +129,15 @@ body {
   font-family: "Roboto", sans-serif !important;
   color: black !important;
 }
+
+.swal2-success-circular-line-left {
+  background-color: rgba(255, 255, 255, 0.0) !important;
+  backdrop-filter: blur(80px) !important; 
+  -webkit-backdrop-filter: blur(80px) !important;
+}
+
+.swal2-success-circular-line-right {
+  background-color: rgba(255, 255, 255, 0.0) !important;
+  backdrop-filter: blur(80px) !important; 
+  -webkit-backdrop-filter: blur(80px) !important;
+}

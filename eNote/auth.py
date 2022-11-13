@@ -40,7 +40,7 @@ def login_page():
                 else:
                     flash('Incorrect password, please try again', category='error')
             else:
-                flash('Email doesn\'t exist!',category='error')
+                flash("Email or Username doesn't exist!",category='error')
         return render_template("login.html", bg_img=rand_img)
     except TemplateNotFound:
         abort(404)
