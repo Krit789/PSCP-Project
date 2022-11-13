@@ -3,13 +3,16 @@
 {% block form %}
 <form action="/register" method="POST">
     <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Your Name</label>
-      <input type="text" class="form-control" name="name" aria-describedby="emailHelp" required />
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" required />
     </div>
-
+    <div class="mb-3 ms-4 me-4 align-left form-label">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" name="lastname" aria-describedby="emailHelp" required />
+    </div>
     <div class="mb-3 ms-4 me-4 align-left form-label">
       <label for="exampleInputEmail1" class="form-label">Username</label>
-      <input type="text" class="form-control" name="user" aria-describedby="emailHelp" required />
+      <input type="text" class="form-control" name="username" aria-describedby="emailHelp" required />
     </div>
 
     <div class="mb-3 ms-4 me-4 align-left form-label">

@@ -75,4 +75,4 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Database
-db.sqlite3
+database.db

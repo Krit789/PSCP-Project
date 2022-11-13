@@ -24,6 +24,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
   <!-- MDB -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     .img1 {
       background-image: url("static/images/login/login_bg_{{ bg_img }}.jpeg");
@@ -57,6 +58,48 @@
 </head>
 
 <body class="img1">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      {% for category, message in messages %}
+      {% if category == 'error' %}
+      <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ message }}',
+        customClass: {
+          confirmButton: 'btn btn-primary',
+        }
+      })
+      </script>
+      {% else %}
+      {% if category == 'error' %}
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Congratulation!',
+          text: '{{ message }}',
+          customClass: {
+            confirmButton: 'btn btn-primary',
+          }
+        })
+        </script>
+        {% else %}
+        <script>
+          Swal.fire({
+            icon: 'info',
+            title: 'Hello',
+            text: '{{ message }}',
+            customClass: {
+              confirmButton: 'btn btn-primary',
+            }
+          })
+          </script>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
   <div class="box_center">
     <div class="login_blur_box">
       <h1 class="e_title">&lt;e&gt;Note</h1>

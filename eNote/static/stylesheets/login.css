@@ -119,3 +119,13 @@ body {
   font-weight: 300;
   font-size: 13px;
 }
+
+.swal2-popup {
+  background: rgba(255, 255, 255, 0.63) !important;
+  backdrop-filter: blur(80px) !important; 
+  -webkit-backdrop-filter: blur(80px) !important;
+  border-radius: calc(100vh * 0.025) !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25) !important;
+  font-family: "Roboto", sans-serif !important;
+  color: black !important;
+}
