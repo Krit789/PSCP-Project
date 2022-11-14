@@ -1,0 +1,58 @@
+.profile-pics {
+    position: relative;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
+    margin: 10px 0px;
+}
+
+.name_title {
+    color: black
+}
+
+.titlename {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.titleid {
+    font-size: large;
+    font-weight: 600;
+}
+
+.welcome_paragraph {
+    border-radius: 0%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .outer_box {
+        max-width: 800px;
+    }
+}
+
+.outer_box {
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-style: solid;
+
+    padding: 25px 30px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center !important;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: rgba(236, 236, 236, 0.5);
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+    border-radius: calc(100vh * 0.02);
+}
+
+.text_paragraph {
+    margin: 20px 0px;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: justify;
+    text-indent: 40px;
+}

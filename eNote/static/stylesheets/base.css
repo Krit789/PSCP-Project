@@ -1,0 +1,19 @@
+.navbar.navbar-default {
+    color: black;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 300;
+    overflow-y: auto;
+}
+
+.paragraph{
+    margin: 20px 0px 0px 0px;
+}
