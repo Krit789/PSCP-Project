@@ -90,3 +90,7 @@ def logout():
     logout_user()
     flash('Logged out successfully!', category='success')
     return redirect(url_for('auth.login_page'))
+
+@auth.route('/about')
+def about_page():
+    return render_template('about.html')
