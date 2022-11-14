@@ -2,11 +2,6 @@
     color: black;
 }
 
-@media only screen and (min-width: 1200px) {
-    .outer_box{
-        max-width: 800px;
-    }
-}
 
 html,
 body {

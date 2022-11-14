@@ -3,15 +3,31 @@
     border-radius: 100%;
     border-style: solid;
     border-color: black;
+    margin: 10px 0px;
 }
 
-.welcome_title {
-    font-size: 30px;
-    font-weight: 800;
+.name_title {
+    color: black
+}
+
+.titlename {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.titleid {
+    font-size: large;
+    font-weight: 600;
 }
 
 .welcome_paragraph {
     border-radius: 0%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .outer_box {
+        max-width: 800px;
+    }
 }
 
 .outer_box {
@@ -21,7 +37,7 @@
 
     padding: 25px 30px;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 50px;
     text-align: center !important;
     height: 100%;
     width: 100%;
