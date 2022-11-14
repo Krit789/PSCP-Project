@@ -1,0 +1,39 @@
+.welcome_title {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.welcome_paragraph {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: justify;
+    text-indent : 50px
+}
+.welcome_image{
+    margin: 20px 10px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .outer_box {
+        max-width: calc(100% * 0.7);
+    }
+}
+
+.outer_box {
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-style: solid;
+
+    padding: 35px 30px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center !important;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: rgba(236, 236, 236, 0.5);
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+    border-radius: calc(100vh * 0.02);
+}
