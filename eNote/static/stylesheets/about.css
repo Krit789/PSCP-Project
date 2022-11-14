@@ -1,5 +1,5 @@
 .profile-pics {
-    height: 100%;
+    height: 50%;
     position: relative;
     border-radius: 100%;
     border-style: solid;
@@ -15,11 +15,17 @@
 
 /* Profile pics is on the left*/
 .left_pics {
-    max-width: calc(100% *0.25);
+    max-width: calc(100% *0.10);
 }
 
+/* need help with responsive */
 .right_paragraph {
     text-align: left;
+}
+
+/* need help with responsive */
+.left_paragraph {
+    text-align: right !important;
 }
 
 .row {
@@ -35,12 +41,12 @@
 }
 
 .titlename {
-    font-size: larger;
+    font-size: 90%;
     font-weight: 700;
 }
 
 .titleid {
-    font-size: large;
+    font-size: 70%;
     font-weight: 600;
 }
 

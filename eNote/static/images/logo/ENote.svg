@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1185" height="230" viewBox="0 0 1185 230">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 1000px;
+        font-family: "Sukhumvit Set";
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: blue;
+        font-family: SukhumvitSet-SemiBold, "Sukhumvit Set";
+      }
+    </style>
+  </defs>
+  <text id="_e_Note" data-name="&lt;e&gt;Note" class="cls-1" transform="translate(-20.253 229.944) scale(0.336)">&lt;e&gt;<tspan class="cls-2">Note</tspan></text>
+</svg>
