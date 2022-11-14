@@ -1,150 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block form %}
 
-<head>
-    <title>&lt;e&gt;Note</title>
-    <style>
-        .child {
-            display: inline-block;
-            vertical-align: bottom;
-        }
+<div class="outer_box">
+  <div class="welcome_title">
+    Welcome to &lt;e&gt; Note About Page
+  </div>
+  <div class="paragraph">
+    <p class="welcome_paragraph">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
+    </p>
+  </div>
 
-        .button {
-            float: right;
-            padding-right: 1%;
-            padding-left: 1%;
-        }
+  </form>
+</div>
 
-        .brand {
-            float: left;
-            padding-right: 1%;
-            font-family: "Roboto" !important;
-            font-weight: 700;
-            font-size: 50px;
-        }
-
-        .parent {
-            background-color: #DDF0FE;
-            width: 100%;
-            height: 8%px;
-            white-space: normal;
-            overflow-x: auto;
-        }
-    </style>
-    <!--CSS for fonts-->
-    <link rel="stylesheet" href="../static/stylesheets/fonts.css" />
-    <link rel="stylesheet" href="../static/stylesheets/about.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
-        rel="stylesheet" />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-
-<!--Just temporary-->
-
-<body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    {% if category == 'error' %}
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '{{ message }}',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-            }
-        })
-    </script>
-    {% else %}
-    {% if category == 'success' %}
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Congratulation!',
-            text: '{{ message }}',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-            }
-        })
-    </script>
-    {% else %}
-    <script>
-        Swal.fire({
-            icon: 'info',
-            title: 'Hello',
-            text: '{{ message }}',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-            }
-        })
-    </script>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/#">&lt;e&gt;Note</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/about">About</a>
-                    </li>
-                </ul>
-
-                <ui class="navbar-nav mr-auto mb-2 mb-lg-0">
-                    {% if current_user.is_authenticated %}
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    {% endif %}
-
-                </ui>
-                <span class="navbar-text">
-
-                </span>
-            </div>
-        </div>
-    </nav>
-    <h1 style="text-align: center; margin: 25px;">
-        <div class="outer_box">
-            <div class="welcome_title">
-                Welcome to &lt;e&gt;Note
-            </div class="">
-            <p class="welcome_paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-            </p>
-        </div>
-    </h1>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-</body>
+{% endblock %}
