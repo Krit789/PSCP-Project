@@ -113,6 +113,9 @@
                 <ui class="navbar-nav mr-auto mb-2 mb-lg-0">
                     {% if current_user.is_authenticated %}
                     <li class="nav-item text_black">
+                        <a class="nav-link" href="/user">User Info</a>
+                    </li>
+                    <li class="nav-item text_black">
                         <a class="nav-link" href="/logout">Logout</a>
                     </li>
                     {% else %}

@@ -91,16 +91,42 @@
         })
         </script>
         {% else %}
+        {% if category == 'warning' %}
         <script>
           Swal.fire({
-            icon: 'info',
-            title: 'Info',
+            icon: 'warning',
+            title: 'Warning!',
             text: "{{message|safe}}",
             customClass: {
               confirmButton: 'btn btn-primary',
             }
           })
           </script>
+          {% else %}
+        {% if category == 'question' %}
+      <script>
+        Swal.fire({
+          icon: 'question',
+          title: 'Do you want to?',
+          text: "{{message|safe}}",
+          customClass: {
+            confirmButton: 'btn btn-primary',
+          }
+        })
+        </script>
+        {% else %}
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Info',
+          text: "{{message|safe}}",
+          customClass: {
+            confirmButton: 'btn btn-primary',
+          }
+        })
+        </script>
+        {% endif %}
+      {% endif %}
       {% endif %}
       {% endif %}
       {% endfor %}

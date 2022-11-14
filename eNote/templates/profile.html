@@ -1,6 +1,31 @@
 {% extends "authen.html" %}
 {% block title %}User Info{% endblock %}
 {% block form %}
-
+<style>td {
+    padding-right: 10px;
+}
+</style>
+<table style="text-align: left; display: flex; justify-content: center;">
+<tr>
+    <td>ID</td>
+    <td>{{ user_data[0] }}</td>
+</tr>
+<tr>
+    <td>Username</td>
+    <td>{{ user_data[1] }}</td>
+</tr>
+<tr>
+    <td>First Name</td>
+    <td>{{ user_data[2] }}</td>
+</tr>
+<tr>
+    <td>Last Name</td>
+    <td>{{ user_data[3] }}</td>
+</tr>
+<tr>
+    <td>Creation Date (UTC)</td>
+    <td>{{ user_data[4] }}</td>
+</tr>
+</table>
 {% endblock %}
 {% block form_desc %}<a href="/logout">Logout here</a>{% endblock %}

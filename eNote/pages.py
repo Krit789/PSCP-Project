@@ -15,7 +15,6 @@ def home_page():
 def user_profile():
     rand_img = (int(str(tme()*1000)[-1]) % 4)+1
     # user_data = User.query.filter_by(id=current_user.get_id()).first()
-    user_data = User.query.filter_by(id=int(current_user.get_id())).first()
-    print(user_data)
-     # ...
-    return render_template("profile.html", bg_img=rand_img)
+    temp = current_user
+    user_data = [temp.id, temp.username, temp.first_name, temp.last_name, temp.creation_date]
+    return render_template("profile.html", bg_img=rand_img, user_data=user_data)
