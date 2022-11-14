@@ -1,9 +1,33 @@
 .profile-pics {
+    height: 100%;
     position: relative;
     border-radius: 100%;
     border-style: solid;
     border-color: black;
-    margin: 10px 0px;
+    margin-left: -10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+/* Profile pics is on the left*/
+.left_pics {
+    max-width: calc(100% *0.25);
+}
+
+.right_paragraph {
+    text-align: left;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
 }
 
 .name_title {
@@ -26,7 +50,7 @@
 
 @media only screen and (min-width: 1200px) {
     .outer_box {
-        max-width: 800px;
+        max-width: 100%;
     }
 }
 
@@ -35,7 +59,7 @@
     border-color: rgba(0, 0, 0, 0.1);
     border-style: solid;
 
-    padding: 25px 30px;
+    padding: 25px 10px;
     margin: auto;
     margin-top: 50px;
     text-align: center !important;
@@ -50,7 +74,7 @@
 }
 
 .text_paragraph {
-    margin: 20px 0px;
+    margin: 30px 20px 30px 0px;
     font-size: 18px;
     font-weight: 300;
     text-align: justify;
