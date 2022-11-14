@@ -9,11 +9,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/')
-def home_page():
-    return render_template('home.html')
-
-
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():
     rand_img = (int(str(tme()*1000)[-1]) % 4)+1
@@ -30,13 +25,13 @@ def login_page():
             remember = request.form.get('remember')
             if user:
                 if check_password_hash(user.password, password):
-                    flash('Logged in successfully!', category='success')
+                    flash('You have been logged in!', category='success')
                     print(remember)
                     if remember == 'on':
                         login_user(user, remember=True)
                     else:
                         login_user(user, remember=False)
-                    return redirect(url_for('auth.home_page'))
+                    return redirect(url_for('pages.home_page'))
                 else:
                     flash('Incorrect password, please try again', category='error')
             else:
@@ -88,5 +83,5 @@ def register_page():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out successfully!', category='success')
+    flash('You have logged out!', category='success')
     return redirect(url_for('auth.login_page'))

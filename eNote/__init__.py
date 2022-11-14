@@ -1,5 +1,5 @@
 '''Flask Initialization'''
-from flask import Flask
+from flask import Flask, render_template
 from flask_compress import Compress
 from flask_sqlalchemy import SQLAlchemy
 from os import path, getcwd
@@ -17,8 +17,10 @@ def create_app():
     db.init_app(app)
     
     from .auth import auth
+    from .pages import pages
     
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(pages, url_prefix='/')
     compress.init_app(app)
 
     from .models import User, Note
@@ -28,6 +30,10 @@ def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login_page'
     login_manager.init_app(app)
+    
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template("error.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);'), 404
 
     @login_manager.user_loader
     def load_user(id):
