@@ -63,8 +63,6 @@ body {
     padding: 0;
   }
 }
-
-.btn,
 .btn-primary {
   margin: 15px 0px 15px 0px !important;
   background-color: #005EB8 !important;

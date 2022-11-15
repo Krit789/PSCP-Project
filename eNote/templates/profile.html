@@ -28,4 +28,9 @@
 </tr>
 </table>
 {% endblock %}
-{% block form_desc %}<a href="/logout">Logout here</a>{% endblock %}
+{% block form_desc %}
+<form action="/user" method="POST">
+    <input type="submit" class="btn btn-danger" name="delete" value="Delete Account" />
+</form><br />
+<a href="/logout">Logout here</a>
+{% endblock %}
