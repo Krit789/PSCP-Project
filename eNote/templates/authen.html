@@ -27,17 +27,17 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.jpeg");
+      background-image: url("static/images/login/{{ bg_img }}.jpeg");
       {{ custom_bg|safe }}
     }
 
     .webp .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.webp");
+      background-image: url("static/images/login/{{ bg_img }}.webp");
       {{ custom_bg|safe }}
     }
 
     .avif .img1 {
-      background-image: url("static/images/login/login_bg_{{ bg_img }}.avif");
+      background-image: url("static/images/login/{{ bg_img }}.avif");
       {{ custom_bg|safe }}
     }
 
@@ -46,17 +46,17 @@
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
       .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.jpeg");
+        background-image: url("static/images/login/{{ bg_img }}@2x.jpeg");
         {{ custom_bg|safe }}
       }
 
       .webp .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.webp");
+        background-image: url("static/images/login/{{ bg_img }}@2x.webp");
         {{ custom_bg|safe }}
       }
 
       .avif .img1 {
-        background-image: url("static/images/login/login_bg_{{ bg_img }}@2x.avif");
+        background-image: url("static/images/login/{{ bg_img }}@2x.avif");
         {{ custom_bg|safe }}
       }
     }

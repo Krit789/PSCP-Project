@@ -14,7 +14,7 @@ def home_page():
 @pages.route('/user', methods=['GET', 'POST'])
 @login_required
 def user_profile():
-    rand_img = (int(str(tme()*1000)[-1]) % 4)+1
+    rand_img = (int(str(tme()*1000)[-1]) % 9)+1
     # user_data = User.query.filter_by(id=current_user.get_id()).first()
     if request.method == 'GET':
         temp = current_user

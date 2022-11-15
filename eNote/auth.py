@@ -18,7 +18,7 @@ def page_not_found(e):
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():
     if current_user.is_anonymous:
-        rand_img = (int(str(tme()*1000)[-1]) % 4)+1
+        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
         if request.method == 'GET':
             return render_template('login.html', bg_img=rand_img)
         if request.method == 'POST':
@@ -50,7 +50,7 @@ def login_page():
 @auth.route('/register', methods=['GET', 'POST'])
 def register_page():
     if current_user.is_anonymous:
-        rand_img = (int(str(tme()*1000)[-1]) % 4)+1
+        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
         if request.method == 'GET':
             return render_template('register.html', bg_img=rand_img)
         if request.method == 'POST':

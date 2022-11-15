@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path, getcwd
 from flask_login import LoginManager
 
-compress = Compress()
+
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
@@ -21,7 +21,6 @@ def create_app():
     
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(pages, url_prefix='/')
-    compress.init_app(app)
 
     from .models import User, Note
     
@@ -38,7 +37,8 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-
+    compress = Compress()
+    compress.init_app(app)
     return app
 
 def create_database(app):
