@@ -115,6 +115,20 @@
         })
         </script>
         {% else %}
+        {% if category == 'talert' %}
+      <script>
+        Swal.fire({
+          icon: 'info',
+          title: 'Info',
+          showConfirmButton: false,
+          timer: 1500,
+          text: "{{message|safe}}",
+          customClass: {
+            confirmButton: 'btn btn-primary',
+          }
+        })
+        </script>
+        {% else %}
       <script>
         Swal.fire({
           icon: 'info',
@@ -125,6 +139,7 @@
           }
         })
         </script>
+        {% endif %}
         {% endif %}
       {% endif %}
       {% endif %}

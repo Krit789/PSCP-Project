@@ -53,44 +53,70 @@
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    {% for category, message in messages %}
-    {% if category == 'error' %}
-    <script>
+        {% for category, message in messages %}
+        {% if category == 'error' %}
+        <script>
         Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '{{ message }}',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-            }
+          icon: 'error',
+          title: 'Oops...',
+          text: "{{message|safe}}",
+          customClass: {
+            confirmButton: 'btn btn-primary',
+          }
         })
-    </script>
-    {% else %}
-    {% if category == 'success' %}
-    <script>
-        Swal.fire({
+        </script>
+        {% else %}
+        {% if category == 'success' %}
+        <script>
+          Swal.fire({
             icon: 'success',
-            title: 'Congratulation!',
-            text: '{{ message }}',
+            title: 'Success!',
+            text: "{{message|safe}}",
             customClass: {
-                confirmButton: 'btn btn-primary',
+              confirmButton: 'btn btn-primary',
             }
-        })
-    </script>
-    {% else %}
-    <script>
-        Swal.fire({
+          })
+          </script>
+          {% else %}
+          {% if category == 'warning' %}
+          <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Warning!',
+              text: "{{message|safe}}",
+              customClass: {
+                confirmButton: 'btn btn-primary',
+              }
+            })
+            </script>
+            {% else %}
+          {% if category == 'question' %}
+        <script>
+          Swal.fire({
+            icon: 'question',
+            title: 'Do you want to?',
+            text: "{{message|safe}}",
+            customClass: {
+              confirmButton: 'btn btn-primary',
+            }
+          })
+          </script>
+          {% else %}
+        <script>
+          Swal.fire({
             icon: 'info',
-            title: 'Hello',
-            text: '{{ message }}',
+            title: 'Info',
+            text: "{{message|safe}}",
             customClass: {
-                confirmButton: 'btn btn-primary',
+              confirmButton: 'btn btn-primary',
             }
-        })
-    </script>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
+          })
+          </script>
+          {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
     {% endif %}
     {% endwith %}
     <nav class="navbar navbar-expand-lg bg-light" style="position: fixed; top: 0; width: 100%; z-index:99;">
@@ -106,12 +132,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    {% if not current_user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#About">About</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('auth.about_page') }}">About</a>
                     </li>
-                    {% else %}
-                    {% endif %}
                 </ul>
 
                 <ui class="navbar-nav mr-auto mb-2 mb-lg-0">

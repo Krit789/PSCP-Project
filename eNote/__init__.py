@@ -33,7 +33,7 @@ def create_app():
     
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template("error.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);'), 404
+        return render_template("error404.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);'), 404
 
     @login_manager.user_loader
     def load_user(id):
