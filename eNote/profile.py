@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, abort, request, redirect, url_for, flash
-from flask_login import login_user, login_required, logout_user, current_user
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask_login import login_required, logout_user, current_user
 from time import time as tme
 from . import db
 from .models import User
@@ -27,7 +27,7 @@ def user_profile():
 
 @profile.route('/user/edit', methods=['GET', 'POST'])
 @login_required
-def profile_editor():
+def editor():
     if request.method == 'GET':
         rand_img = (int(str(tme()*1000)[-1]) % 9)+1
         temp = current_user
@@ -65,14 +65,14 @@ def profile_editor():
                 return redirect(url_for('profile.user_profile'))
             else:
                 flash('Incorrect password, please try again', category='error')
-        return redirect(url_for('profile.profile_editor'))
+        return redirect(url_for('profile.editor'))
 
 @profile.route('/user/password', methods=['GET', 'POST'])
 @login_required
 def password():
     if request.method == 'GET':
         rand_img = (int(str(tme()*1000)[-1]) % 9)+1
-        return render_template("change_password.html", bg_img=rand_img)
+        return render_template("change_passwd.html", bg_img=rand_img)
     if request.method == 'POST':
         old_pass = request.form.get('currentpass')
         newpass = request.form.get('newpass')
