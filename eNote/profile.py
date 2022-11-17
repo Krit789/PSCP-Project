@@ -13,7 +13,7 @@ def user_profile():
     rand_img = (int(str(tme()*1000)[-1]) % 9)+1
     if request.method == 'GET':
         temp = current_user
-        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date) + " UTC"]
+        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date)[:19] + ' UTC']
         return render_template("profile.html", bg_img=rand_img, user_data=user_data)
     if request.method == 'POST':
         delete = True if request.form.get('delete') == 'Delete Account' else False

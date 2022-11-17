@@ -95,7 +95,7 @@
 </script>
 <script>
   var elem = document.getElementById("timeToLocal")
-  var date = new Date('{{ user_data[4] }}');
+  var date = new Date('{{ user_data[4] }}'.replace(/-/g, "/"));
   elem.innerHTML = date.toString();
 </script>
 {% endblock %}

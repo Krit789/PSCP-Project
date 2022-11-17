@@ -19,10 +19,12 @@ def create_app():
     from .auth import auth
     from .pages import pages
     from .profile import profile
+    from .enote_core import core
     
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(pages, url_prefix='/')
     app.register_blueprint(profile, url_prefix='/')
+    app.register_blueprint(core, url_prefix='/')
     from .models import User, Note
     
     create_database(app)
