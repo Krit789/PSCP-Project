@@ -1,94 +1,101 @@
 {% extends "authen.html" %}
 {% block title %}User Info{% endblock %}
 {% block form %}
-<style>td {
+<style>
+  td {
     padding-right: 10px;
-}
-.btn-primary {
-  margin: 15px 0px 15px 0px !important;
-  background-color: #005EB8 !important;
-  font-size: medium !important;
-  border-radius: 12px !important;
-}
+  }
+
+  .btn-primary {
+    margin: 15px 0px 15px 0px !important;
+    background-color: #005EB8 !important;
+    font-size: medium !important;
+    border-radius: 12px !important;
+  }
 
 
-.btn-danger {
+  .btn-danger {
     margin-right: 15px;
     margin-left: 15px;
-  font-size: medium !important;
-  border-radius: 12px !important;
-}
+    font-size: medium !important;
+    border-radius: 12px !important;
+    background-color: #bc2813 !important;
+  }
 
+  .blue-text {
+    color: #005EB8;
+    font-weight: 500;
+  }
 </style>
 <h3>User Profile</h3>
 <table style="text-align: left; display: flex; justify-content: center;">
-<tr>
+  <tr>
     <td>ID</td>
     <td>{{ user_data[0] }}</td>
-</tr>
-<tr>
+  </tr>
+  <tr>
     <td>Username</td>
     <td>{{ user_data[1] }}</td>
-</tr>
-<tr>
+  </tr>
+  <tr>
     <td>First Name</td>
     <td>{{ user_data[2] }}</td>
-</tr>
-<tr>
+  </tr>
+  <tr>
     <td>Last Name</td>
     <td>{{ user_data[3] }}</td>
-</tr>
-<tr>
+  </tr>
+  <tr>
     <td>Creation Date (Local Time)</td>
     <td id="timeToLocal"></td>
-</tr>
+  </tr>
 </table>
 {% endblock %}
 {% block form_desc %}
 <form action="/user" id="wipeout" method="POST">
-    <input type="text" name="delete" value="Delete Account" hidden>
-    <input type="submit" class="btn btn-danger" style="margin: 0 !important;" value="Delete Account"/>
+  <input type="text" name="delete" value="Delete Account" hidden>
+  <input type="submit" class="btn btn-danger" style="margin: 15px 0px 0px 0px !important;" value="Delete Account" />
 </form><br />
-<a href="/user/password">Change Your Password</a><br />
-<a href="/user/edit">Edit Your Profile</a><br />
-<a href="/logout">Logout</a>
+<a href="/user/password" class="blue-text">Change Your Password</a><br />
+<a href="/user/edit" class="blue-text">Edit Your Profile</a><br />
+<a href="/logout" class="blue-text">Logout</a>
 <script>
-    document.querySelector('#wipeout').addEventListener('submit', function(e) {
-      let form = this;
-      e.preventDefault();
-      Swal.fire({
-          title: "Are you sure?",
-          text: "You will not be able to recover any of your data!",
-          icon: "warning",
+  document.querySelector('#wipeout').addEventListener('submit', function (e) {
+    let form = this;
+    e.preventDefault();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will not be able to recover any of your data!",
+      icon: "warning",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+      showCancelButton: true,
+      confirmButtonText: 'Proceed',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: "Cancelled",
+          text: "Your notes are safe :)",
+          icon: "error",
           customClass: {
-            confirmButton: 'btn btn-primary',
-            cancelButton: 'btn btn-danger'
-          },
-          buttonsStyling: false,
-          showCancelButton: true,
-          confirmButtonText: 'Proceed',
-          cancelButtonText: 'Cancel',
-        }).then((result) => {
-          if (result.isConfirmed) {
-              form.submit();
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire({
-            title: "Cancelled", 
-            text: "Your notes are safe :)",
-            icon: "error",
-            customClass: {
             confirmButton: 'btn btn-primary',
           },
           buttonsStyling: false
         })
-            
-          }
-        });
-    })
-  </script>
-        <script>
-          var elem = document.getElementById("timeToLocal")
-          var date = new Date('{{ user_data[4] }}');
-          elem.innerHTML = date.toString();
-          </script>
+
+      }
+    });
+  })
+</script>
+<script>
+  var elem = document.getElementById("timeToLocal")
+  var date = new Date('{{ user_data[4] }}');
+  elem.innerHTML = date.toString();
+</script>
 {% endblock %}
