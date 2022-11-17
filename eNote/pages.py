@@ -15,7 +15,6 @@ def home_page():
 @login_required
 def user_profile():
     rand_img = (int(str(tme()*1000)[-1]) % 9)+1
-    # user_data = User.query.filter_by(id=current_user.get_id()).first()
     if request.method == 'GET':
         temp = current_user
         user_data = [temp.id, temp.username, temp.first_name, temp.last_name, temp.creation_date]

@@ -4,6 +4,21 @@
 <style>td {
     padding-right: 10px;
 }
+.btn-primary {
+  margin: 15px 0px 15px 0px !important;
+  background-color: #005EB8 !important;
+  font-size: medium !important;
+  border-radius: 12px !important;
+}
+
+
+.btn-danger {
+    margin-right: 15px;
+    margin-left: 15px;
+  font-size: medium !important;
+  border-radius: 12px !important;
+}
+
 </style>
 <table style="text-align: left; display: flex; justify-content: center;">
 <tr>
@@ -29,8 +44,43 @@
 </table>
 {% endblock %}
 {% block form_desc %}
-<form action="/user" method="POST">
-    <input type="submit" class="btn btn-danger" name="delete" value="Delete Account" />
+<form action="/user" id="wipeout" method="POST">
+    <input type="text" name="delete" value="Delete Account" hidden>
+    <input type="submit" class="btn btn-danger" style="margin: 0 !important;" value="Delete Account"/>
 </form><br />
-<a href="/logout">Logout here</a>
+<a href="/logout">Logout</a>
+<script>
+    document.querySelector('#wipeout').addEventListener('submit', function(e) {
+      let form = this;
+      e.preventDefault();
+      Swal.fire({
+          title: "Are you sure?",
+          text: "You will not be able to recover any of your data!",
+          icon: "warning",
+          customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonText: 'Proceed',
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+              form.submit();
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+            title: "Cancelled", 
+            text: "Your notes are safe :)",
+            icon: "error",
+            customClass: {
+            confirmButton: 'btn btn-primary',
+          },
+          buttonsStyling: false
+        })
+            
+          }
+        });
+    })
+  </script>
 {% endblock %}
