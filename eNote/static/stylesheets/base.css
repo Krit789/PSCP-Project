@@ -12,6 +12,7 @@ body {
     font-family: "Roboto", sans-serif !important;
     font-weight: 300;
     overflow-y: auto;
+    padding-top: 30px;
 }
 
 .paragraph{

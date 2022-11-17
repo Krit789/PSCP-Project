@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Home &lt;e&gt;Note{% endblock %}
+{% block note %}
+<div class="gradient-bg">
+<div class="container">
+    <style>
+        .gradient-bg {
+            background: rgb(218,238,255);
+            background: -moz-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+            background: linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+            height: 100vh;
+            z-index: 0;
+        }
+    .containter-box {
+        margin-top: 10px;
+        text-align: center !important;
+        padding: 15px;
+        background-color: white;
+        border-radius: 18px;
+        opacity: 10;
+        box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+        z-index: 1;
+    }
+    </style>
+    <div class="row">
+        <div class="col-sm-6 col-md-6"><div class="containter-box"><h3>Hello, {{ current_user.first_name}}</h3>{{ current_user.email}}</div></div>
+        <div class="col-sm-6 col-md-6"><div class="containter-box"">
+        <h4>Add Your Notes! (Alpha)</h4>
+        <form action="/note" method="POST">
+            <input type="text" name="action" value="create_note" hidden/>
+            <div class="form-outline">
+                <input type="text" id="typeText" class="form-control" name="title" />
+                <label class="form-label" for="typeText">Title</label>
+              </div>
+              <br />
+              <div class="form-outline">
+                <textarea class="form-control" id="noteArea" rows="5" name="content"></textarea>
+                <label class="form-label" for="noteArea">Note</label>
+              </div>
+              <br />
+              <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        </div></div>
+    </div>
+    <div class="row">
+        <div class="col"><div class="containter-box" style="text-align: left !important;">
+            <h3>My Notes</h3>
+            <ul class="list-group list-group-light">
+                {% for note in all_note %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">{{ note.title }}</div>
+                    <div class="text-muted">Creted: {{ note.creation_date }} Last Edit: {{ note.last_edit }}</div>
+                  </div>
+                  <a 
+                  data-mdb-toggle="collapse"
+                  href="#content-{{ note.id }}"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="content-{{ note.id }}"
+                  >
+                  <span class="badge rounded-pill badge-primary">View Content</span></a>
+                  <div class="collapse mt-3" id="content-{{ note.id }}">
+                    {{ note.content }}
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+        
+        </div></div>
+        
+      </div>
+</div>
+</div>
+{% endblock %}

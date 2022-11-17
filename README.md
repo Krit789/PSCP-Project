@@ -6,7 +6,7 @@ Versitile, beautiful, personalized just for you.
 &lt;e&gt;Note is more than a note it's a personal diary.
 
 ### Features 
-<li>Keep your credentials safe with salted-encrypted storage.</li>
+<li>Keep your credentials safe with hashed storage.</li>
 <li>You can create an infinite number of notes.</li>
 <li>Markdown formatting allowed you to personalize your notes.</li>
 <li>Use dark mode to protect your eyes.</li>
