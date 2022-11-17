@@ -1,0 +1,94 @@
+from flask import Blueprint, render_template, abort, request, redirect, url_for, flash
+from flask_login import login_user, login_required, logout_user, current_user
+from time import time as tme
+from . import db
+from .models import User
+from werkzeug.security import check_password_hash, generate_password_hash
+
+profile = Blueprint('profile', __name__)
+
+@profile.route('/user', methods=['GET', 'POST'])
+@login_required
+def user_profile():
+    rand_img = (int(str(tme()*1000)[-1]) % 9)+1
+    if request.method == 'GET':
+        temp = current_user
+        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date) + " UTC"]
+        return render_template("profile.html", bg_img=rand_img, user_data=user_data)
+    if request.method == 'POST':
+        delete = True if request.form.get('delete') == 'Delete Account' else False
+        if delete:
+            obj = User.query.filter_by(id=current_user.id).one()
+            db.session.delete(obj)
+            db.session.commit()
+            flash('Account deleted!', category='success')
+        return redirect(url_for('pages.home_page'))
+
+
+@profile.route('/user/edit', methods=['GET', 'POST'])
+@login_required
+def profile_editor():
+    if request.method == 'GET':
+        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
+        temp = current_user
+        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, temp.email]
+        return render_template("profile_edit.html", bg_img=rand_img, user_data=user_data)
+    if request.method == 'POST':
+        email = request.form.get('email')
+        first_name = request.form.get('firstname')
+        last_name = request.form.get('lastname')
+        username = request.form.get('username')
+        password = request.form.get('passwd')
+        email_check = User.query.filter_by(email=email).first()
+        user_check = User.query.filter_by(username=username).first()
+        if email_check and email != current_user.email:
+            flash('Email already exist', category='error')
+        elif user_check and username != current_user.username:
+            flash(
+                f'Your username, {username} was already taken', category='error')
+        elif len(email) < 4:
+            flash('Email must be greater than 3 characters.', category='error')
+        elif len(first_name) < 2:
+            flash('First name must be greater than 1 characters.', category='error')
+        else:
+            if check_password_hash(email_check.password, password):
+                updated_user = User.query.filter_by(id=current_user.id).first()
+                updated_user.username = username
+                updated_user.email = email
+                updated_user.first_name = first_name
+                if len(last_name) > 0:
+                    updated_user.last_name = last_name
+                else:
+                    updated_user.last_name = None
+                db.session.commit()
+                flash('Changes saved!', category='success')
+                return redirect(url_for('profile.user_profile'))
+            else:
+                flash('Incorrect password, please try again', category='error')
+        return redirect(url_for('profile.profile_editor'))
+
+@profile.route('/user/password', methods=['GET', 'POST'])
+@login_required
+def password():
+    if request.method == 'GET':
+        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
+        return render_template("change_password.html", bg_img=rand_img)
+    if request.method == 'POST':
+        old_pass = request.form.get('currentpass')
+        newpass = request.form.get('newpass')
+        confnewpass = request.form.get('confnewpass')
+        if newpass == confnewpass:
+            user = User.query.filter_by(id=current_user.id).first()
+            if check_password_hash(user.password, old_pass):
+                if old_pass != newpass:
+                    user.password = generate_password_hash(newpass, method='sha384')
+                    db.session.commit()
+                    flash('Changes saved!', category='success')
+                    return redirect(url_for('profile.user_profile'))
+                else:
+                    flash('New password can\'t be the same as current password', category='error')
+            else:
+                flash('Incorrect password, please try again', category='error')
+        else:
+            flash('New Password and Confirm New Password must be the same!', category='error')
+        return redirect(url_for('profile.password'))

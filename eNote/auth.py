@@ -32,7 +32,6 @@ def login_page():
             if user:
                 if check_password_hash(user.password, password):
                     flash('You have been logged in!', category='success')
-                    print(remember)
                     if remember == 'on':
                         login_user(user, remember=True)
                     else:
@@ -86,7 +85,6 @@ def register_page():
                 db.session.commit()
                 flash('Account created!', category='success')
                 return redirect(url_for('auth.login_page'))
-    
             return render_template('register.html', bg_img=rand_img)
     else:
         flash('You have already logged in!', category='warning')

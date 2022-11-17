@@ -1,13 +1,13 @@
 '''Database configuration for Flask SQLAlchemy'''
 from flask_login import UserMixin
-from sqlalchemy import func
+from datetime import datetime
 from . import db
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.UnicodeText())
-    creation_date = db.Column(db.DateTime(timezone=True), default=func.now())
-    last_edit = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    creation_date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_edit = db.Column(db.DateTime, onupdate=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
@@ -19,5 +19,5 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150), nullable=False)
     first_name = db.Column(db.String(150), nullable=False)
     last_name = db.Column(db.String(150), nullable=True)
-    creation_date = db.Column(db.DateTime(timezone=True), default=func.now())
+    creation_date = db.Column(db.DateTime, default=datetime.utcnow)
     notes = db.relationship('Note')

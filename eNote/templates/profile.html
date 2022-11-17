@@ -20,6 +20,7 @@
 }
 
 </style>
+<h3>User Profile</h3>
 <table style="text-align: left; display: flex; justify-content: center;">
 <tr>
     <td>ID</td>
@@ -38,8 +39,8 @@
     <td>{{ user_data[3] }}</td>
 </tr>
 <tr>
-    <td>Creation Date (UTC)</td>
-    <td>{{ user_data[4] }}</td>
+    <td>Creation Date (Local Time)</td>
+    <td id="timeToLocal"></td>
 </tr>
 </table>
 {% endblock %}
@@ -48,6 +49,8 @@
     <input type="text" name="delete" value="Delete Account" hidden>
     <input type="submit" class="btn btn-danger" style="margin: 0 !important;" value="Delete Account"/>
 </form><br />
+<a href="/user/password">Change Your Password</a><br />
+<a href="/user/edit">Edit Your Profile</a><br />
 <a href="/logout">Logout</a>
 <script>
     document.querySelector('#wipeout').addEventListener('submit', function(e) {
@@ -83,4 +86,9 @@
         });
     })
   </script>
+        <script>
+          var elem = document.getElementById("timeToLocal")
+          var date = new Date('{{ user_data[4] }}');
+          elem.innerHTML = date.toString();
+          </script>
 {% endblock %}
