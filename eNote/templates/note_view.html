@@ -24,46 +24,30 @@
     }
     </style>
     <div class="row">
-        <div class="col-sm-6 col-md-6"><div class="containter-box"><h3>Hello, {{ current_user.first_name}}</h3>{{ current_user.email}}</div></div>
-        <div class="col-sm-6 col-md-6"><div class="containter-box"">
-        <h4>Add Your Notes! (Alpha)</h4>
-        <form action="/note" method="POST">
-            <input type="text" name="action" value="create_note" hidden/>
-            <div class="form-outline">
-                <input type="text" id="typeText" class="form-control" name="title" />
-                <label class="form-label" for="typeText">Title</label>
-              </div>
-              <br />
-              <div class="form-outline">
-                <textarea class="form-control" id="noteArea" rows="5" name="content"></textarea>
-                <label class="form-label" for="noteArea">Note</label>
-              </div>
-              <br />
-              <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-
-        </div></div>
-    </div>
-    <div class="row">
         <div class="col"><div class="containter-box" style="text-align: left !important;">
             <h3>My Notes</h3>
             <ul class="list-group list-group-light">
-                {% for note in all_note %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold">{{ note.title }}</div>
                     <div class="text-muted">Created: {{ note.creation_date }} Last Edit: {{ note.last_edit }}</div>
                   </div>
-                  <a 
-                  href="/note/{{ note.id }}"
-                  >
-                  <span class="badge rounded-pill badge-primary">View Content</span></a>
+                  <a>
+                  <span class="badge rounded-pill badge-danger">Delete</span></a>
+                  </div>
+                  
                 </li>
-                {% endfor %}
               </ul>
         
         </div></div>
-        
+        <div class="row">
+          <div class="col">
+            <div class="containter-box" style="text-align: left !important;">
+              <h3>Content</h3>
+              <p>{{ note.content }}</p>
+            </div>
+          </div>
+        </div>
       </div>
 </div>
 </div>

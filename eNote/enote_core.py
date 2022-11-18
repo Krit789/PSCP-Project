@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask_login import login_required, current_user
 from . import db
 from .models import User, Note
@@ -21,3 +21,11 @@ def note_home():
             db.session.commit()
             flash('Note Created Successfully!', category='success')
     return redirect(url_for('core.note_home'))
+
+@core.route('/note/<int:note_id>')
+@login_required
+def note_view(note_id):
+    user_note = Note.query.filter_by(id=note_id).first_or_404()
+    if user_note.user_id != current_user.id:
+        abort(403)
+    return render_template('note_view.html', note=user_note)
