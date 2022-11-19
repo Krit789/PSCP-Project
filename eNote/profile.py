@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, logout_user, current_user
 from time import time as tme
 from . import db
-from .models import User
+from .models import User, Note
 from werkzeug.security import check_password_hash, generate_password_hash
 
 profile = Blueprint('profile', __name__)
@@ -18,8 +18,10 @@ def user_profile():
     if request.method == 'POST':
         delete = True if request.form.get('delete') == 'Delete Account' else False
         if delete:
-            obj = User.query.filter_by(id=current_user.id).one()
-            db.session.delete(obj)
+            account = User.query.filter_by(id=current_user.id).one()
+            notes = Note.query.filter_by(user_id=current_user.id)
+            db.session.delete(account)
+            db.session.delete(notes)
             db.session.commit()
             flash('Account deleted!', category='success')
         return redirect(url_for('pages.home_page'))

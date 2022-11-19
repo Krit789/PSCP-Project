@@ -1,16 +1,21 @@
 {% extends "base.html" %}
-{% block title %}Home &lt;e&gt;Note{% endblock %}
+{% block title %}{{ note.title }}{% endblock %}
 {% block note %}
+<script>
+  function convert_date(date_in) {
+    const date = new Date(date_in.replace(/-/g, "/"));
+    return date.toLocaleString();}
+</script>
 <div class="gradient-bg">
 <div class="container">
     <style>
-        .gradient-bg {
-            background: rgb(218,238,255);
-            background: -moz-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
-            background: -webkit-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
-            background: linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
-            height: 100vh;
-            z-index: 0;
+    .gradient-bg {
+        background: rgb(218,238,255);
+        background: -moz-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+        background: -webkit-linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+        background: linear-gradient(0deg, rgba(218,238,255,1) 0%, rgba(255,160,251,1) 100%);
+        height: 100vh;
+        z-index: 0;
         }
     .containter-box {
         margin-top: 10px;
@@ -21,20 +26,34 @@
         opacity: 10;
         box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
         z-index: 1;
-    }
+      }
+      .visible {
+    visibility: visible !important;
+      }
+      .invisible {
+        visibility: hidden !important;
+      }
     </style>
     <div class="row">
         <div class="col"><div class="containter-box" style="text-align: left !important;">
-            <h3>My Notes</h3>
+            <h3><a href="/note"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
             <ul class="list-group list-group-light">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold">{{ note.title }}</div>
-                    <div class="text-muted">Created: {{ note.creation_date }} Last Edit: {{ note.last_edit }}</div>
+                    <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span id="lastedit{{ note.id }}"></span></div>
+                    <script>
+                    document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }} UTC");
+                    document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }} UTC");
+                    </script>
                   </div>
-                  <a>
+                  <form action="/note" method="POST" id="delete_note">
+                    <input type="text" name="action" value="delete" readonly hidden>
+                    <input type="text" name="id" value="{{ note.id }}" readonly hidden>
+                    <a href="javascript:{}" onclick="document.getElementById('delete_note').submit();">
                   <span class="badge rounded-pill badge-danger">Delete</span></a>
-                  </div>
+                </form>  
+                </div>
                   
                 </li>
               </ul>
@@ -42,13 +61,22 @@
         </div></div>
         <div class="row">
           <div class="col">
-            <div class="containter-box" style="text-align: left !important;">
-              <h3>Content</h3>
-              <p>{{ note.content }}</p>
+            <div class="containter-box"  style="text-align: left !important;">
+              <table style="width: 100%;">
+                <tr>
+                  <td style="text-align: left;"><h3>Content</h3></td>
+                  <td style="text-align: right; font-size: x-large;">
+                    <form action="/note/edit" method="POST" id="edit_note"><a
+                      href="javascript:{}" onclick="document.getElementById('edit_note').submit();">
+                      <input type="text" name="action" value="edit" readonly hidden>
+                      <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+                      <i class="fa-solid fa-pen-to-square"></i></a></form></td>
+                </tr>
+              </table>
+              <p id="note_unedit">{{ note.content }}</p>
             </div>
           </div>
         </div>
       </div>
-</div>
 </div>
 {% endblock %}

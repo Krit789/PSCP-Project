@@ -8,7 +8,7 @@ class Note(db.Model):
     title = db.Column(db.UnicodeText())
     content = db.Column(db.UnicodeText())
     creation_date = db.Column(db.DateTime, default=datetime.utcnow)
-    last_edit = db.Column(db.DateTime, onupdate=datetime.utcnow)
+    last_edit = db.Column(db.DateTime,default=datetime.utcnow, onupdate=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

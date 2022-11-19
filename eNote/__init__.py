@@ -35,7 +35,11 @@ def create_app():
     
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template("error404.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);'), 404
+        return render_template("error404.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='This page does not exist'), 404
+
+    @app.errorhandler(403)
+    def forbidden(e):
+        return render_template("error404.html", error_code=403, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='You don\'t have permission to access this page'), 403
 
     @login_manager.user_loader
     def load_user(id):
@@ -48,6 +52,6 @@ def create_database(app):
     if not path.exists('instance/' + DB_NAME):
         with app.app_context():
             db.create_all()
-        print("Database Created!, this message will appear when database.db doesn't exist.")
+            print("Database Created!, this message will appear when database.db doesn't exist.")
     else:
         print('Database already exist! Skipping db creation...', getcwd())

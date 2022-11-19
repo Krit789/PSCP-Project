@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Home &lt;e&gt;Note{% endblock %}
+{% block title %}{{ note.title }}{% endblock %}
 {% block note %}
 <script>
   function convert_date(date_in) {
@@ -26,54 +26,59 @@
         opacity: 10;
         box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
         z-index: 1;
-    }
+      }
+      .visible {
+    visibility: visible !important;
+      }
+      .invisible {
+        visibility: hidden !important;
+      }
     </style>
     <div class="row">
-        <div class="col-sm-6 col-md-6"><div class="containter-box"><h3>Hello, {{ current_user.first_name}}</h3>{{ current_user.email}}</div></div>
-        <div class="col-sm-6 col-md-6"><div class="containter-box"">
-        <h4>Add Your Notes! (Alpha)</h4>
-        <form action="/note" method="POST">
-            <input type="text" name="action" value="create" hidden/>
-            <div class="form-outline">
-                <input type="text" id="typeText" class="form-control" name="title" />
-                <label class="form-label" for="typeText">Title</label>
-              </div>
-              <br />
-              <div class="form-outline">
-                <textarea class="form-control" id="noteArea" rows="5" name="content"></textarea>
-                <label class="form-label" for="noteArea">Note</label>
-              </div>
-              <br />
-              <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-
-        </div></div>
-    </div>
-    <div class="row">
         <div class="col"><div class="containter-box" style="text-align: left !important;">
-            <h3>My Notes</h3>
+          <form action="/note" id="note_edit" method="POST">
+            <input type="text" name="action" value="update" readonly hidden>
+            <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+            <h3><a href="/note"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;Note Editor</h3>
+            <div class="form-outline">
+              <input type="text" id="typeText" class="form-control" name="title" value="{{ note.title }}"/>
+              <label class="form-label" for="typeText">Title</label>
+            </div>
             <ul class="list-group list-group-light">
-                {% for note in all_note %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <div>
-                    <div class="fw-bold">{{ note.title }}</div>
                     <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span id="lastedit{{ note.id }}"></span></div>
                     <script>
                     document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }} UTC");
                     document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }} UTC");
                     </script>
                   </div>
-                  <a 
-                  href="/note/{{ note.id }}"
-                  >
-                  <span class="badge rounded-pill badge-primary">View Content</span></a>
+                </div>
+                  
                 </li>
-                {% endfor %}
               </ul>
         
         </div></div>
-        
+        <div class="row">
+          <div class="col">
+            <div class="containter-box"  style="text-align: left !important;">
+              <table style="width: 100%;">
+                <tr>
+                  <td style="text-align: left;"><h3>Content</h3></td>
+                  <td style="text-align: right; font-size: x-large;"><a href="javascript:{}" onclick="document.getElementById('note_edit').submit();"><i class="fa-solid fa-floppy-disk"></i></i></a></td>
+                </tr>
+              </table>
+              <div class="form-outline">
+                <textarea class="form-control" id="noteArea" rows="5" name="content">{{ note.content }}</textarea>
+                <label class="form-label" for="noteArea">Note</label>
+              </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 </div>
-</div>
+
+
 {% endblock %}
