@@ -7,9 +7,31 @@
     margin-left: -10px;
 }
 
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
+@media screen and (max-width: 700px) {
+    .module{
+        display: grid;
+        column-gap: 0.5em;
+    }
+    .left_module{
+        grid-template-columns: auto !important;
+        grid-template-rows: auto auto auto auto !important;
+    }
+    .right_module {
+        grid-template-columns: auto !important;
+        grid-template-rows: auto auto auto auto !important;
+    }
+    .left_userpics{
+        grid-area: 1 / 1 / 1 / 1 !important;
+    }
+    .left_text{
+        grid-column: 1 !important;
+        text-align: center !important;
+    }
+    .right_text{
+        text-align: center !important;
+    }
+    .right_userpics{
+        grid-area: 1 / 1 / 1 / 1 !important;
     }
 }
 
@@ -42,79 +64,51 @@
     border-radius: calc(100vh * 0.02);
 }
 
-.left_module{
+.module{
     display: grid;
+    column-gap: 0.5em;
+}
+.left_module{
     grid-template-columns: 10em auto;
     grid-template-rows: 2em 1.5em auto;
-    column-gap: 0.5em;
 }
-
-.left_userpics{
-    grid-row: 1 / span 3;
-}
-
-.left_userpics > img{
-    width: 7em;
-    border-radius: 100%;
-    border-style: solid;
-    border-color: black;
-}
-
-.left_username{
-    grid-column: 2;
-    text-align: left;
-    font-size: 150%;
-    font-weight: 700;
-}
-
-.left_userid{
-    grid-column: 2;
-    text-align: left;
-    font-size: 90%;
-    font-weight: 600;
-}
-
-.left_userdesc{
-    grid-column: 2;
-    text-align: left;
-    text-indent: 40px;
-}
-
 .right_module{
-    display: grid;
     grid-template-columns: auto  10em;
     grid-template-rows: 2em 1.5em auto;
-    column-gap: 0.5em;
 }
-
-.right_userpics{
-    grid-column: 2;
+.left_userpics{
+    grid-area: 1 / 1 / span 3 / 1;
     grid-row: 1 / span 3;
 }
+.left_text{
+    grid-column: 2;
+    text-align: left;
+}
+.right_text{
+    grid-column: 1;
+    text-align: right;
+}
+.right_userpics{
+    grid-area: 1 / 2 / span 3 / 2;
+}
 
-.right_userpics > img{
-    width: 7em;
+.userpics{
+    width: 70%;
     border-radius: 100%;
     border-style: solid;
     border-color: black;
 }
 
-.right_username{
-    grid-column: 1;
-    text-align: right;
+.username{
     font-size: 150%;
     font-weight: 700;
 }
 
-.right_userid{
-    grid-column: 1;
-    text-align: right;
+.userid{
     font-size: 90%;
     font-weight: 600;
 }
 
-.right_userdesc{
-    grid-column: 1;
-    text-align: right;
+.userdesc{
     text-indent: 40px;
 }
