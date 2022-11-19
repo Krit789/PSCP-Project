@@ -52,3 +52,7 @@
     -webkit-backdrop-filter: blur(80px);
     border-radius: calc(100vh * 0.02);
 }
+
+.ardy_account{
+    box-shadow: none !important;
+}

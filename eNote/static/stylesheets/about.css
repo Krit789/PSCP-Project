@@ -13,46 +13,6 @@
     }
 }
 
-/* Profile pics is on the left*/
-.left_pics {
-    max-width: calc(100% *0.10);
-}
-
-/* need help with responsive */
-.right_paragraph {
-    text-align: left;
-    max-inline-size: 80%;
-    margin-inline-start: 10%;
-}
-
-/* need help with responsive */
-.left_paragraph {
-    text-align: right !important;
-    max-inline-size: 80%;
-}
-
-.row {
-    display: flex;
-}
-
-.column {
-    flex: 50%;
-}
-
-.name_title {
-    color: black
-}
-
-.titlename {
-    font-size: 90%;
-    font-weight: 700;
-}
-
-.titleid {
-    font-size: 70%;
-    font-weight: 600;
-}
-
 .welcome_paragraph {
     border-radius: 0%;
 }
@@ -82,10 +42,79 @@
     border-radius: calc(100vh * 0.02);
 }
 
-.text_paragraph {
-    margin: 30px 20px 30px 0px;
-    font-size: 18px;
-    font-weight: 300;
-    text-align: justify;
+.left_module{
+    display: grid;
+    grid-template-columns: 10em auto;
+    grid-template-rows: 2em 1.5em auto;
+    column-gap: 0.5em;
+}
+
+.left_userpics{
+    grid-row: 1 / span 3;
+}
+
+.left_userpics > img{
+    width: 7em;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
+}
+
+.left_username{
+    grid-column: 2;
+    text-align: left;
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.left_userid{
+    grid-column: 2;
+    text-align: left;
+    font-size: 90%;
+    font-weight: 600;
+}
+
+.left_userdesc{
+    grid-column: 2;
+    text-align: left;
+    text-indent: 40px;
+}
+
+.right_module{
+    display: grid;
+    grid-template-columns: auto  10em;
+    grid-template-rows: 2em 1.5em auto;
+    column-gap: 0.5em;
+}
+
+.right_userpics{
+    grid-column: 2;
+    grid-row: 1 / span 3;
+}
+
+.right_userpics > img{
+    width: 7em;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
+}
+
+.right_username{
+    grid-column: 1;
+    text-align: right;
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.right_userid{
+    grid-column: 1;
+    text-align: right;
+    font-size: 90%;
+    font-weight: 600;
+}
+
+.right_userdesc{
+    grid-column: 1;
+    text-align: right;
     text-indent: 40px;
 }
