@@ -49,7 +49,7 @@
                   </div>
                   <form action="/note" method="POST" id="delete_note">
                     <input type="text" name="action" value="delete" readonly hidden>
-                    <input type="text" name="id" value="{{ note.id }}" readonly hidden>
+                    <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
                     <a href="javascript:{}" onclick="document.getElementById('delete_note').submit();">
                   <span class="badge rounded-pill badge-danger">Delete</span></a>
                 </form>  
