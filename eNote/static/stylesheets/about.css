@@ -21,11 +21,14 @@
 /* need help with responsive */
 .right_paragraph {
     text-align: left;
+    max-inline-size: 80%;
+    margin-inline-start: 10%;
 }
 
 /* need help with responsive */
 .left_paragraph {
     text-align: right !important;
+    max-inline-size: 80%;
 }
 
 .row {
