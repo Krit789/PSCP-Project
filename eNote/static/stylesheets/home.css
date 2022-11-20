@@ -10,8 +10,8 @@
 
 .welcome_outer {
     width: 100%;
-    min-height: 95vh;
-    padding-top: 40px;
+    min-height: 100%;
+    padding: 60px 10px;
     background-color: #f7fff9;
 }
 
@@ -59,9 +59,10 @@
 
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 950px) {
 
     .column {
+        padding: 10px 0px;
         width: 100%;
     }
 
@@ -80,8 +81,9 @@
     }
 
     .welcome_title {
-        font-size: 26px;
+        font-size: 70px;
     }
+
 }
 
 .btn-primary {
