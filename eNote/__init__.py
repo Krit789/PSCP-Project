@@ -35,11 +35,11 @@ def create_app():
     
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template("error404.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='This page does not exist'), 404
+        return render_template("error404.html", error_code=404, custom_bg='background: linear-gradient(0deg, rgba(255,0,0,0.2) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='This page does not exist'), 404
 
     @app.errorhandler(403)
     def forbidden(e):
-        return render_template("error404.html", error_code=403, custom_bg='background: linear-gradient(0deg, rgba(0,0,0,0) 35%, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='You don\'t have permission to access this page'), 403
+        return render_template("error404.html", error_code=403, custom_bg='background: linear-gradient(0deg, rgba(255,0,0,0.2) 35%,, rgba(121,16,9,0.5) 80%, rgba(152,20,0,0.8) 100%);', error_desc='You don\'t have permission to access this page'), 403
 
     @login_manager.user_loader
     def load_user(id):
