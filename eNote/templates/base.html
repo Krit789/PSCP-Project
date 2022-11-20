@@ -197,7 +197,7 @@
         </div>
     </nav>
     {% block note %}
-    <div style="text-align: center; margin: auto; width: 50%;">
+    <div style="text-align: center; margin: auto; width: 100%;">
       {% if current_user.is_authenticated %}
     <form action="/note">
       <h1>You are logged in as User ID <code>{{ current_user.id }}</code></h1>

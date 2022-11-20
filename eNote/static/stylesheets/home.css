@@ -1,6 +1,18 @@
 .welcome_title {
-    font-size: 40px;
-    font-weight: 800;
+    font-size: 80px;
+    font-weight: 900;
+    color: black;
+}
+
+.welcome-button {
+    margin-top: 90px;
+}
+
+.welcome_outer {
+    width: 100%;
+    min-height: 95vh;
+    padding-top: 40px;
+    background-color: #f7fff9;
 }
 
 .welcome_paragraph {
@@ -14,7 +26,45 @@
     margin: 20px 10px;
 }
 
-@media only screen and (max-width: 450px) {
+.welcome-img {
+    min-width: 100%;
+    border-radius: 20px;
+}
+
+/* Two column */
+.row {
+    display: flex;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.left {
+    padding: 120px 10px 10px 10px;
+    width: 60%;
+}
+
+.right {
+    width: 40%;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+
+    .column {
+        width: 100%;
+    }
+
     .outer_box {
         width: 100%;
     }
@@ -32,6 +82,14 @@
     .welcome_title {
         font-size: 26px;
     }
+}
+
+.btn-primary {
+    margin: 15px 0px 15px 0px !important;
+    background-color: #005EB8 !important;
+    font-size: medium !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
 }
 
 .outer_box {
@@ -53,6 +111,12 @@
     border-radius: calc(100vh * 0.02);
 }
 
-.ardy_account{
+.about_box {
+    padding: 10px 10%;
+}
+
+.ardy_account {
+    margin: -10px 0px 0px 0px;
     box-shadow: none !important;
+    font-size: 14px;
 }

@@ -5,35 +5,35 @@
 <link rel="stylesheet" href="../static/stylesheets/home.css" />
 <link rel="stylesheet" href="../static/stylesheets/about.css" />
 
-<div class="outer_box">
-  <div class="welcome_title">
-    Welcome to &lt;e&gt;Note
+<div class="row welcome_outer">
+  <div class="column left">
+    <div class="welcome_title">
+      &lt;e&gt;Note
+    </div>
+
+    <div>
+      This is our PSCP project!
+    </div>
+
+    <div class="welcome-button">
+      <form action="/register">
+        <input class="btn btn-primary " type="submit" value="Get Started!" />
+      </form>
+      <form action="/login">
+        <input class="btn ardy_account" type="submit" value="Login!" />
+      </form>
+    </div>
   </div>
-  <div class="paragraph">
-    <p class="welcome_paragraph">
-      It's not just a note, it's &lt;e&gt;Note, a personal diary.
-    </p>
-    <form action="/register">
-      <input class="btn btn-primary" type="submit" value="Get Started!" />
-    </form>
-    <form action="/login">
-      <input class="btn ardy_account" type="submit" value="Already have an account? Login!" />
-    </form>
 
-    <img src="https://ejudge.it.kmitl.ac.th/assets/img/avatar280.png" class="welcome_image">
-
-    <p class="welcome_paragraph">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-    </p>
+  <div class="column right">
+    <img class="welcome-img" src="../static/images/home/Phone_Temp.png">
   </div>
 </div>
-<!-- this is now a bit responsive-->
-<div class="outer_box">
-  <div class="welcome_title" id="About">
+
+
+<!-- About Us-->
+<div class="about_box" style="margin-top : 100px;">
+  <div class="" id="About">
     About us!
   </div>
   <div class="left_module module">
