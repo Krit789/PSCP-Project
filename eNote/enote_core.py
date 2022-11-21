@@ -27,7 +27,7 @@ def note_home():
             user_note.content = request.form.get('content')
             db.session.commit()
             flash('Note updated', category='success')
-            return render_template('note_view.html', note=user_note)
+            return redirect(url_for('core.note_view', note_id=user_note.id))
         if action == 'delete':
             db.session.delete(user_note)
             db.session.commit()

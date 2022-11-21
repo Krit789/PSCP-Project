@@ -6,6 +6,11 @@
     const date = new Date(date_in.replace(/-/g, "/"));
     return date.toLocaleString();}
 </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/index.min.js"></script>
+<script type="text/javascript">
+  var md = window.markdownit().use(markdownitFootnote);
+  </script>
+
 <div class="gradient-bg">
 <div class="container">
     <style>
@@ -27,12 +32,7 @@
         box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
         z-index: 1;
       }
-      .visible {
-    visibility: visible !important;
-      }
-      .invisible {
-        visibility: hidden !important;
-      }
+
     </style>
     <div class="row">
         <div class="col"><div class="containter-box" style="text-align: left !important;">
@@ -69,7 +69,11 @@
                 </tr>
               </table>
               <div class="form-outline">
-                <textarea class="form-control" id="noteArea" rows="5" name="content">{{ note.content }}</textarea>
+                <textarea class="form-control" id="noteArea" rows="5" name="content">
+                
+                  {{ note.content }}
+                
+                </textarea>
                 <label class="form-label" for="noteArea">Note</label>
               </div>
               </form>
