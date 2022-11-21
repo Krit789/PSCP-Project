@@ -3,7 +3,7 @@
 {% block note %}
 <script>
   function convert_date(date_in) {
-    const date = new Date(date_in.replace(/-/g, "/"));
+    const date = new Date(date_in.slice(0, date_in.indexOf(".")).replace(/-/g, "/") + ' UTC');
     return date.toLocaleString();}
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/index.min.js"></script>
@@ -49,9 +49,9 @@
                   <div>
                     <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span id="lastedit{{ note.id }}"></span></div>
                     <script>
-                    document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }} UTC");
-                    document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }} UTC");
-                    </script>
+                      document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+                      document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+                      </script>
                   </div>
                 </div>
                   
