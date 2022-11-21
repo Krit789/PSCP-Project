@@ -50,7 +50,7 @@
               </table>
               <hr />
               <div id="rendered_text" style="padding: 15px; border-radius: 18px;"></div>
-              <textarea id="note_unedited" hidden>{{ note.content }}</textarea>
+              <textarea id="note_unedited" hidden>{{ note.content|safe }}</textarea>
             </div>
           </div>
         </div>
@@ -58,6 +58,7 @@
 </div>
 <script>
 const converter = new showdown.Converter();
+converter.setOption('simpleLineBreaks', true);
 document.getElementById("rendered_text").innerHTML = converter.makeHtml(document.getElementById("note_unedited").value);
 // console.log(converter.makeHtml(document.getElementById("note_unedit").value))
 </script>
