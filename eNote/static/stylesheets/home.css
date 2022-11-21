@@ -122,3 +122,15 @@
     box-shadow: none !important;
     font-size: 14px;
 }
+
+/* About */
+.abt-title {
+    color: black;
+    font-weight: 900;
+    font-size: 55px;
+    margin: 20px 0px;
+}
+
+.abt-profile {
+    padding: 20px 30px;
+}
