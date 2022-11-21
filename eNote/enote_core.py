@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask_login import login_required, current_user
+from sqlalchemy import desc
 from . import db
 from .models import Note
 
@@ -9,12 +10,16 @@ core = Blueprint('core', __name__)
 @login_required
 def note_home():
     if request.method == 'GET':
-        user_note = Note.query.filter_by(user_id=current_user.id)
+        user_note = Note.query.filter_by(user_id=current_user.id).order_by(desc(Note.last_edit))
         return render_template("note.html", all_note=user_note)
     if request.method == 'POST':
         action = request.form.get('action')
         if action == 'create':
-            memo = Note(title=request.form.get('title'), content=request.form.get('content'), user_id=current_user.id)
+            if len(request.form.get('title')) == 0:
+                title = "Untitled Note"
+            else:
+                title = request.form.get('title')
+            memo = Note(title=title, content=request.form.get('content'), user_id=current_user.id)
             db.session.add(memo)
             db.session.commit()
             flash('Note Created Successfully!', category='success')
@@ -46,7 +51,6 @@ def note_view(note_id):
 @login_required
 def editor():
     note_id = request.form.get('note_id')
-    action = request.form.get('action')
     user_note = Note.query.filter_by(id=note_id).first_or_404()
     if user_note.user_id != current_user.id:
         abort(403)
