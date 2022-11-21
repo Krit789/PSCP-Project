@@ -1,227 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
-    <script>
-      var agent = navigator.userAgent;
-    
-      function isIE() {
-        return navigator.userAgent.match(/(MSIE|Trident)/);
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <script>
+    var agent = navigator.userAgent;
+
+    function isIE() {
+      return navigator.userAgent.match(/(MSIE|Trident)/);
+    }
+
+    function isNetscape() {
+      var web_user_agent = window.navigator.userAgent
+      if ((web_user_agent.substring(0, 9) == "Mozilla/4") && !web_user_agent.match(/(MSIE|Trident)/) || web_user_agent.match(/(Netscape)/)) {
+        return true;
+      } else {
+        return false
       }
-    
-      function isNetscape() {
-        var web_user_agent = window.navigator.userAgent
-        if ((web_user_agent.substring(0, 9) == "Mozilla/4") && !web_user_agent.match(/(MSIE|Trident)/) || web_user_agent.match(/(Netscape)/)) {
-          return true;
-        } else {
-          return false
-        }
+    }
+    //function to show alert if it's IE or Netscape
+    function ShowUnsupportedAlert() {
+      if (isIE()) {
+        alert("Microsoft Internet Explorer is unsupported. Page may not display correctly, please consider upgrading to a newer browser.\n\nUser Agent:\n" + agent);
+      } else if (isNetscape()) {
+        alert("Netscape Navigator is unsupported. Page may not display correctly, please consider upgrading to a newer browser.\n\nUser Agent:\n" + agent);
       }
-      //function to show alert if it's IE or Netscape
-      function ShowUnsupportedAlert() {
-        if (isIE()) {
-          alert("Microsoft Internet Explorer is unsupported. Page may not display correctly, please consider upgrading to a newer browser.\n\nUser Agent:\n"+agent);
-        } else if (isNetscape()) {
-          alert("Netscape Navigator is unsupported. Page may not display correctly, please consider upgrading to a newer browser.\n\nUser Agent:\n"+agent);
-        }
-      }
-      // alert("Netscape Navigator ("+ agent + ") is unsupported. Page may not display correctly, please consider upgrading to a newer browser.");
-      ShowUnsupportedAlert();
-    </script>
-    <style>
-        .child {
-            display: inline-block;
-            vertical-align: bottom;
-        }
+    }
+    // alert("Netscape Navigator ("+ agent + ") is unsupported. Page may not display correctly, please consider upgrading to a newer browser.");
+    ShowUnsupportedAlert();
+  </script>
+  <style>
+    .child {
+      display: inline-block;
+      vertical-align: bottom;
+    }
 
-        .button {
-            float: right;
-            padding-right: 1%;
-            padding-left: 1%;
-        }
+    .button {
+      float: right;
+      padding-right: 1%;
+      padding-left: 1%;
+    }
 
-        .brand {
-            float: left;
-            padding-right: 1%;
-            font-family: "Roboto" !important;
-            font-weight: 700;
-            font-size: 50px;
-        }
+    .brand {
+      float: left;
+      padding-right: 1%;
+      font-family: "Roboto" !important;
+      font-weight: 700;
+      font-size: 50px;
+    }
 
-        .parent {
-            background-color: #DDF0FE;
-            width: 100%;
-            height: 8%px;
-            white-space: normal;
-            overflow-x: auto;
-        }
-    </style>
-    <!--CSS for fonts-->
-    <link rel="stylesheet" href="../static/stylesheets/fonts.css" />
-    <link rel="stylesheet" href="../static/stylesheets/base.css" />
-    <link rel="icon" type="image/x-icon" href="../static/images/logo/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
-        rel="stylesheet" />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
-          <!-- Font Awesome -->
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-          <!-- Google Fonts -->
-          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-          <!-- MDB -->
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
-          <!-- MDB -->
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
-  </head>
+    .parent {
+      background-color: #DDF0FE;
+      width: 100%;
+      height: 8%px;
+      white-space: normal;
+      overflow-x: auto;
+    }
+  </style>
+  <!--CSS for fonts-->
+  <link rel="stylesheet" href="../static/stylesheets/fonts.css" />
+  <link rel="stylesheet" href="../static/stylesheets/base.css" />
+  <link rel="icon" type="image/x-icon" href="../static/images/logo/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
+    rel="stylesheet" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+</head>
 
-    <!--Just temporary-->
+<!--Just temporary-->
 
 <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-        {% if category == 'error' %}
-        <script>
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: "{{message|safe}}",
-          customClass: {
-            confirmButton: 'btn btn-primary',
-          }
-        })
-        </script>
-        {% else %}
-        {% if category == 'success' %}
-        <script>
-          Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: "{{message|safe}}",
-            customClass: {
-              confirmButton: 'btn btn-primary',
-            }
-          })
-          </script>
-          {% else %}
-          {% if category == 'warning' %}
-          <script>
-            Swal.fire({
-              icon: 'warning',
-              title: 'Warning!',
-              text: "{{message|safe}}",
-              customClass: {
-                confirmButton: 'btn btn-primary',
-              }
-            })
-            </script>
-            {% else %}
-          {% if category == 'question' %}
-        <script>
-          Swal.fire({
-            icon: 'question',
-            title: 'Do you want to?',
-            text: "{{message|safe}}",
-            customClass: {
-              confirmButton: 'btn btn-primary',
-            }
-          })
-          </script>
-          {% else %}
-        <script>
-          Swal.fire({
-            icon: 'info',
-            title: 'Info',
-            text: "{{message|safe}}",
-            customClass: {
-              confirmButton: 'btn btn-primary',
-            }
-          })
-          </script>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'success' %}
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: 'Success!',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'warning' %}
+  <script>
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning!',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'question' %}
+  <script>
+    Swal.fire({
+      icon: 'question',
+      title: 'Do you want to?',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  <script>
+    Swal.fire({
+      icon: 'info',
+      title: 'Info',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <nav class="navbar navbar-expand-lg navbar-backgroud" style="position: fixed; top: 0; width: 100%; z-index:99;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">&lt;e&gt;Note</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          {% if not current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#About">About</a>
+          </li>
           {% endif %}
-        {% endif %}
-        {% endif %}
-        {% endif %}
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
-    <nav class="navbar navbar-expand-lg navbar-backgroud" style="position: fixed; top: 0; width: 100%; z-index:99;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">&lt;e&gt;Note</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+        </ul>
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    {% if not current_user.is_authenticated %}
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#About">About</a>
-                      </li>
-                    {% endif %}
-                </ul>
+        <ui class="navbar-nav mr-auto mb-2 mb-lg-0">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item text_black">
+            <a class="nav-link" href="/user">Profile</a>
+          </li>
+          <li class="nav-item text_black">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item text_black">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item text_black">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          {% endif %}
 
-                <ui class="navbar-nav mr-auto mb-2 mb-lg-0">
-                    {% if current_user.is_authenticated %}
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/user">Profile</a>
-                    </li>
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item text_black">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    {% endif %}
+        </ui>
+        <span class="navbar-text">
 
-                </ui>
-                <span class="navbar-text">
-
-                </span>
-            </div>
-        </div>
-    </nav>
-    {% block note %}
-    <div style="text-align: center; margin: auto; width: 100%;">
-      {% if current_user.is_authenticated %}
+        </span>
+      </div>
+    </div>
+  </nav>
+  {% block note %}
+  <div style="text-align: center; margin: auto; width: 100%;">
+    {% if current_user.is_authenticated %}
     <form action="/note">
       <h1>You are logged in as User ID <code>{{ current_user.id }}</code></h1>
-    </h1><br />
+      </h1><br />
       <input type="submit" class="btn btn-primary" value="Create Your First Note" />
     </form>
   </div>
   <h1 style="text-align: center; margin: 25px;">
 
-        {% else %}
+    {% else %}
 
-        {% block form %}
-        {% endblock %}
+    {% block form %}
+    {% endblock %}
 
-        {% endif %}
-    
-      </h1>
-      {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-<!-- MDB form-outline initialization -- DON'T TOUCH THIS -->
-<script>document.querySelectorAll('.form-outline').forEach((formOutline) => {
-  new mdb.Input(formOutline).init();
-});</script>
-<!-- End of form-outline initialization -->
+    {% endif %}
+
+  </h1>
+  {% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <!-- MDB form-outline initialization -- DON'T TOUCH THIS -->
+  <script>document.querySelectorAll('.form-outline').forEach((formOutline) => {
+      new mdb.Input(formOutline).init();
+    });</script>
+  <!-- End of form-outline initialization -->
 </body>
