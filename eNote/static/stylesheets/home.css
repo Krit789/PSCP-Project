@@ -5,7 +5,7 @@
 }
 
 .welcome-button {
-    margin-top: 90px;
+    margin-top: 10px;
 }
 
 .welcome_outer {
@@ -13,6 +13,9 @@
     min-height: calc(100vh - 50px);
     padding: 60px 10px;
     background-color: #f7fff9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .welcome_paragraph {
@@ -45,12 +48,12 @@
 }
 
 .left {
-    padding: 120px 10px 10px 10px;
-    width: 100%;
+    width: 20%;
+    height: min-content;
 }
 
 .right {
-    width: 100%;
+    width: fit-content;
 }
 
 .welcome-img {
@@ -59,7 +62,7 @@
 }
 
 .wide {
-    width: 100px;
+    width: 100%;
 }
 
 .wide-img {

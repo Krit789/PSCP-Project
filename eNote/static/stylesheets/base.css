@@ -2,7 +2,6 @@
     color: black;
 }
 
-
 html,
 body {
     width: 100%;
@@ -11,6 +10,10 @@ body {
     margin-top: 60px;
     font-family: "Roboto", sans-serif !important;
     font-weight: 300;
+}
+
+div{
+    overflow-x: hidden;
 }
 
 .navbar-backgroud {
