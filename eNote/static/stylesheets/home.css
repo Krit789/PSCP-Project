@@ -11,7 +11,7 @@
 .welcome_outer {
     width: 100%;
     min-height: calc(100vh - 50px);
-    padding: 60px 10px;
+    padding: 60px 10px 0px 10px;
     background-color: #f7fff9;
     display: flex;
     flex-direction: row;
@@ -63,6 +63,7 @@
 
 .wide {
     width: 100%;
+    margin-top: -20%;
 }
 
 .wide-img {

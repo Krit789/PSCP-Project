@@ -14,6 +14,7 @@ body {
 
 div{
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .navbar-backgroud {
