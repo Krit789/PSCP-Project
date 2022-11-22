@@ -60,10 +60,10 @@
     height: 500px;
     border-radius: 30px;
 }
-
+/*not responsive pls fix*/
 .wide {
     width: 100%;
-    margin-top: -20%;
+    margin-top: -15%;
 }
 
 .wide-img {
