@@ -10,7 +10,7 @@
 
 .welcome_outer {
     width: 100%;
-    min-height: 100%;
+    min-height: calc(100vh - 50px);
     padding: 60px 10px;
     background-color: #f7fff9;
 }
@@ -26,10 +26,6 @@
     margin: 20px 10px;
 }
 
-.welcome-img {
-    min-width: 100%;
-    border-radius: 20px;
-}
 
 /* Two column */
 .row {
@@ -50,14 +46,29 @@
 
 .left {
     padding: 120px 10px 10px 10px;
-    width: 60%;
+    width: 100%;
 }
 
 .right {
-    width: 40%;
+    width: 100%;
 }
 
+.welcome-img {
+    height: 500px;
+    border-radius: 30px;
+}
 
+.wide {
+    width: 100px;
+}
+
+.wide-img {
+    min-width: 100vw !important;
+    height: 50vh;
+    display: block;
+    object-fit: cover;
+
+}
 
 @media only screen and (max-width: 950px) {
 
