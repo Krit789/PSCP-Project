@@ -80,14 +80,22 @@
     grid-area: 1 / 1 / span 3 / 1;
     grid-row: 1 / span 3;
 }
-.left_text{
+.left-title{
     grid-column: 2;
     text-align: left;
 }
-.right_text{
+
+.left-para{
+    text-align: justify;
+}
+.right-title{
     grid-column: 1;
     text-align: right;
 }
+.right-para{
+    text-align: justify;
+}
+
 .right_userpics{
     grid-area: 1 / 2 / span 3 / 2;
 }
