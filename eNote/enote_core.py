@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import desc
 from . import db
 from .models import Note
+import bleach
 
 core = Blueprint('core', __name__)
 
@@ -18,8 +19,8 @@ def note_home():
             if len(request.form.get('title')) == 0:
                 title = "Untitled Note"
             else:
-                title = request.form.get('title')
-            memo = Note(title=title, content=request.form.get('content'), user_id=current_user.id)
+                title = bleach.clean(request.form.get('title'))
+            memo = Note(title=title, content=bleach.clean(request.form.get('content')), user_id=current_user.id)
             db.session.add(memo)
             db.session.commit()
             flash('Note Created Successfully!', category='success')
@@ -28,8 +29,9 @@ def note_home():
         if user_note.user_id != current_user.id:
             abort(403)
         if action == 'update':
-            user_note.title = request.form.get('title')
-            user_note.content = request.form.get('content')
+            user_note.title = bleach.clean(request.form.get('title'))
+            user_note.content = bleach.clean(request.form.get('content'))
+            print(f"Raw: {request.form.get('content')}\n Bleached: {bleach.clean(request.form.get('content'))}")
             db.session.commit()
             flash('Note updated', category='success')
             return redirect(url_for('core.note_view', note_id=user_note.id))

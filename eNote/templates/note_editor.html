@@ -61,10 +61,6 @@
     renderingConfig: {
         singleLineBreaks: false,
         codeSyntaxHighlighting: true,
-        sanitizerFunction: (renderedHTML) => {
-            // Using DOMPurify and only allowing <b> tags
-            return DOMPurify.sanitize(renderedHTML, {ALLOWED_TAGS: ['b']})
-        },
     },
   });
 </script>
