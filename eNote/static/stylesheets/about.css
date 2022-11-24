@@ -7,30 +7,36 @@
     margin-left: -10px;
 }
 
-@media screen and (max-width: 700px) {
-    .module{
+@media screen and (max-width: 1000px) {
+    .module {
         display: grid;
         column-gap: 0.5em;
     }
-    .left_module{
+
+    .left_module {
         grid-template-columns: auto !important;
         grid-template-rows: auto auto auto auto !important;
     }
+
     .right_module {
         grid-template-columns: auto !important;
         grid-template-rows: auto auto auto auto !important;
     }
-    .left_userpics{
+
+    .left_userpics {
         grid-area: 1 / 1 / 1 / 1 !important;
     }
-    .left_text{
+
+    .left-title {
         grid-column: 1 !important;
         text-align: center !important;
     }
-    .right_text{
+
+    .right-title {
         text-align: center !important;
     }
-    .right_userpics{
+
+    .right_userpics {
         grid-area: 1 / 1 / 1 / 1 !important;
     }
 }
@@ -64,59 +70,65 @@
     border-radius: calc(100vh * 0.02);
 }
 
-.module{
+.module {
     display: grid;
     column-gap: 0.5em;
 }
-.left_module{
+
+.left_module {
     grid-template-columns: 10em auto;
     grid-template-rows: 2em 1.5em auto;
 }
-.right_module{
-    grid-template-columns: auto  10em;
+
+.right_module {
+    grid-template-columns: auto 10em;
     grid-template-rows: 2em 1.5em auto;
 }
-.left_userpics{
+
+.left_userpics {
     grid-area: 1 / 1 / span 3 / 1;
     grid-row: 1 / span 3;
 }
-.left-title{
+
+.left-title {
     grid-column: 2;
     text-align: left;
 }
 
-.left-para{
+.left-para {
     text-align: justify;
 }
-.right-title{
+
+.right-title {
     grid-column: 1;
     text-align: right;
 }
-.right-para{
+
+.right-para {
     text-align: justify;
 }
 
-.right_userpics{
+.right_userpics {
     grid-area: 1 / 2 / span 3 / 2;
 }
 
-.userpics{
+.userpics {
     width: 70%;
     border-radius: 100%;
     border-style: solid;
     border-color: black;
 }
 
-.username{
+.username {
     font-size: 150%;
     font-weight: 700;
 }
 
-.userid{
+.userid {
     font-size: 90%;
     font-weight: 600;
 }
 
-.userdesc{
+.userdesc {
     text-indent: 40px;
 }

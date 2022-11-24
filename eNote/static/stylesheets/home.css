@@ -92,7 +92,7 @@
     }
 
     .welcome_image {
-        width: 100  ;
+        width: 100;
     }
 
     .welcome_title {
@@ -128,10 +128,6 @@
     border-radius: calc(100vh * 0.02);
 }
 
-.about_box {
-    padding: 10px 10%;
-}
-
 .ardy_account {
     margin: -10px 0px 0px 0px;
     box-shadow: none !important;
@@ -139,6 +135,18 @@
 }
 
 /* About */
+
+@media only screen and (max-width: 700px) {
+    .abt-profile {
+        margin: 50px 30px;
+    }
+}
+
+
+.about_box {
+    padding: 10px 10%;
+}
+
 .abt-title {
     color: black;
     font-weight: 900;
@@ -147,9 +155,16 @@
 }
 
 .abt-profile {
-    padding: 20px 30px;
+    margin: 50px 30px;
 }
 
 .abt-head {
     color: black !important;
+}
+
+.abt-pics {
+    width: 70%;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
 }
