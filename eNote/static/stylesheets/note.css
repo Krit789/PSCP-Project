@@ -1,43 +1,27 @@
-.navbar.navbar-default {
-    color: black;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: calc(100% - 60px);
-    margin: 0;
-    margin-top: 60px;
-    font-family: "Roboto", sans-serif !important;
-    font-weight: 300;
-}
-
-.navbar-backgroud {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-}
-
-
-.paragraph {
-    margin: 20px 0px 0px 0px;
-}
-
 .gradient-bg {
     /*background: rgb(218, 238, 255);
     background: -moz-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
     background: -webkit-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
     background: linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
     */
-    background-color: #fffed0;
-    backdrop-filter: blur(200px);
-    -webkit-backdrop-filter: blur(200px);
+    filter: blur(100px);
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
 
+    min-height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url("/static/images/login/5.jpeg");
+    background-size: cover;
     min-height: calc(100vh - 60px);
     padding-bottom: 20px;
     height: auto;
-    overflow: none;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
     z-index: 0;
+}
+
+.containter-main {
+    overflow: auto;
 }
 
 .containter-box {

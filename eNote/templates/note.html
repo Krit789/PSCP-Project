@@ -1,59 +1,71 @@
 {% extends "base.html" %}
 {% block title %}Home &lt;e&gt;Note{% endblock %}
 {% block note %}
+
+<link rel="stylesheet" href="../static/stylesheets/note.css" />
+
+
 <script>
   function convert_date(date_in) {
     const date = new Date(date_in.slice(0, date_in.indexOf(".")).replace(/-/g, "/") + ' UTC');
-    return date.toLocaleString();}
+    return date.toLocaleString();
+  }
 </script>
-<div class="gradient-bg">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-6"><div class="containter-box"><h3>Hello, {{ current_user.first_name}}</h3>{{ current_user.email}}</div></div>
-        <div class="col-sm-6 col-md-6"><div class="containter-box"">
+<div class="gradient-bg"></div>
+<div class="container container-main">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="containter-box">
+        <h3>Hello, {{ current_user.first_name}}</h3>{{ current_user.email}}
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="containter-box"">
         <h4>Add Your Notes! (Alpha)</h4>
-        <form action="/note" method="POST">
-            <input type="text" name="action" value="create" hidden/>
-            <div class="form-outline">
-                <input type="text" id="typeText" class="form-control" name="title" />
-                <label class="form-label" for="typeText">Title</label>
-              </div>
-              <br />
-              <div class="form-outline">
-                <textarea class="form-control" id="noteArea" rows="5" name="content"></textarea>
-                <label class="form-label" for="noteArea">Note</label>
-              </div>
-              <br />
-              <button type="submit" class="btn btn-primary">Add</button>
+        <form action=" /note" method="POST">
+        <input type="text" name="action" value="create" hidden />
+        <div class="form-outline">
+          <input type="text" id="typeText" class="form-control" name="title" />
+          <label class="form-label" for="typeText">Title</label>
+        </div>
+        <br />
+        <div class="form-outline">
+          <textarea class="form-control" id="noteArea" rows="5" name="content"></textarea>
+          <label class="form-label" for="noteArea">Note</label>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Add</button>
         </form>
 
-        </div></div>
-    </div>
-    <div class="row">
-        <div class="col"><div class="containter-box" style="text-align: left !important;">
-            <h3>My Notes</h3>
-            <ul class="list-group list-group-light">
-                {% for note in all_note %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold">{{ note.title }}</div>
-                    <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span id="lastedit{{ note.id }}"></span></div>
-                    <script>
-                      document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
-                      document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
-                      </script>
-                  </div>
-                  <a 
-                  href="/note/{{ note.id }}"
-                  >
-                  <span class="badge rounded-pill badge-primary">View Content</span></a>
-                </li>
-                {% endfor %}
-              </ul>
-        
-        </div></div>
-        
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="containter-box" style="text-align: left !important;">
+        <h3>My Notes</h3>
+        <ul class="list-group list-group-light">
+          {% for note in all_note %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <div class="fw-bold">{{ note.title }}</div>
+              <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span
+                  id="lastedit{{ note.id }}"></span></div>
+              <script>
+                document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+                document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+              </script>
+            </div>
+            <a href="/note/{{ note.id }}">
+              <span class="badge rounded-pill badge-primary">View Content</span></a>
+          </li>
+          {% endfor %}
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
 </div>
-</div>
+
 {% endblock %}
