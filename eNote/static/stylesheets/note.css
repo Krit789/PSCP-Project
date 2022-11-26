@@ -1,72 +1,84 @@
-.gradient-bg {
-    /*background: rgb(218, 238, 255);
-    background: -moz-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    background: linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    */
-
-
-    /*filter: blur(30px);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
-
-    min-height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8)), url("/static/images/login/5.jpeg");
-    background-size: cover;
-    min-height: calc(100vh - 60px);
-    padding-bottom: 20px;
-    height: auto;
-    position: fixed;
-    width: 120%;
-    overflow: hidden;
-    z-index: 0;*/
-    position: fixed;
-    top: 61px;
-    left: 0em;
-    right: 0em;
-    height: calc(100vh - 70px);
-    background: url("/static/images/login/6@2X.webp");
-    background-color: rgba(255, 255, 255, 0.9);
-
-    color: white;
-    background-size: cover;
-    filter: blur(0px);
-
+body {
+  width: 100%;
+  min-height: calc(100% - 60px);
+  margin: 0;
+  margin-top: 60px;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 300;
 }
 
-.containter-main {
-    overflow: auto;
-}
+.body-bg {
+    background-attachment: fixed;
+    background-repeat: no-repeat;  
+    background-size: cover;
+  }
 
 .containter-box {
-    margin-top: 20px;
-    text-align: center !important;
-    padding: 15px;
+  margin-top: 20px;
+  text-align: center !important;
+  padding: 15px;
 
-    background-color: rgba(255, 255, 255, 0.75);
-    -webkit-backdrop-filter: blur(15px) saturate(86%);
-    backdrop-filter: blur(15px) saturate(86%);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(15px) saturate(86%);
+  backdrop-filter: blur(15px) saturate(86%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 
-    border-radius: 10px;
-    opacity: 1;
-    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
-    z-index: 1;
+  border-radius: 10px;
+  opacity: 1;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  z-index: 1;
 }
 
 blockquote {
-    background-color: #e2e2e2;
-    padding: 15px;
-}
-
-.note-items {
-    padding: 10px 20px !important;
+  background-color: #e2e2e2;
+  padding: 15px;
 }
 
 .btn-primary {
-    margin: 0px 0px 10px 0px !important;
-    background-color: #005EB8 !important;
-    font-size: medium !important;
-    border-radius: 12px !important;
+  margin: 0px 0px 10px 0px !important;
+  background-color: #005eb8 !important;
+  font-size: medium !important;
+  border-radius: 12px !important;
+}
+
+input {
+  background-color: white !important;
+}
+
+textarea {
+  background-color: white !important;
+}
+
+#rendered_text {
+    font-family: 'sf_thonburiregular' ,Arial, Helvetica, sans-serif;
+}
+
+#rendered_text h1 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text h2 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text h3 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text h4 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text h5 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text h6 {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text b {
+    font-family: 'sf_thonburisemibold' ,Arial, Helvetica, sans-serif !important;
+}
+#rendered_text strong {
+    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+}
+
+.EasyMDEContainer {
+    font-family: 'sf_thonburiregular' ,Arial, Helvetica, sans-serif;
 }

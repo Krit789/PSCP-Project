@@ -1,61 +1,51 @@
-{% extends "base.html" %}
+{% extends "note_base.html" %}
 {% block title %}{{ note.title }}{% endblock %}
-{% block note %}
+{% block head %}
 <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
-<script>
-  function convert_date(date_in) {
-    const date = new Date(date_in.slice(0, date_in.indexOf(".")).replace(/-/g, "/") + ' UTC');
-    return date.toLocaleString();}
-</script>
-<div class="gradient-bg">
-<div class="container">
-    <div class="row">
-        <div class="col"><div class="containter-box" style="text-align: left !important;">
-            <h3><a href="/note"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
-            <ul class="list-group list-group-light">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold">{{ note.title }}</div>
-                    <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span id="lastedit{{ note.id }}"></span></div>
-                    <script>
-                      document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
-                      document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
-                      </script>
-                  </div>
-                  <form action="/note" method="POST" id="delete_note">
-                    <input type="text" name="action" value="delete" readonly hidden>
-                    <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
-                    <a href="javascript:{}" onclick="document.getElementById('delete_note').submit();">
-                  <span class="badge rounded-pill badge-danger">Delete</span></a>
-                </form>  
-                </div>
-                  
-                </li>
-              </ul>
-        
-        </div></div>
-        <div class="row">
-          <div class="col">
-            <div class="containter-box"  style="text-align: left !important;">
-              <table style="width: 100%;">
-                <tr>
-                  <td style="text-align: left;"><h3>Content</h3></td>
-                  <td style="text-align: right; font-size: x-large;">
-                    <form action="/note/edit" method="POST" id="edit_note"><a
-                      href="javascript:{}" onclick="document.getElementById('edit_note').submit();">
-                      <input type="text" name="action" value="edit" readonly hidden>
-                      <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-                      <i class="fa-solid fa-pen-to-square"></i></a></form></td>
-                </tr>
-              </table>
-              <hr />
-              <div id="rendered_text" style="padding: 15px; border-radius: 18px;"></div>
-              <textarea id="note_unedited" hidden>{{ note.content }}</textarea>
-            </div>
+{% endblock %}
+
+{% block row1 %}
+<div class="col"><div class="containter-box" style="text-align: left !important;">
+    <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
+    <ul class="list-group list-group-light">
+        <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+          <div>
+            <div class="fw-bold">{{ note.title }}</div>
+            <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span id="lastedit{{ note.id }}"></span></div>
+            <script>
+              document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+              document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+              </script>
           </div>
+          <form action="/note" method="POST" id="delete_note">
+            <input type="text" name="action" value="delete" readonly hidden>
+            <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+            <a href="javascript:{}" onclick="document.getElementById('delete_note').submit();">
+          <span class="badge rounded-pill badge-danger">Delete</span></a>
+        </form>  
         </div>
-      </div>
+          
+        </li>
+      </ul>
 </div>
+{% endblock %}
+{% block row2 %}
+<table style="width: 100%;">
+  <tr>
+    <td style="text-align: left;"><h3>Content</h3></td>
+    <td style="text-align: right; font-size: x-large;">
+      <form action="/note/edit" method="POST" id="edit_note"><a
+        href="javascript:{}" onclick="document.getElementById('edit_note').submit();" data-mdb-toggle="tooltip" title="Edit Content">
+        <input type="text" name="action" value="edit" readonly hidden>
+        <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+        <i class="fa-solid fa-pen-to-square"></i></a></form></td>
+  </tr>
+</table>
+<hr />
+<div id="rendered_text" class="p-4 rounded bg-white"></div>
+<textarea id="note_unedited" hidden>{{ note.content }}</textarea>
+{% endblock %}
+{% block foot %}
 <script>
 const converter = new showdown.Converter({tables: true});
 converter.setOption('simpleLineBreaks', true);

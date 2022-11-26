@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_required, logout_user, current_user
+from flask_login import login_required, current_user
 from time import time as tme
 from . import db
 from .models import User, Note
@@ -7,14 +7,16 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 profile = Blueprint('profile', __name__)
 
+def rand_img() -> int:
+    return (int(str(tme()*1000)[-1]) % 9)+1
+
 @profile.route('/user', methods=['GET', 'POST'])
 @login_required
 def user_profile():
-    rand_img = (int(str(tme()*1000)[-1]) % 9)+1
     if request.method == 'GET':
         temp = current_user
         user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date)[:19] + ' UTC']
-        return render_template("profile.html", bg_img=rand_img, user_data=user_data)
+        return render_template("profile.html", bg_img=rand_img(), user_data=user_data)
     if request.method == 'POST':
         delete = True if request.form.get('delete') == 'Delete Account' else False
         if delete:
@@ -31,10 +33,9 @@ def user_profile():
 @login_required
 def editor():
     if request.method == 'GET':
-        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
         temp = current_user
         user_data = [temp.id, temp.username, temp.first_name, temp.last_name, temp.email]
-        return render_template("profile_edit.html", bg_img=rand_img, user_data=user_data)
+        return render_template("profile_edit.html", bg_img=rand_img(), user_data=user_data)
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('firstname')
@@ -73,8 +74,7 @@ def editor():
 @login_required
 def password():
     if request.method == 'GET':
-        rand_img = (int(str(tme()*1000)[-1]) % 9)+1
-        return render_template("change_passwd.html", bg_img=rand_img)
+        return render_template("change_passwd.html", bg_img=rand_img())
     if request.method == 'POST':
         old_pass = request.form.get('currentpass')
         newpass = request.form.get('newpass')

@@ -41,37 +41,3 @@ body {
     margin: 20px 0px 0px 0px;
 }
 
-.gradient-bg {
-    /*background: rgb(218, 238, 255);
-    background: -moz-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    background: linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
-    */
-    background-color: #fffed0;
-    backdrop-filter: blur(200px);
-    -webkit-backdrop-filter: blur(200px);
-
-    min-height: calc(100vh - 60px);
-    padding-bottom: 20px;
-    height: auto;
-    overflow: none;
-    z-index: 0;
-}
-
-.containter-box {
-    margin-top: 15px;
-    text-align: center !important;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
-    border-radius: 10px;
-    opacity: 1;
-    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
-    z-index: 1;
-}
-
-blockquote {
-    background-color: #e2e2e2;
-    padding: 15px;
-}
