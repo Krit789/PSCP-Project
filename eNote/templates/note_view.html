@@ -57,7 +57,7 @@
       </div>
 </div>
 <script>
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({tables: true});
 converter.setOption('simpleLineBreaks', true);
 document.getElementById("rendered_text").innerHTML = converter.makeHtml(document.getElementById("note_unedited").value);
 </script>
