@@ -11,7 +11,9 @@
     return date.toLocaleString();
   }
 </script>
+
 <div class="gradient-bg"></div>
+
 <div class="container container-main">
   <div class="row">
     <div class="col-sm-6 col-md-6">
@@ -46,7 +48,7 @@
         <h3>My Notes</h3>
         <ul class="list-group list-group-light">
           {% for note in all_note %}
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item d-flex justify-content-between align-items-center note-items">
             <div>
               <div class="fw-bold">{{ note.title }}</div>
               <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span

@@ -4,20 +4,34 @@
     background: -webkit-linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
     background: linear-gradient(0deg, rgba(218, 238, 255, 1) 0%, rgba(255, 160, 251, 1) 100%);
     */
-    filter: blur(100px);
+
+
+    /*filter: blur(30px);
     backdrop-filter: blur(100px);
     -webkit-backdrop-filter: blur(100px);
 
     min-height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url("/static/images/login/5.jpeg");
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8)), url("/static/images/login/5.jpeg");
     background-size: cover;
     min-height: calc(100vh - 60px);
     padding-bottom: 20px;
     height: auto;
     position: fixed;
-    width: 100%;
+    width: 120%;
     overflow: hidden;
-    z-index: 0;
+    z-index: 0;*/
+    position: fixed;
+    top: 61px;
+    left: 0em;
+    right: 0em;
+    height: calc(100vh - 70px);
+    background: url("/static/images/login/6@2X.webp");
+    background-color: rgba(255, 255, 255, 0.9);
+
+    color: white;
+    background-size: cover;
+    filter: blur(0px);
+
 }
 
 .containter-main {
@@ -25,12 +39,16 @@
 }
 
 .containter-box {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center !important;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
+
+    background-color: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(15px) saturate(86%);
+    backdrop-filter: blur(15px) saturate(86%);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
     border-radius: 10px;
     opacity: 1;
     box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
@@ -40,4 +58,15 @@
 blockquote {
     background-color: #e2e2e2;
     padding: 15px;
+}
+
+.note-items {
+    padding: 10px 20px !important;
+}
+
+.btn-primary {
+    margin: 0px 0px 10px 0px !important;
+    background-color: #005EB8 !important;
+    font-size: medium !important;
+    border-radius: 12px !important;
 }

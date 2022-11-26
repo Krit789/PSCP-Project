@@ -13,9 +13,27 @@ body {
 }
 
 .navbar-backgroud {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
+    background: rgba(251, 251, 253, .6);
+    backdrop-filter: blur(15px) saturate(85px);
+    -webkit-backdrop-filter: blur(15px) saturate(85px);
+
+    -webkit-backdrop-filter: blur(15px) saturate(86%);
+    backdrop-filter: blur(15px) saturate(86%);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    block-size: 44px;
+    min-block-size: 44px;
+    display: flex;
+    letter-spacing: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    min-inline-size: 100%;
+
 }
 
 
