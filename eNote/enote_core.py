@@ -28,22 +28,25 @@ def note_home():
             memo = Note(title=title, content=bleach.clean(request.form.get('content')), user_id=current_user.id)
             db.session.add(memo)
             db.session.commit()
-            flash('Note Created Successfully!', category='success')
+            flash(f'<b>{title}</b> was Created Successfully!', category='success')
             return redirect(url_for('core.note_home', bg_img=rand_img()))
         user_note = Note.query.filter_by(id=request.form.get('note_id')).first_or_404()
         if user_note.user_id != current_user.id:
             abort(403)
         if action == 'update':
             user_note.title = bleach.clean(request.form.get('title'))
-            user_note.content = bleach.clean(request.form.get('content'))
-            print(f"Raw: {request.form.get('content')}\n Bleached: {bleach.clean(request.form.get('content'))}")
-            db.session.commit()
-            flash('Note updated', category='success')
+            if user_note.content != bleach.clean(request.form.get('content')):
+                user_note.content = bleach.clean(request.form.get('content'))
+                db.session.commit()
+                flash(f'Changes saved to <b>{user_note.title}</b>', category='success')
+            else:
+                flash(f'Changes not saved to <b>{user_note.title}</b> due to no changes')
             return redirect(url_for('core.note_view', note_id=user_note.id, bg_img=rand_img()))
         if action == 'delete':
+            title = user_note.title
             db.session.delete(user_note)
             db.session.commit()
-            flash('Note Deleted!', category='success')
+            flash(f'<b>{title}</b> was deleted', category='success')
             return redirect(url_for('core.note_home', bg_img=rand_img()))
 
 @core.route('/note/<int:note_id>')

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,8 @@
   <script>
     function convert_date(date_in) {
       const date = new Date(date_in.slice(0, date_in.indexOf(".")).replace(/-/g, "/") + ' UTC');
-      return date.toLocaleString();}
+      return date.toLocaleString();
+    }
   </script>
   <!--AVIF WebP support detection script-->
   <script src="../static/scripts/avif-webp.min.js"></script>
@@ -23,7 +25,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto:wght@300;700&display=swap"
     rel="stylesheet" />
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -36,90 +37,37 @@
   <!-- MDB -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
   <link rel="stylesheet" href="../static/stylesheets/note.css" />
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-  {% for category, message in messages %}
-  {% if category == 'error' %}
-  <script>
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: "{{message|safe}}",
-      customClass: {
-        confirmButton: 'btn btn-primary',
-      }
-    })
-  </script>
-  {% else %}
-  {% if category == 'success' %}
-  <script>
-    Swal.fire({
-      icon: 'success',
-      title: 'Success!',
-      text: "{{message|safe}}",
-      customClass: {
-        confirmButton: 'btn btn-primary',
-      }
-    })
-  </script>
-  {% else %}
-  {% if category == 'warning' %}
-  <script>
-    Swal.fire({
-      icon: 'warning',
-      title: 'Warning!',
-      text: "{{message|safe}}",
-      customClass: {
-        confirmButton: 'btn btn-primary',
-      }
-    })
-  </script>
-  {% else %}
-  {% if category == 'question' %}
-  <script>
-    Swal.fire({
-      icon: 'question',
-      title: 'Do you want to?',
-      text: "{{message|safe}}",
-      customClass: {
-        confirmButton: 'btn btn-primary',
-      }
-    })
-  </script>
-  {% else %}
-  <script>
-    Swal.fire({
-      icon: 'info',
-      title: 'Info',
-      text: "{{message|safe}}",
-      customClass: {
-        confirmButton: 'btn btn-primary',
-      }
-    })
-  </script>
-  {% endif %}
-  {% endif %}
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endwith %}
   {% block head %}{% endblock %}
 </head>
 <style>
   .body-bg {
     background-image: url("/static/images/login/{{ bg_img }}.jpeg");
-    {{ custom_bg|safe }}
+
+      {
+        {
+        custom_bg|safe
+      }
+    }
   }
 
   .webp .body-bg {
     background-image: url("/static/images/login/{{ bg_img }}.webp");
-    {{ custom_bg|safe }}
+
+      {
+        {
+        custom_bg|safe
+      }
+    }
   }
 
   .avif .body-bg {
     background-image: url("/static/images/login/{{ bg_img }}.avif");
-    {{ custom_bg|safe }}
+
+      {
+        {
+        custom_bg|safe
+      }
+    }
   }
 
   /* retina support */
@@ -128,22 +76,99 @@
   screen and (min-resolution: 2dppx) {
     .body-bg {
       background-image: url("/static/images/login/{{ bg_img }}@2x.jpeg");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
 
     .webp .body-bg {
       background-image: url("/static/images/login/{{ bg_img }}@2x.webp");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
 
     .avif .body-bg {
       background-image: url("/static/images/login/{{ bg_img }}@2x.avif");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
   }
 </style>
+
 <body class="body-bg">
-  <nav class="navbar navbar-expand-lg navbar-backgroud bg-white" style="position: fixed; top: 0; width: 100%; z-index:99; opacity: 0.75;">
+  <div class="position-relative">
+    <div class="toast-container top-0 end-0 p-3">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      {% if category == 'success' %}
+      <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">&lt;e&gt;Note</strong>
+          <small class="text-success">Success</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+      {% else %}
+      {% if category == 'warning' %}
+      <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+        <div class="toast-header">
+          <strong class="me-auto">&lt;e&gt;Note</strong>
+          <small class="text-warning">Warning</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+      {% else %}
+      {% if category == 'error' %}
+      <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+        <div class="toast-header">
+          <strong class="me-auto">&lt;e&gt;Note</strong>
+          <small class="text-danger">Error</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+      {% else %}
+      <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+        <div class="toast-header">
+          <strong class="me-auto">&lt;e&gt;Note</strong>
+          <small class="text-secondary">Info</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-backgroud bg-white"
+    style="position: fixed; top: 0; width: 100%; z-index:99; opacity: 0.75;">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">&lt;e&gt;Note</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -199,7 +224,7 @@
           {% endblock %}
         </div>
       </div>
-  
+
     </div>
   </div>
   {% block foot %}{% endblock %}
@@ -214,6 +239,12 @@
   <script>
     const tooltipTriggerList = document.querySelectorAll('[data-mdb-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    const toastList = toastElList.map(function (toastEl) {
+      // Creates an array of toasts (it only initializes them)
+      return new bootstrap.Toast(toastEl) // No need for options; use the default options
+    });
+    toastList.forEach(toast => toast.show()); // This show them
   </script>
   <!-- End of form-outline initialization -->
 </body>
