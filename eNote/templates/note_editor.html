@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 {% endblock %}
 {% block row1 %}
-<div class="col"><div class="containter-box" style="text-align: left !important;">
+<div class="col" style="z-index: 2 !important;"><div class="containter-box" style="text-align: left !important;">
   <form action="/note" id="note_edit" method="POST">
     <input type="text" name="action" value="update" readonly hidden>
     <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
@@ -23,6 +23,22 @@
               document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
               </script>
           </div>
+          <div class="dropdown">
+            <a
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="badge rounded-pill badge-danger">Delete</span></a>
+            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+              <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
+              <hr style="margin: 0;">
+              <li><a class="dropdown-item text-danger" href="javascript:{}" onclick="document.getElementById('delete_note').submit();">Yes</a></li><hr style="margin: 0;">
+              <li><a class="dropdown-item">No</a></li>
+            </ul>
+        </div>
         </div>
           
         </li>
@@ -33,7 +49,7 @@
 <table style="width: 100%;">
   <tr>
     <td style="text-align: left;"><h3>Content</h3></td>
-    <td style="text-align: right; font-size: x-large;"><a href="javascript:{}" onclick="document.getElementById('note_edit').submit();" data-mdb-toggle="tooltip" title="Save Changes"><i class="fa-solid fa-floppy-disk"></i></i></a></td>
+    <td style="text-align: right; font-size: x-large;" ><a href="/note/{{ note.id }}" data-mdb-toggle="tooltip" title="Exit discarding changes"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>&nbsp;&nbsp;&nbsp;<a href="javascript:{}" onclick="document.getElementById('note_edit').submit();" data-mdb-toggle="tooltip" title="Save Changes"><i class="fa-solid fa-floppy-disk"></i></i></a></td>
   </tr>
 </table>
   <div class="form-outline">

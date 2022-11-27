@@ -47,7 +47,7 @@
     {% for note in all_note %}
     <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
       <div>
-        <div class="fw-bold">{{ note.title }}</div>
+        <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{{ note.title }}</a></div>
         <div class="text-muted">Created: <span id="creation{{ note.id }}"></span> Last Edit: <span
             id="lastedit{{ note.id }}"></span></div>
         <script>
@@ -55,8 +55,48 @@
           document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
         </script>
       </div>
-      <a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">
-        <span class="badge rounded-pill badge-primary">View Content</span></a>
+      <div class="dropdown">
+        <a
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+      >
+      <span class="rounded-pill badge-primary dropdown-toggle px-2"></span></a>
+        <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink{{ note.id }}">
+          <li><a class="dropdown-item" href="/note/{{ note.id }}">View Content</a></li><hr style="margin: 0;">
+          <li> <form action="/note/edit" method="POST" id="edit_note_{{ note.id }}"><a class="dropdown-item" href="javascript:{}"
+            onclick="document.getElementById('edit_note_{{ note.id }}').submit();">
+              <input type="text" name="action" value="edit" readonly hidden>
+              <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+            Edit Content</a>
+          </form></li><hr style="margin: 0;">
+          <li>
+            <a class="dropdown-item text-danger" href="#">
+              Delete
+            </a>
+            <ul class="dropdown-menu dropdown-submenu">
+              <li>
+                <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
+              </li><hr style="margin: 0;">
+              <form action="/note" method="POST" id="delete_note_{{ note.id }}">
+                <input type="text" name="action" value="delete" readonly hidden>
+                <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+              <li>
+                <a class="dropdown-item text-danger" href="javascript:{}" onclick="document.getElementById('delete_note_{{ note.id }}').submit();">Yes</a>
+              </li><hr style="margin: 0;">
+            </form>
+              <li>
+                <a class="dropdown-item" href="#">No</a>
+              </li>
+    
+          
+            
+        
+          </ul>
+    </div>
+        
     </li>
     {% endfor %}
   </ul>

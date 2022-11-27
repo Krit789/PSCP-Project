@@ -5,40 +5,62 @@
 {% endblock %}
 
 {% block row1 %}
-<div class="col"><div class="containter-box" style="text-align: left !important;">
-    <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
+<div class="col" style="z-index: 2 !important;">
+  <div class="containter-box" style="text-align: left !important; ">
+    <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i
+          class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
     <ul class="list-group list-group-light">
-        <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
-          <div>
-            <div class="fw-bold">{{ note.title }}</div>
-            <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span id="lastedit{{ note.id }}"></span></div>
-            <script>
-              document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
-              document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
-              </script>
-          </div>
-          <form action="/note" method="POST" id="delete_note">
-            <input type="text" name="action" value="delete" readonly hidden>
-            <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
-            <a href="javascript:{}" onclick="document.getElementById('delete_note').submit();">
-          <span class="badge rounded-pill badge-danger">Delete</span></a>
-        </form>  
+      <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+        <div>
+          <div class="fw-bold">{{ note.title }}</div>
+          <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span
+              id="lastedit{{ note.id }}"></span></div>
+          <script>
+            document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+            document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+          </script>
         </div>
-          
-        </li>
-      </ul>
+        <form action="/note" method="POST" id="delete_note">
+          <input type="text" name="action" value="delete" readonly hidden>
+          <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+
+          <div class="dropdown">
+              <a
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="badge rounded-pill badge-danger">Delete</span></a>
+              <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+                <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
+                <hr style="margin: 0;">
+                <li><a class="dropdown-item text-danger" href="javascript:{}" onclick="document.getElementById('delete_note').submit();">Yes</a></li><hr style="margin: 0;">
+                <li><a class="dropdown-item" >No</a></li>
+              </ul>
+          </div>
+
+        </form>
+  </div>
+
+  </li>
+  </ul>
 </div>
 {% endblock %}
 {% block row2 %}
 <table style="width: 100%;">
   <tr>
-    <td style="text-align: left;"><h3>Content</h3></td>
+    <td style="text-align: left;">
+      <h3>Content</h3>
+    </td>
     <td style="text-align: right; font-size: x-large;">
-      <form action="/note/edit" method="POST" id="edit_note"><a
-        href="javascript:{}" onclick="document.getElementById('edit_note').submit();" data-mdb-toggle="tooltip" title="Edit Content">
-        <input type="text" name="action" value="edit" readonly hidden>
-        <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-        <i class="fa-solid fa-pen-to-square"></i></a></form></td>
+      <form action="/note/edit" method="POST" id="edit_note"><a href="javascript:{}"
+          onclick="document.getElementById('edit_note').submit();" data-mdb-toggle="tooltip" title="Edit Content">
+          <input type="text" name="action" value="edit" readonly hidden>
+          <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+          <i class="fa-solid fa-pen-to-square"></i></a></form>
+    </td>
   </tr>
 </table>
 <hr />
@@ -47,8 +69,8 @@
 {% endblock %}
 {% block foot %}
 <script>
-const converter = new showdown.Converter({tables: true});
-converter.setOption('simpleLineBreaks', true);
-document.getElementById("rendered_text").innerHTML = converter.makeHtml(document.getElementById("note_unedited").value);
+  const converter = new showdown.Converter({ tables: true });
+  converter.setOption('simpleLineBreaks', true);
+  document.getElementById("rendered_text").innerHTML = converter.makeHtml(document.getElementById("note_unedited").value);
 </script>
 {% endblock %}

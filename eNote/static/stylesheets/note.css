@@ -8,10 +8,10 @@ body {
 }
 
 .body-bg {
-    background-attachment: fixed;
-    background-repeat: no-repeat;  
-    background-size: cover;
-  }
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .containter-box {
   margin-top: 20px;
@@ -20,14 +20,11 @@ body {
 
   background-color: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(15px) saturate(86%);
-  backdrop-filter: blur(15px) saturate(86%);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-
+  backdrop-filter: blur(15px) saturate(86%);
   border-radius: 10px;
-  opacity: 1;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
-  z-index: 1;
 }
 
 blockquote {
@@ -51,34 +48,51 @@ textarea {
 }
 
 #rendered_text {
-    font-family: 'sf_thonburiregular' ,Arial, Helvetica, sans-serif;
+  font-family: "sf_thonburiregular", Arial, Helvetica, sans-serif;
 }
 
 #rendered_text h1 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text h2 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text h3 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text h4 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text h5 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text h6 {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text b {
-    font-family: 'sf_thonburisemibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburisemibold", Arial, Helvetica, sans-serif !important;
 }
 #rendered_text strong {
-    font-family: 'sf_thonburibold' ,Arial, Helvetica, sans-serif !important;
+  font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 
 .EasyMDEContainer {
-    font-family: 'sf_thonburiregular' ,Arial, Helvetica, sans-serif;
+  font-family: "sf_thonburiregular", Arial, Helvetica, sans-serif;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
 }
