@@ -119,3 +119,24 @@ textarea {
 .dropdown-menu>li:hover>.dropdown-submenu {
   display: block;
 }
+.content-head {
+  width: 100%;
+}
+
+@keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+.blink-me {
+  -webkit-animation: blinker 0.6s 2;
+  -moz-animation: blinker 0.6s 2;
+  animation: blinker 0.6s 2;
+}

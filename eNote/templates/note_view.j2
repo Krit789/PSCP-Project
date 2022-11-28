@@ -49,17 +49,40 @@
 </div>
 {% endblock %}
 {% block row2 %}
-<table style="width: 100%;">
+<table class="content-head">
+
   <tr>
     <td style="text-align: left;">
       <h3>Content</h3>
     </td>
     <td style="text-align: right; font-size: x-large;">
-      <form action="/note/edit" method="POST" id="edit_note"><a href="javascript:{}"
-          onclick="document.getElementById('edit_note').submit();" data-mdb-toggle="tooltip" title="Edit Content">
-          <input type="text" name="action" value="edit" readonly hidden>
+      <form action="/note/edit" method="POST" id="edit_note">
           <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-          <i class="fa-solid fa-pen-to-square"></i></a></form>
+          <div class="dropdown">
+            <a
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="fa-solid fa-pen-to-square"></i></a>
+            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+              <p class="px-3 pt-3 text-muted">Editor Type</p>
+              <hr style="margin: 0;">
+              <li>
+                <button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type" value="full"
+                data-mdb-toggle="tooltip" title="Edit with advanced markdown editor" style="width: 100%;">
+                Advanced
+              </button></li><hr style="margin: 0;">
+              <li><button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type" value="simple"
+                data-mdb-toggle="tooltip" title="Edit with simple plaintext editor" style="width: 100%;">
+                Simple
+              </button></li>
+            </ul>
+        </div>
+          
+      </form>
     </td>
   </tr>
 </table>
