@@ -220,12 +220,13 @@
       {% endblock %}
     </div>
     <div class="row">
-      <div class="containter-box" style="text-align: left !important;height:400%">
-        {% block row2 %}
-        {% endblock %}
-        
-    </div>
+      <div class="col">
+        <div class="containter-box" style="text-align: left !important;">
+          {% block row2 %}
+          {% endblock %}
 
+        </div>
+      </div>
     </div>
   </div>
   {% block foot %}{% endblock %}

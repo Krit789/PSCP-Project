@@ -63,7 +63,7 @@
         data-mdb-toggle="dropdown"
         aria-expanded="false"
       >
-      <span class="rounded-pill badge-primary dropdown-toggle px-2"></span></a>
+      <span class="rounded-pill badge-primary dropdown-toggle px-2" data-mdb-toggle="tooltip" title="Actions"></span></a>
         <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink{{ note.id }}">
           <li><a class="dropdown-item" href="/note/{{ note.id }}">View Content</a></li><hr style="margin: 0;">
           <li> <form action="/note/edit" method="POST" id="edit_note_{{ note.id }}"><a class="dropdown-item" href="javascript:{}"
@@ -76,7 +76,7 @@
             <a class="dropdown-item text-danger" href="#">
               Delete
             </a>
-            <ul class="dropdown-menu dropdown-submenu">
+            <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
               <li>
                 <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
               </li><hr style="margin: 0;">
