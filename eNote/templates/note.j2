@@ -4,13 +4,13 @@
 {% block head %}
 <script>
   function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   async function divBlink() {
-  document.getElementById('blinker').classList.add('blink-me');
-  await sleep(2000);
-  document.getElementById('blinker').classList.remove('blink-me');
-}
+    document.getElementById('blinker').classList.add('blink-me');
+    await sleep(2000);
+    document.getElementById('blinker').classList.remove('blink-me');
+  }
 </script>
 {% endblock %}
 {% block row1 %}
@@ -32,110 +32,111 @@
 <div class="col-sm-6 col-md-6">
   <div class="containter-box">
     <div id="blinker">
-    <h4>Create Note</h4>
-    <form action=" /note/edit" method="POST">
-    <div class="row">
-      <input type="text" name="action" value="create" hidden />
-      <div class="col">
-        <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type" value="blank"
-          data-mdb-toggle="tooltip" title="Create a blank note">
-          <i class="fa-solid fa-border-top-left"></i>&nbsp;&nbsp;Blank
-        </button>
-      </div>
-      <div class="col">
-        <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type" value="simple"
-          data-mdb-toggle="tooltip" title="Create note with simple plaintext editor">
-          <i class="fa-solid fa-note-sticky"></i>&nbsp;&nbsp;Quick
-        </button>
-      </div>
-      <div class="col">
-        <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type" value="full"
-          data-mdb-toggle="tooltip" title="Create note with full feature editor">
-          <i class="fa-solid fa-list"></i>&nbsp;&nbsp;Advanced
-        </button>
-      </div>
+      <h4>Create Note</h4>
+      <form action=" /note/edit" method="POST">
+        <div class="row">
+          <input type="text" name="action" value="create" hidden />
+          <div class="col">
+            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type"
+              value="blank" data-mdb-toggle="tooltip" title="Create a blank note">
+              <i class="fa-solid fa-border-top-left"></i>&nbsp;&nbsp;Blank
+            </button>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type"
+              value="simple" data-mdb-toggle="tooltip" title="Create note with simple plaintext editor">
+              <i class="fa-solid fa-note-sticky"></i>&nbsp;&nbsp;Quick
+            </button>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type" value="full"
+              data-mdb-toggle="tooltip" title="Create note with full feature editor">
+              <i class="fa-solid fa-list"></i>&nbsp;&nbsp;Advanced
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    </form>
   </div>
-</div>
 </div>
 {% endblock %}
 {% block row2 %}
 <h3>My Notes</h3>
-{% if note_count < 1 %}
-<ul class="list-group list-group-light">
+{% if note_count < 1 %} <ul class="list-group list-group-light">
   <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
     <div>
       <div class="fw-bold">You don't have any notes.
       </div>
-      <div class="text-muted">Begin creating one using the options under <a href="javascript:{}" onclick="divBlink()">'Create Note'</a> category</div>
+      <div class="text-muted">Begin creating one using the options under <a href="javascript:{}"
+          onclick="divBlink()">'Create Note'</a> category</div>
     </div>
-  </ul>
+    </ul>
 
-{% else %}
-  <ul class="list-group list-group-light">
-    {% for note in all_note %}
-    <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
-      <div>
-        <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{{ note.title }}</a>
+    {% else %}
+    <ul class="list-group list-group-light">
+      {% for note in all_note %}
+      <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+        <div>
+          <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{{ note.title
+              }}</a>
+          </div>
+          <div class="text-muted">
+            {% if note.last_edit == note.creation_date %}
+            Created: <span id="creation{{ note.id }}"></span>
+            {% else %}
+            Last Edit: <span id="lastedit{{ note.id }}"></span>
+            {% endif %}
+          </div>
+          <script>
+            {% if note.last_edit == note.creation_date %}
+            document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+            {% else %}
+            document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+            {% endif %}
+          </script>
         </div>
-        <div class="text-muted">
-          {% if note.last_edit == note.creation_date %}
-          Created: <span id="creation{{ note.id }}"></span>
-          {% else %}
-          Last Edit: <span id="lastedit{{ note.id }}"></span>
-          {% endif %}
-        </div>
-        <script>
-          {% if note.last_edit == note.creation_date %}
-          document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
-          {% else %}
-          document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
-          {% endif %}
-        </script>
-      </div>
-      <div class="dropdown">
-        <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
-          <span class="rounded-pill badge-primary dropdown-toggle px-2" data-mdb-toggle="tooltip"
-            title="Actions"></span></a>
-        <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink{{ note.id }}">
-          <li><a class="dropdown-item" href="/note/{{ note.id }}">View Content</a></li>
-          <hr style="margin: 0;">
-          <li>
-            <form action="/note/edit" method="POST" id="edit_note_{{ note.id }}"><a class="dropdown-item"
-                href="javascript:{}" onclick="document.getElementById('edit_note_{{ note.id }}').submit();">
-                <input type="text" name="action" value="edit" readonly hidden>
-                <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-                Edit Content</a>
-            </form>
-          </li>
-          <hr style="margin: 0;">
-          <li>
-            <a class="dropdown-item text-danger" href="#">
-              Delete
-            </a>
-            <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
-              <li>
-                <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
-              </li>
-              <hr style="margin: 0;">
-              <form action="/note" method="POST" id="delete_note_{{ note.id }}">
-                <input type="text" name="action" value="delete" readonly hidden>
-                <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+        <div class="dropdown">
+          <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+            <span class="rounded-pill badge-primary dropdown-toggle px-2" data-mdb-toggle="tooltip"
+              title="Actions"></span></a>
+          <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink{{ note.id }}">
+            <li><a class="dropdown-item" href="/note/{{ note.id }}">View Content</a></li>
+            <hr style="margin: 0;">
+            <li>
+              <form action="/note/edit" method="POST" id="edit_note_{{ note.id }}"><a class="dropdown-item"
+                  href="javascript:{}" onclick="document.getElementById('edit_note_{{ note.id }}').submit();">
+                  <input type="text" name="action" value="edit" readonly hidden>
+                  <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+                  Edit Content</a>
+              </form>
+            </li>
+            <hr style="margin: 0;">
+            <li>
+              <a class="dropdown-item text-danger" href="#">
+                Delete
+              </a>
+              <ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
                 <li>
-                  <a class="dropdown-item text-danger" href="javascript:{}"
-                    onclick="document.getElementById('delete_note_{{ note.id }}').submit();">Yes</a>
+                  <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
                 </li>
                 <hr style="margin: 0;">
-              </form>
-              <li>
-                <a class="dropdown-item" href="#">No</a>
-              </li>
-            </ul>
-      </div>
+                <form action="/note" method="POST" id="delete_note_{{ note.id }}">
+                  <input type="text" name="action" value="delete" readonly hidden>
+                  <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+                  <li>
+                    <a class="dropdown-item text-danger" href="javascript:{}"
+                      onclick="document.getElementById('delete_note_{{ note.id }}').submit();">Yes</a>
+                  </li>
+                  <hr style="margin: 0;">
+                </form>
+                <li>
+                  <a class="dropdown-item" href="#">No</a>
+                </li>
+              </ul>
+        </div>
 
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% endblock %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endblock %}

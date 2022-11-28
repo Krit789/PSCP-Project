@@ -93,10 +93,10 @@ def editor():
         if editor_type in ('simple', 'full'):
             flash("This note is a draft. <strong>Changes will not be save</strong> until you click save", category='warning')
             return render_template('note_editor.j2', note=placeholder, bg_img=rand_img(), draft=True, editor=editor_type)
-    elif note_id is not None and editor_type is not None:
+    elif note_id is not None:
         user_note = Note.query.filter_by(id=note_id).first_or_404()
         if user_note.user_id != current_user.id:
             abort(403)
-        if editor_type in ('simple', 'full'):
-            return render_template('note_editor.j2', note=user_note, bg_img=rand_img(), draft=False, editor=editor_type)
-    return render_template('note_editor.j2', note=user_note, bg_img=rand_img(), draft=False, editor='full')
+        if editor_type not in ('simple', 'full'):
+            editor_type = "full"
+    return render_template('note_editor.j2', note=user_note, bg_img=rand_img(), draft=False, editor=editor_type)

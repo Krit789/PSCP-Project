@@ -10,20 +10,22 @@
 
 {% endblock %}
 {% block row1 %}
-<div class="col" style="z-index: 2 !important;"><div class="containter-box" style="text-align: left !important;">
-  <form action="/note" id="note_edit" method="POST">
-    {% if draft %}
-    <input type="text" name="action" value="create" readonly hidden>
-    {% else %}
-    <input type="text" name="action" id="edit_action" value="update" hidden>
-    <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-    {% endif %}
-    <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;Note Editor</h3>
-    <div class="form-outline">
-      <input type="text" id="typeText" class="form-control" name="title" value="{{ note.title }}"/>
-      <label class="form-label" for="typeText">Title</label>
-    </div>
-    <ul class="list-group list-group-light">
+<div class="col" style="z-index: 2 !important;">
+  <div class="containter-box" style="text-align: left !important;">
+    <form action="/note" id="note_edit" method="POST">
+      {% if draft %}
+      <input type="text" name="action" value="create" readonly hidden>
+      {% else %}
+      <input type="text" name="action" id="edit_action" value="update" hidden>
+      <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+      {% endif %}
+      <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i
+            class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;Note Editor</h3>
+      <div class="form-outline">
+        <input type="text" id="typeText" class="form-control" name="title" value="{{ note.title }}" />
+        <label class="form-label" for="typeText">Title</label>
+      </div>
+      <ul class="list-group list-group-light">
         <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2 mt-2">
           <div>
             <div class="text-muted">
@@ -40,7 +42,7 @@
               document.getElementById("lastedit{{ note.id }}").innerHTML = "{{ note.last_edit }}";
               {% else %}
               {% endif %}
-              
+
               {% else %}
               document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
               {% if note.last_edit != note.creation_date %}
@@ -48,63 +50,66 @@
               {% else %}
               {% endif %}
               {% endif %}
-              </script>
+            </script>
           </div>
           {% if not draft %}
-  
+
           <div class="dropdown">
-            <a
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <span class="badge rounded-pill badge-danger">Delete</span></a>
+            <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+              <span class="badge rounded-pill badge-danger">Delete</span></a>
             <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
               <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
               <hr style="margin: 0;">
-              <li><a class="dropdown-item text-danger" href="javascript:{}" onclick="document.getElementById('edit_action').value = 'delete'; document.getElementById('note_edit').submit();">Yes</a></li><hr style="margin: 0;">
+              <li><a class="dropdown-item text-danger" href="javascript:{}"
+                  onclick="document.getElementById('edit_action').value = 'delete'; document.getElementById('note_edit').submit();">Yes</a>
+              </li>
+              <hr style="margin: 0;">
               <li><a class="dropdown-item">No</a></li>
             </ul>
-        </div>
-        {% else %}
-        {% endif %}
-        </div>
-          
-        </li>
-      </ul>
+          </div>
+          {% else %}
+          {% endif %}
+  </div>
+
+  </li>
+  </ul>
 </div>
 {% endblock %}
 {% block row2 %}
 <table class="content-head">
   <tr>
-    <td style="text-align: left;"><h3>Content</h3></td>
-    <td style="text-align: right; font-size: x-large;" >{% if not draft %}<a href="/note/{{ note.id }}" data-mdb-toggle="tooltip" title="Exit discarding changes"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>&nbsp;&nbsp;&nbsp;{% else %}{% endif %}<a href="javascript:{}" onclick="document.getElementById('note_edit').submit();" data-mdb-toggle="tooltip" title="Save Changes"><i class="fa-solid fa-floppy-disk"></i></i></a></td>
+    <td style="text-align: left;">
+      <h3>Content</h3>
+    </td>
+    <td style="text-align: right; font-size: x-large;">{% if not draft %}<a href="/note/{{ note.id }}"
+        data-mdb-toggle="tooltip" title="Exit discarding changes"><i
+          class="fa-solid fa-arrow-right-from-bracket"></i></a>&nbsp;&nbsp;&nbsp;{% else %}{% endif %}<a
+        href="javascript:{}" onclick="document.getElementById('note_edit').submit();" data-mdb-toggle="tooltip"
+        title="Save Changes"><i class="fa-solid fa-floppy-disk"></i></i></a></td>
   </tr>
 </table>
-  <div class="form-outline">
-    <textarea class="form-control" id="noteArea" rows="5" name="content">{{ note.content|safe }}</textarea>
-  </div>
+<div class="form-outline">
+  <textarea class="form-control" id="noteArea" rows="5" name="content">{{ note.content|safe }}</textarea>
+</div>
 </form>
 {% endblock %}
 {% block foot %}
 {% if editor == "full" %}
 <script>
-  const editor =  new EasyMDE({
+  const editor = new EasyMDE({
     element: document.getElementById('noteArea'),
     initialValue: document.getElementById("noteArea").value,
     renderingConfig: {
-        singleLineBreaks: false,
-        codeSyntaxHighlighting: true,
+      singleLineBreaks: false,
+      codeSyntaxHighlighting: true,
     },
     autofocus: true,
-    toolbar: ["bold", "italic", "heading", "heading-smaller", "heading-bigger","|", "quote", "link", "image", "|", {
-            name: "Table",
-            action: EasyMDE.drawTable,
-            className: "fa fa-table",
-            title: "Table",
-        }, "horizontal-rule", "unordered-list", "ordered-list", "|", "undo", "redo", "guide"]
+    toolbar: ["bold", "italic", "heading", "heading-smaller", "heading-bigger", "|", "quote", "link", "image", "|", {
+      name: "Table",
+      action: EasyMDE.drawTable,
+      className: "fa fa-table",
+      title: "Table",
+    }, "horizontal-rule", "unordered-list", "ordered-list", "|", "undo", "redo", "guide"]
   });
 </script>
 {% else %}
