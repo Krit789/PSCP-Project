@@ -106,7 +106,9 @@
   }
 </style>
 
-<body class="body-bg">
+<body>
+  <div class="body-bg"></div>
+
   <div class="position-relative">
     <div class="toast-container top-0 end-0 p-3">
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -212,18 +214,17 @@
       </div>
     </div>
   </nav>
-  <div class="container mb-5">
+  <div class="container mb-5 note-container">
     <div class="row">
       {% block row1 %}
       {% endblock %}
     </div>
     <div class="row">
-      <div class="col">
-        <div class="containter-box" style="text-align: left !important;">
-          {% block row2 %}
-          {% endblock %}
-        </div>
-      </div>
+      <div class="containter-box" style="text-align: left !important;height:400%">
+        {% block row2 %}
+        {% endblock %}
+        
+    </div>
 
     </div>
   </div>

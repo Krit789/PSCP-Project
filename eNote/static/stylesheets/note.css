@@ -7,10 +7,23 @@ body {
   font-weight: 300;
 }
 
+.note-container {
+  height: 120%;
+  padding: 20px 0px;
+}
+
 .body-bg {
+  position: fixed;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  margin: 60px 0px 0px 0px;
+  height: calc(100vh - 60px);
+  width: 100vw;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .containter-box {
@@ -54,24 +67,31 @@ textarea {
 #rendered_text h1 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text h2 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text h3 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text h4 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text h5 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text h6 {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text b {
   font-family: "sf_thonburisemibold", Arial, Helvetica, sans-serif !important;
 }
+
 #rendered_text strong {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
@@ -83,16 +103,19 @@ textarea {
 .dropdown-menu li {
   position: relative;
 }
+
 .dropdown-menu .dropdown-submenu {
   display: none;
   position: absolute;
   left: 100%;
   top: -7px;
 }
+
 .dropdown-menu .dropdown-submenu-left {
   right: 100%;
   left: auto;
 }
-.dropdown-menu > li:hover > .dropdown-submenu {
+
+.dropdown-menu>li:hover>.dropdown-submenu {
   display: block;
 }
