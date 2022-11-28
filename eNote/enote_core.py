@@ -7,6 +7,10 @@ from .models import Note
 import bleach
 core = Blueprint('core', __name__)
 
+
+
+
+
 def rand_img() -> int:
     # return (int(str(tme()*1000)[-1]) % 9) + 1
     return 6
@@ -30,6 +34,18 @@ def md_cleaner(text: str) -> str:
                 attributes=ALLOWED_ATTRIBUTES,
                 protocols=ALLOWED_PROTOCOLS)
     return cleaner.clean(text)
+
+@core.errorhandler(404)
+@login_required
+def note_not_found(e):
+    flash('This note does not exist', category='error')
+    return redirect(url_for('core.note_home'))
+
+@core.errorhandler(403)
+@login_required
+def note_not_found(e):
+    flash('You don\'t have permission to access this note', category='error')
+    return redirect(url_for('core.note_home'))
 
 @core.route('/note', methods=['GET', 'POST'])
 @login_required
