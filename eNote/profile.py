@@ -4,6 +4,7 @@ from time import time as tme
 from . import db
 from .models import User, Note
 from werkzeug.security import check_password_hash, generate_password_hash
+import secrets
 
 profile = Blueprint('profile', __name__)
 
@@ -15,7 +16,7 @@ def rand_img() -> int:
 def user_profile():
     if request.method == 'GET':
         temp = current_user
-        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date)[:19] + ' UTC']
+        user_data = [temp.id, temp.username, temp.first_name, temp.last_name, str(temp.creation_date)[:19] + ' UTC', temp.theme, temp.total_notes, temp.deleted_notes]
         return render_template("profile.html", bg_img=rand_img(), user_data=user_data)
     if request.method == 'POST':
         delete = True if request.form.get('delete') == 'Delete Account' else False
@@ -84,8 +85,13 @@ def password():
             if check_password_hash(user.password, old_pass):
                 if old_pass != newpass:
                     user.password = generate_password_hash(newpass, method='sha384')
-                    db.session.commit()
+                    if request.form.get('logout') == 'on':
+                        user.session_token = secrets.token_hex(16)
+                        db.session.commit()
+                        flash('Changes saved and all sessions have been purged!', category='success')
+                        return redirect(url_for('pages.home_page'))
                     flash('Changes saved!', category='success')
+                    db.session.commit()
                     return redirect(url_for('profile.user_profile'))
                 else:
                     flash('New password can\'t be the same as current password', category='error')

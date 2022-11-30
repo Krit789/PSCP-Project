@@ -3,13 +3,10 @@ from flask_login import login_required, current_user
 from sqlalchemy import desc
 from . import db
 from time import time as tme
-from .models import Note
+from .models import Note, User
 import bleach
+
 core = Blueprint('core', __name__)
-
-
-
-
 
 def rand_img() -> int:
     # return (int(str(tme()*1000)[-1]) % 9) + 1
@@ -55,6 +52,7 @@ def note_home():
         return render_template("note.j2", all_note=user_note, bg_img=rand_img())
     if request.method == 'POST':
         action = request.form.get('action')
+        this_user = User.query.filter_by(id=current_user.id).first()
         if action == 'create':
             if request.form.get('title') is None and request.form.get('editor_type') == 'blank':
                 title = "Untitled Note"
@@ -66,6 +64,7 @@ def note_home():
                 title = bleach.clean(request.form.get('title'))
                 note_content = md_cleaner(request.form.get('content'))
             memo = Note(title=title, content=note_content, user_id=current_user.id)
+            this_user.total_notes = int(this_user.total_notes) + 1
             db.session.add(memo)
             db.session.commit()
             flash(f'<b>{title}</b> was created successfully!', category='success')
@@ -84,6 +83,7 @@ def note_home():
             return redirect(url_for('core.note_view', note_id=user_note.id, bg_img=rand_img()))
         if action == 'delete':
             title = user_note.title
+            this_user.deleted_notes = int(this_user.deleted_notes) + 1
             db.session.delete(user_note)
             db.session.commit()
             flash(f'<b>{title}</b> was deleted', category='success')

@@ -1,11 +1,11 @@
 '''Authentication Page Routing'''
-from flask import Blueprint, render_template, abort, request, redirect, url_for, flash
-from jinja2 import TemplateNotFound
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from time import time as tme
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
+import secrets
 
 auth = Blueprint('auth', __name__)
 
@@ -70,10 +70,10 @@ def register_page():
                 flash('Password must be at least 7 characters long.', category='error')
             else:
                 if len(last_name) > 0:
-                    new_user = User(username=username, email=email, first_name=first_name,
+                    new_user = User(username=username, session_token=secrets.token_hex(16), email=email, first_name=first_name,
                                     last_name=last_name, password=generate_password_hash(password, method='sha384'))
                 else:
-                    new_user = User(username=username, email=email, first_name=first_name,
+                    new_user = User(username=username, session_token=secrets.token_hex(16),email=email, first_name=first_name,
                                     password=generate_password_hash(password, method='sha384'))
                 db.session.add(new_user)
                 db.session.commit()
@@ -87,6 +87,16 @@ def register_page():
 @auth.route('/about')
 def about_page():
     return render_template('about.html')
+
+@auth.route('/logoutall')
+@login_required
+def logout_all():
+    user = User.query.filter_by(id=current_user.id).first()
+    user.session_token = secrets.token_hex(16)
+    db.session.commit()
+    logout_user()
+    flash('You have been logged out of all session', category='talert')
+    return redirect(url_for('auth.login_page'))
 
 @auth.route('/logout')
 @login_required

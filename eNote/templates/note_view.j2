@@ -25,20 +25,16 @@
           <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
 
           <div class="dropdown">
-              <a
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
               <span class="badge rounded-pill badge-danger">Delete</span></a>
-              <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
-                <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
-                <hr style="margin: 0;">
-                <li><a class="dropdown-item text-danger" href="javascript:{}" onclick="document.getElementById('delete_note').submit();">Yes</a></li><hr style="margin: 0;">
-                <li><a class="dropdown-item" >No</a></li>
-              </ul>
+            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+              <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
+              <hr style="margin: 0;">
+              <li><a class="dropdown-item text-danger" href="javascript:{}"
+                  onclick="document.getElementById('delete_note').submit();">Yes</a></li>
+              <hr style="margin: 0;">
+              <li><a class="dropdown-item">No</a></li>
+            </ul>
           </div>
 
         </form>
@@ -57,31 +53,27 @@
     </td>
     <td style="text-align: right; font-size: x-large;">
       <form action="/note/edit" method="POST" id="edit_note">
-          <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-          <div class="dropdown">
-            <a
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-          <i class="fa-solid fa-pen-to-square"></i></a>
-            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
-              <p class="px-3 pt-3 text-muted">Editor Type</p>
-              <hr style="margin: 0;">
-              <li>
-                <button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type" value="full"
-                data-mdb-toggle="tooltip" title="Edit with advanced markdown editor" style="width: 100%;">
+        <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
+        <div class="dropdown">
+          <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-pen-to-square"></i></a>
+          <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+            <p class="px-3 pt-3 text-muted">Editor Type</p>
+            <hr style="margin: 0;">
+            <li>
+              <button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type"
+                value="full" data-mdb-toggle="tooltip" title="Edit with advanced markdown editor" style="width: 100%;">
                 Advanced
-              </button></li><hr style="margin: 0;">
-              <li><button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type" value="simple"
-                data-mdb-toggle="tooltip" title="Edit with simple plaintext editor" style="width: 100%;">
+              </button>
+            </li>
+            <hr style="margin: 0;">
+            <li><button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type"
+                value="simple" data-mdb-toggle="tooltip" title="Edit with simple plaintext editor" style="width: 100%;">
                 Simple
               </button></li>
-            </ul>
+          </ul>
         </div>
-          
+
       </form>
     </td>
   </tr>

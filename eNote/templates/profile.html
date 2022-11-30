@@ -49,6 +49,18 @@
     <td>Creation Date (Local Time)</td>
     <td id="timeToLocal"></td>
   </tr>
+  <tr>
+    <td>Theme</td>
+    <td>{{ user_data[5] }}</td>
+  </tr>
+  <tr>
+    <td>Total Notes Created</td>
+    <td>{{ user_data[6] }}</td>
+  </tr>
+  <tr>
+    <td>Total Notes Deleted</td>
+    <td>{{ user_data[7] }}</td>
+  </tr>
 </table>
 {% endblock %}
 {% block form_desc %}
@@ -58,7 +70,8 @@
 </form><br />
 <a href="/user/password" class="blue-text">Change Your Password</a><br />
 <a href="/user/edit" class="blue-text">Edit Your Profile</a><br />
-<a href="/logout" class="blue-text">Logout</a>
+<a href="/logout" class="blue-text">Logout</a><br />
+<a href="/logoutall" class="blue-text">Logout of all Session</a>
 <script>
   document.querySelector('#wipeout').addEventListener('submit', function (e) {
     let form = this;
