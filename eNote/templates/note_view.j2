@@ -45,13 +45,13 @@
 </div>
 {% endblock %}
 {% block row2 %}
-<table class="content-head">
+<table class="content-head" style="border: 0 !important;">
 
-  <tr>
-    <td style="text-align: left;">
+  <tr style="border: 0 !important;">
+    <td style="text-align: left; border: 0 !important;">
       <h3>Content</h3>
     </td>
-    <td style="text-align: right; font-size: x-large;">
+    <td style="text-align: right; font-size: x-large; border: 0 !important;">
       <form action="/note/edit" method="POST" id="edit_note">
         <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
         <div class="dropdown">
