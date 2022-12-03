@@ -25,7 +25,7 @@ def create_app():
     db.init_app(app)
     from .auth import auth
     from .pages import pages
-    from .profile import profile
+    from .usr_profile import profile
     from .enote_core import core
     
     app.register_blueprint(auth, url_prefix='/')

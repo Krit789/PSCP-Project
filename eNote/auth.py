@@ -4,10 +4,16 @@ from time import time as tme
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .models import User
-from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
+from hashlib import scrypt
 
 auth = Blueprint('auth', __name__)
+
+def check_password_hash(stored_key: str, password: str, password_salt: str) -> bool:
+    if scrypt(password.encode(), salt=password_salt.encode(), n=16384, r=8, p=1, dklen=64) == stored_key:
+        return True
+    return False
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -24,7 +30,7 @@ def login_page():
             password = request.form.get('passwd')
             remember = request.form.get('remember')
             if user:
-                if check_password_hash(user.password, password):
+                if check_password_hash(user.password_hash, password, user.password_salt):
                     flash('You have been logged in!', category='success')
                     if remember == 'on':
                         login_user(user, remember=True)
@@ -69,12 +75,14 @@ def register_page():
             elif len(password) < 7:
                 flash('Password must be at least 7 characters long.', category='error')
             else:
+                user_salt = secrets.token_hex(32)
+                user_password = scrypt(password.encode(), salt=user_salt.encode(), n=16384, r=8, p=1, dklen=64)
+                new_user = User(username=username, session_token=secrets.token_hex(16), email=email, first_name=first_name,
+                                password_hash=user_password, password_salt=user_salt)
                 if len(last_name) > 0:
-                    new_user = User(username=username, session_token=secrets.token_hex(16), email=email, first_name=first_name,
-                                    last_name=last_name, password=generate_password_hash(password, method='sha384'))
+                    new_user.last_name = last_name
                 else:
-                    new_user = User(username=username, session_token=secrets.token_hex(16),email=email, first_name=first_name,
-                                    password=generate_password_hash(password, method='sha384'))
+                    new_user.last_name = None
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Account created!', category='success')
@@ -83,10 +91,6 @@ def register_page():
     else:
         flash('You have already logged in!', category='warning')
         return redirect(url_for('pages.home_page'))
-
-@auth.route('/about')
-def about_page():
-    return render_template('about.html')
 
 @auth.route('/logoutall')
 @login_required

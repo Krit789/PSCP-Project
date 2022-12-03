@@ -8,3 +8,7 @@ def home_page():
     if current_user.is_authenticated:
         return redirect(url_for('core.note_home'))
     return render_template('home.html')
+
+@pages.route('/about')
+def about_page():
+    return render_template('about.html')
