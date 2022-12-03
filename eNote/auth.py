@@ -3,17 +3,11 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from time import time as tme
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
+from .scrypt_hashing import generate_password_hash, check_password_hash
 from .models import User
 import secrets
-from hashlib import scrypt
 
 auth = Blueprint('auth', __name__)
-
-def check_password_hash(stored_key: str, password: str, password_salt: str) -> bool:
-    if scrypt(password.encode(), salt=password_salt.encode(), n=16384, r=8, p=1, dklen=64) == stored_key:
-        return True
-    return False
-
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -75,8 +69,8 @@ def register_page():
             elif len(password) < 7:
                 flash('Password must be at least 7 characters long.', category='error')
             else:
-                user_salt = secrets.token_hex(32)
-                user_password = scrypt(password.encode(), salt=user_salt.encode(), n=16384, r=8, p=1, dklen=64)
+                user_salt = secrets.token_hex(16)
+                user_password = generate_password_hash(password, user_salt)
                 new_user = User(username=username, session_token=secrets.token_hex(16), email=email, first_name=first_name,
                                 password_hash=user_password, password_salt=user_salt)
                 if len(last_name) > 0:
@@ -108,5 +102,3 @@ def logout():
     logout_user()
     flash('You have logged out!', category='talert')
     return redirect(url_for('auth.login_page'))
-
-

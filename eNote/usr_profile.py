@@ -2,19 +2,14 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from time import time as tme
 from . import db
+from .scrypt_hashing import generate_password_hash, check_password_hash
 from .models import User, Note
 import secrets
-from hashlib import scrypt
 
 profile = Blueprint('profile', __name__)
 
 def rand_img() -> int:
     return (int(str(tme()*1000)[-1]) % 9)+1
-
-def check_password_hash(stored_key: str, password: str, password_salt: str) -> bool:
-    if scrypt(password.encode(), salt=password_salt.encode(), n=16384, r=8, p=1, dklen=64) == stored_key:
-        return True
-    return False
 
 @profile.route('/user', methods=['GET', 'POST'])
 @login_required
@@ -89,8 +84,8 @@ def password():
             user = User.query.filter_by(id=current_user.id).first()
             if check_password_hash(user.password_hash, old_pass, user.password_salt):
                 if old_pass != newpass:
-                    password_salt = secrets.token_hex(32)
-                    user_password = scrypt(newpass.encode(), salt=password_salt.encode(), n=16384, r=8, p=1, dklen=64)
+                    password_salt = secrets.token_hex(16)
+                    user_password = generate_password_hash(newpass, password_salt)
                     user.password_hash = user_password
                     user.password_salt = password_salt
                     if request.form.get('logout') == 'on':

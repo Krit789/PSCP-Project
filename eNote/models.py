@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     session_token = db.Column(db.String(16), unique=True, nullable=False)
     username = db.Column(db.String(16), unique=True, nullable=False)
     email = db.Column(db.String(64), unique=True, nullable=False)
-    password_hash = db.Column(db.String(70), nullable=False)
+    password_hash = db.Column(db.String(32), nullable=False)
     password_salt = db.Column(db.String(32), nullable=False)
     # encryptedkey = db.Column(db.String(32), nullable=False)
     first_name = db.Column(db.String(64), nullable=False)
