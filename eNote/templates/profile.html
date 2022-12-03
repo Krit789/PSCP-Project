@@ -50,16 +50,12 @@
     <td id="timeToLocal"></td>
   </tr>
   <tr>
-    <td>Theme</td>
+    <td>Total Notes Created</td>
     <td>{{ user_data[5] }}</td>
   </tr>
   <tr>
-    <td>Total Notes Created</td>
-    <td>{{ user_data[6] }}</td>
-  </tr>
-  <tr>
     <td>Total Notes Deleted</td>
-    <td>{{ user_data[7] }}</td>
+    <td>{{ user_data[6] }}</td>
   </tr>
 </table>
 {% endblock %}
@@ -68,8 +64,10 @@
   <input type="text" name="delete" value="Delete Account" hidden>
   <input type="submit" class="btn btn-danger" style="margin: 15px 0px 0px 0px !important;" value="Delete Account" />
 </form><br />
-<a href="/user/password" class="blue-text">Change Your Password</a><br />
 <a href="/user/edit" class="blue-text">Edit Your Profile</a><br />
+<a href="/user/password" class="blue-text">Change Your Password</a><br />
+<a href="/user/pict" class="blue-text">Change Your Profile Picture</a><br />
+<hr />
 <a href="/logout" class="blue-text">Logout</a><br />
 <a href="/logoutall" class="blue-text">Logout of all Session</a>
 <script>

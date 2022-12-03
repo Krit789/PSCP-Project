@@ -1,0 +1,40 @@
+{% extends "authen.j2" %}
+{% block title %}User Info{% endblock %}
+{% block form %}
+<style>
+  td {
+    padding-right: 10px;
+  }
+
+  .btn-primary {
+    margin: 15px 0px 15px 0px !important;
+    background-color: #005EB8 !important;
+    font-size: medium !important;
+    border-radius: 12px !important;
+  }
+
+
+  .btn-danger {
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: medium !important;
+    border-radius: 12px !important;
+    background-color: #bc2813 !important;
+  }
+
+  .blue-text {
+    color: #005EB8;
+    font-weight: 500;
+  }
+</style>
+<h3>Profile Picture Upload</h3>
+<p>Supported formats included <code>jpeg png gif webp</code> with size under 8 MB</p>
+<form method=post enctype=multipart/form-data>
+    <label class="form-label" for="customFile">Your Picture</label>
+    <input type="file" name=file class="form-control" id="customFile" style="width: 75%; margin:auto;" required/>
+    <br>
+    <input type=submit class="btn btn-primary" value=Upload />
+</form>
+{% endblock %}
+{% block form_desc %}
+{% endblock %}

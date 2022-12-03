@@ -2,12 +2,15 @@
 from flask import Flask, render_template
 from flask_compress import Compress
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+from os.path import exists, abspath, dirname
 from flask_login import LoginManager
 import secrets
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+UPLOAD_FOLDER = abspath(dirname(__file__)) + '/static/uploads'
+# UPLOAD_FOLDER = '.\\uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 def create_app():
     '''Create an instance of Flask app'''
@@ -22,6 +25,9 @@ def create_app():
     app.config['COMPRESS_BR_LEVEL'] = 9
     app.config['SECRET_KEY'] = generate_secrets()
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
+    app.config['MAX_CONTENT_LENGTH'] = 8 * 1000 * 1000
     db.init_app(app)
     from .auth import auth
     from .pages import pages
@@ -57,7 +63,7 @@ def create_app():
 
 def generate_secrets() -> str:
     '''Generate a cryptographically secure secrets in instance folder'''
-    if not path.exists('instance/secrets'):
+    if not exists('instance/secrets'):
         print("Secrets not generated yet. Generating secrets...")
         with open('instance/secrets', 'w') as f:
             conf_secret = secrets.token_hex() 
@@ -69,7 +75,7 @@ def generate_secrets() -> str:
     return conf_secret
 
 def create_database(app):
-    if not path.exists('instance/' + DB_NAME):
+    if not exists('instance/' + DB_NAME):
         with app.app_context():
             db.create_all()
             print("Database Created!")
