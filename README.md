@@ -6,11 +6,12 @@ Versitile, beautiful, personalized just for you.
 &lt;e&gt;Note is more than a note it's a personal diary.
 
 ### Features 
-<li>Keep your credentials safe with hashed storage.</li>
+<li>Keep your credentials safe with hashing-salting using Scrypt algorithm.</li>
+<li>Stand out with profile image with support for WebP HEIC and AVIF format.</li>
 <li>You can create an infinite number of notes.</li>
-<li>Markdown formatting allowed you to personalize your notes.</li>
-<li>Use dark mode to protect your eyes.</li>
-<li>And more to come!</li>
+<li>Markdown formatting allowed you to personalize your notes like inserting images, making a table and more.</li>
+<li>Support for all-session logout for additional security.</li>
+<li>Notes stats for keeping track of your creation.</li>
 
 <br>
 
