@@ -5,8 +5,10 @@ from . import db
 from flask import current_app as app
 from .scrypt_hashing import generate_password_hash, check_password_hash
 from .models import User, Note
+from .img_processing import make_square
 from werkzeug.utils import secure_filename
 from os.path import join
+from os import remove
 import secrets
 
 profile = Blueprint('profile', __name__)
@@ -36,8 +38,17 @@ def user_profile():
         if delete:
             account = User.query.filter_by(id=current_user.id).one()
             notes = Note.query.filter_by(user_id=current_user.id)
+            filename = 't_' + account.profile_img
+            try:
+                remove(join(app.config['PROFILE_IMG_FOLDER'], account.profile_img).replace('\\', '/'))
+                remove(join(app.config['PROFILE_IMG_FOLDER'], filename).replace('\\', '/'))
+            except FileNotFoundError:
+                flash("FileNotFoundError was rasied", category='warning')
+            try:
+                db.session.delete(notes)
+            except:
+                pass
             db.session.delete(account)
-            db.session.delete(notes)
             db.session.commit()
             flash('Account deleted!', category='success')
         return redirect(url_for('pages.home_page'))
@@ -121,22 +132,52 @@ def password():
 @login_required
 def profile_pict():
     if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part', category='error')
-            return redirect(request.url)
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file', category='error')
-            return redirect(request.url)
-        if not allowed_file(file.filename)[1]:
-            flash(f"File type '{allowed_file(file.filename)[0]}' is not allowed", category='error')
-            return redirect(request.url)
-        if file and allowed_file(file.filename)[1]:
-            filename = secure_filename(file.filename)
-            file.save(join(app.config['UPLOAD_FOLDER'], filename).replace('\\', '/'))
-            return redirect(url_for('profile.user_profile'))
+        this_user = User.query.filter_by(id=current_user.id).first()
+        if request.form.get('action') == 'Delete':
+            if this_user.profile_img is None:
+                flash("You don't have any profile image", category='error')
+            else:
+                filename = 't_' + this_user.profile_img
+                try:
+                    remove(join(app.config['PROFILE_IMG_FOLDER'], this_user.profile_img).replace('\\', '/'))
+                    remove(join(app.config['PROFILE_IMG_FOLDER'], filename).replace('\\', '/'))
+                except FileNotFoundError:
+                    flash("FileNotFoundError was rasied", category='warning')
+                this_user.profile_img = None
+                db.session.commit()
+                flash('Deletion successful', category='success')
+        elif request.form.get('action') == 'Upload':
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part', category='error')
+                return redirect(request.url)
+            file = request.files['file']
+            # If the user does not select a file, the browser submits an
+            # empty file without a filename.
+            if file.filename == '':
+                flash('No selected file', category='error')
+                return redirect(request.url)
+            if not allowed_file(file.filename)[1]:
+                flash(f"File type '{allowed_file(file.filename)[0]}' is not allowed", category='error')
+                return redirect(request.url)
+            if file and allowed_file(file.filename)[1]:
+                if this_user.profile_img is not None:
+                    filename = 't_' + this_user.profile_img
+                    try:
+                        remove(join(app.config['PROFILE_IMG_FOLDER'], this_user.profile_img).replace('\\', '/'))
+                        remove(join(app.config['PROFILE_IMG_FOLDER'], filename).replace('\\', '/'))
+                    except FileNotFoundError:
+                        flash("FileNotFoundError was rasied", category='warning')
+                filename = secure_filename(file.filename)
+                flash('Profile image uploaded', category='success')
+                file.save(join(app.config['UPLOAD_FOLDER'], filename).replace('\\', '/'))
+                this_user = User.query.filter_by(id=current_user.id).first()
+                this_user.profile_img = make_square(filename)
+                flash('Processing successful', category='success')
+                db.session.commit()
+                return redirect(url_for('profile.user_profile'))
+
+
+
 
     return render_template("upload.j2", bg_img=6)

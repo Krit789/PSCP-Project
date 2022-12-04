@@ -9,8 +9,9 @@ import secrets
 db = SQLAlchemy()
 DB_NAME = "database.db"
 UPLOAD_FOLDER = abspath(dirname(__file__)) + '/static/uploads'
+PROFILE_IMG_FOLDER = abspath(dirname(__file__)) + '/static/uploads/profile'
 # UPLOAD_FOLDER = '.\\uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp'}
 
 def create_app():
     '''Create an instance of Flask app'''
@@ -26,6 +27,7 @@ def create_app():
     app.config['SECRET_KEY'] = generate_secrets()
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['PROFILE_IMG_FOLDER'] = PROFILE_IMG_FOLDER
     app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
     app.config['MAX_CONTENT_LENGTH'] = 8 * 1000 * 1000
     db.init_app(app)

@@ -16,17 +16,33 @@
 {% block row1 %}
 <div class="col-sm-6 col-md-6">
   <div class="containter-box">
-    <h3>Hello, {{ current_user.first_name}}</h3>
-    <p>{{ current_user.email}}</p>
-    {% if note_count > 1 %}
-    <p>You currently have {{ note_count }} notes.</p>
-    {% else %}
-    {% if note_count == 1 %}
-    <p>You currently have 1 note.</p>
-    {% else %}
-    <p>You don't have any notes... yet</p>
-    {% endif %}
-    {% endif %}
+    <div class="row">
+      <div class="col-3">
+      {% if not current_user.profile_img %}
+          <a href="/user/pict" data-mdb-toggle="tooltip" title="Change your profile image">
+            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;" src="https://ui-avatars.com/api/?name={{current_user.first_name[0]}}+{{current_user.last_name[0]}}&size=256"></a>
+      {% else %}
+          <a href="static/uploads/profile/{{ current_user.profile_img }}">
+            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;" src="static/uploads/profile/t_{{ current_user.profile_img }}"
+              alt="{{ current_user.first_name }}"></a>
+      {% endif %}
+      </div>
+      <div class="col">
+      <span class="align-bottom">
+        <h3>Hello, {{ current_user.first_name}}</h3>
+        <p>{{ current_user.email}}</p>
+        {% if note_count > 1 %}
+        <p>You currently have {{ note_count }} notes.</p>
+        {% else %}
+        {% if note_count == 1 %}
+        <p>You currently have 1 note.</p>
+        {% else %}
+        <p>You don't have any notes... yet</p>
+        {% endif %}
+        {% endif %}
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 <div class="col-sm-6 col-md-6">
