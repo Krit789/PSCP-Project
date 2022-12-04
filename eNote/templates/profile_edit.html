@@ -2,7 +2,7 @@
 {% block title %}Editing Profile{% endblock %}
 {% block form %}
 <h3>Profile Editor</h3>
-<form action="/user/password" method="POST">
+<form action="/user/edit" method="POST">
     <div class="mb-3 ms-4 me-4 align-left form-label">
       <label for="exampleInputEmail1" class="form-label">First Name<label style="color: red;">*</label></label>
       <input type="text" class="form-control" name="firstname" value="{{ user_data[2] }}" aria-describedby="emailHelp" required />

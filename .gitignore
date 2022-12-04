@@ -53,6 +53,7 @@ MANIFEST
 # Flask stuff:
 instance/
 .webassets-cache
+eNote/static/uploads/profile/
 
 # Private Files
 *.json

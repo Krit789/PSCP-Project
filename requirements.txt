@@ -4,3 +4,4 @@ Flask-Login==0.6.2
 Flask-SQLAlchemy==3.0.2
 bleach==5.0.1
 Pillow==9.3.0
+pillow-heif==0.8.0

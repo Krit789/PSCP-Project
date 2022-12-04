@@ -175,9 +175,29 @@ def profile_pict():
                 this_user.profile_img = make_square(filename)
                 flash('Processing successful', category='success')
                 db.session.commit()
-                return redirect(url_for('profile.user_profile'))
-
-
-
-
+                return redirect(request.url)
     return render_template("upload.j2", bg_img=6)
+
+@profile.route('/user/pict/view')
+@login_required
+def webp_viewer():
+    this_user = User.query.filter_by(id=current_user.id).first()
+    img_name = this_user.profile_img
+    if img_name is None:
+        flash("You don't have profile image", category='error')
+        return redirect(url_for('profile.profile_pict'))
+    return f'''
+    <!DOCTYPE html>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <head>
+    <title>Profile Image Viewer</title>
+    </head>
+    <body>
+    <img src="/static/uploads/profile/{img_name}"
+    style="width:95%;
+    padding:5px;
+    -webkit-box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.6);
+    box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.6);">
+    </body>
+    '''
