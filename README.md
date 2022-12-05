@@ -1,5 +1,4 @@
-# PSCP Project
-## Project &lt;e&gt;Note
+# Project &lt;e&gt;Note
 
 Versitile, beautiful, personalized just for you.
 
@@ -15,7 +14,7 @@ Versitile, beautiful, personalized just for you.
 
 <br>
 
-## <mark style="background-color: #FF5632">Please read the instruction before commiting your edits.</mark>
+## <mark style="background-color: #FF5632">Please read the instruction before creating a pull request</mark>
 
 # Setup
 ## <b>Projects</b>
@@ -55,13 +54,15 @@ Now you're set to begin the next step<br />
     pip install -r requirements.txt
 
 ## <b>Running the app</b>
-(Only accessible from <code>127.0.0.1:5000</code>)
+*Accessible from all network interfaces
+### <b>For developemnt</b>
+    python main_dev.py
 
-    flask --app eNote --debug run
+### <b>For production</b>
+Powered by FastWSGI
 
-or (Accessible from all network interfaces)
+    python main_prod.py
 
-    python main.py
 ## Built with
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 

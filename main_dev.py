@@ -1,3 +1,4 @@
+'''For development only. DO NOT USE IN PRODUCTION'''
 from eNote import create_app
 
 app = create_app()
