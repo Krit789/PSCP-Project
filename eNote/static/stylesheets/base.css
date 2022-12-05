@@ -12,7 +12,7 @@ body {
     font-weight: 300;
 }
 
-.navbar-backgroud {
+.blur-effect {
     background: rgba(251, 251, 253, .6);
     backdrop-filter: blur(15px) saturate(85px);
     -webkit-backdrop-filter: blur(15px) saturate(85px);
@@ -26,6 +26,24 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.collapse-text {
+    color: black !important;
+}
+
+@media only screen and (max-width: 990px) {
+    .navbar-collapse {
+        margin-top: 20px;
+        padding: 15px 20px;
+        background-color: white;
+        border: rgba(0, 0, 0, 0.15) solid 1px;
+        border-radius: 10px;
+        ;
+    }
+}
+
+.navbar-backgroud {
     block-size: 44px;
     min-block-size: 44px;
     display: flex;
@@ -40,4 +58,3 @@ body {
 .paragraph {
     margin: 20px 0px 0px 0px;
 }
-
