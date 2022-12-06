@@ -3,30 +3,33 @@
 {% block form %}
 
 <link rel="stylesheet" href="../static/stylesheets/home.css" />
-<link rel="stylesheet" href="../static/stylesheets/about.css" />
 
-<div class="welcome_outer row" id="">
-  <img class="left" src="../static/images/logo/Home_logo.png">
-  <div class="right">
-    <div class="welcome_title">
-      &lt;e&gt;Note
-    </div>
 
-    <div>
-      This is our PSCP project!<br />
-      It's more than just a note, it's a personal diary.
-    </div>
+<div class="welcome_outer">
+  <div class="row" id="">
+    <img class="left" src="../static/images/logo/Home_logo.png">
+    <div class="right">
+      <div class="welcome_title">
+        &lt;e&gt;Note
+      </div>
 
-    <div class="welcome-button">
-      <form action="/register">
-        <input class="btn btn-primary " type="submit" value="Get Started!" />
-      </form>
-      <form action="/login">
-        <input class="btn ardy_account" type="submit" value="Login!" />
-      </form>
+      <div>
+        This is our PSCP project!<br />
+        It's more than just a note, it's a personal diary.
+      </div>
+
+      <div class="welcome-button">
+        <form action="/register">
+          <input class="btn btn-primary " type="submit" value="Get Started!" />
+        </form>
+        <form action="/login">
+          <input class="btn ardy_account" type="submit" value="Login!" />
+        </form>
+      </div>
     </div>
   </div>
 </div>
+
 
 <!-- Gong Request -->
 <div class="wide">

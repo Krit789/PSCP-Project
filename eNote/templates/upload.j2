@@ -29,15 +29,15 @@
 </style>
 <h3>Profile Picture Upload</h3>
 <div class="my-2 d-flex justify-content-center">
-{% if not current_user.profile_img %}
-<img class="img-thumbnail rounded-circle"
-  src="https://ui-avatars.com/api/?name={{current_user.first_name[0]}}+{{current_user.last_name[0]}}&size=256">
-{% else %}
-<a href="/user/pict/view">
-  <img class="img-thumbnail rounded-circle" style="width: 50%;"
-    src="/static/uploads/profile/t_{{ current_user.profile_img }}">
-</a>
-{% endif %}
+  {% if not current_user.profile_img %}
+  <img class="img-thumbnail rounded-circle"
+    src="https://ui-avatars.com/api/?name={{current_user.first_name[0]}}+{{current_user.last_name[0]}}&size=256">
+  {% else %}
+  <a href="/user/pict/view">
+    <img class="img-thumbnail rounded-circle" style="width: 50%;"
+      src="/static/uploads/profile/t_{{ current_user.profile_img }}">
+  </a>
+  {% endif %}
 </div>
 <p>Supported formats included <code>jpeg png webp heic avif</code> with size under 8 MB</p>
 <form method=post enctype=multipart/form-data>

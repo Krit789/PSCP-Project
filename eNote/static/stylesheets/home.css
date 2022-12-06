@@ -9,14 +9,14 @@
 }
 
 .welcome_outer {
-    width: 100%;
-    min-height: calc(100vh - 50px);
+    width: 100vw;
+    /*min-height: calc(100vh - 50px);
     padding: 25vh 10px;
+    */
+    min-height: calc(65vh - 60px);
     background-color: #f7fff9;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0px;
+    padding: auto;
+
 }
 
 .welcome_paragraph {
@@ -33,7 +33,13 @@
 
 /* Two column */
 .row {
+    min-height: calc(65vh - 60px);
     display: flex;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto auto;
 }
 
 .column {
@@ -50,11 +56,15 @@
 
 .left {
     width: 250px;
-    height: min-content;
+    height: auto;
+    margin: auto 0px;
+
 }
 
 .right {
     width: fit-content;
+    margin: auto 0px;
+
 }
 
 .welcome-img {
@@ -68,14 +78,14 @@
 }
 
 .wide-img {
-    width: 100% ;
-    height: 50vh;
+    width: 100%;
+    height: 40vh;
     display: block;
     object-fit: cover;
 
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 990px) {
 
     .column {
         padding: 10px 0px;
@@ -101,6 +111,19 @@
     }
 
 }
+
+@media only screen and (max-width: 595px) {
+    .welcome_outer {
+        min-height: calc(100vh - 60px) !important;
+    }
+
+    .row {
+        min-height: calc(60vh - 60px);
+        padding-top: 50px !important;
+
+    }
+}
+
 
 .btn-primary {
     margin: 15px 0px 15px 0px !important;
@@ -168,4 +191,148 @@
     border-radius: 100%;
     border-style: solid;
     border-color: black;
+}
+
+/* ******************************* From about.css ******************************* */
+
+.profile-pics {
+    height: 50%;
+    position: relative;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
+    margin-left: -10px;
+}
+
+@media screen and (max-width: 990px) {
+    .module {
+        display: grid;
+        column-gap: 0.5em;
+    }
+
+    .left_module {
+        grid-template-columns: auto !important;
+        grid-template-rows: auto auto auto auto !important;
+    }
+
+    .right_module {
+        grid-template-columns: auto !important;
+        grid-template-rows: auto auto auto auto !important;
+    }
+
+    .left_userpics {
+        grid-area: 1 / 1 / 1 / 1 !important;
+    }
+
+    .left-title {
+        grid-column: 1 !important;
+        text-align: center !important;
+    }
+
+    .right-title {
+        text-align: center !important;
+    }
+
+    .right_userpics {
+        grid-area: 1 / 1 / 1 / 1 !important;
+    }
+
+    .userpics {
+        width: 55% !important;
+    }
+
+    .abt-head {
+        margin-top: 30px !important;
+    }
+}
+
+.welcome_paragraph {
+    border-radius: 0%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .outer_box {
+        max-width: 100%;
+    }
+}
+
+.outer_box {
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-style: solid;
+
+    padding: 25px 10px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center !important;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: rgba(236, 236, 236, 0.5);
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+    border-radius: calc(100vh * 0.02);
+}
+
+.module {
+    display: grid;
+    column-gap: 0.5em;
+}
+
+.left_module {
+    grid-template-columns: 10em auto;
+    grid-template-rows: 2em 1.5em auto;
+}
+
+.right_module {
+    grid-template-columns: auto 10em;
+    grid-template-rows: 2em 1.5em auto;
+}
+
+.left_userpics {
+    grid-area: 1 / 1 / span 3 / 1;
+    grid-row: 1 / span 3;
+}
+
+.left-title {
+    grid-column: 2;
+    text-align: left;
+}
+
+.left-para {
+    text-align: justify;
+}
+
+.right-title {
+    grid-column: 1;
+    text-align: right;
+}
+
+.right-para {
+    text-align: justify;
+}
+
+.right_userpics {
+    grid-area: 1 / 2 / span 3 / 2;
+}
+
+.userpics {
+    width: 90%;
+    border-radius: 100%;
+    border: rgba(0, 0, 0, 1) solid 1px;
+}
+
+.username {
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.userid {
+    font-size: 90%;
+    font-weight: 600;
+}
+
+.userdesc {
+    text-indent: 40px;
 }
