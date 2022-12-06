@@ -2,7 +2,7 @@
 from flask import Flask, render_template
 from flask_compress import Compress
 from flask_sqlalchemy import SQLAlchemy
-from os.path import exists, abspath, dirname
+from os.path import exists, abspath, dirname, join
 from flask_login import LoginManager
 import secrets
 
@@ -64,19 +64,20 @@ def create_app():
 
 def generate_secrets() -> str:
     '''Generate a cryptographically secure secrets in instance folder'''
-    if not exists('instance/secrets'):
+    secrets_path = join('instance/secrets')
+    if not exists(secrets_path):
         print("Secrets not generated yet. Generating secrets...")
-        with open('instance/secrets', 'w') as f:
+        with open(secrets_path, 'w') as f:
             conf_secret = secrets.token_hex() 
             f.write(conf_secret)
     else:
         print("Secrets already generated")
-        with open('instance/secrets', 'r') as f:
+        with open(secrets_path, 'r') as f:
             conf_secret = f.read()
     return conf_secret
 
 def create_database(app):
-    if not exists('instance/' + DB_NAME):
+    if not exists(join(abspath(dirname(__file__)), '..', str('instance/' + DB_NAME))):
         with app.app_context():
             db.create_all()
             print("Database Created!")
