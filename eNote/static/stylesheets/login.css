@@ -63,11 +63,26 @@ body {
     padding: 0;
   }
 }
+
 .btn-primary {
   margin: 15px 0px 15px 0px !important;
-  background-color: #005eb8 !important;
+  background-color: #005EB8 !important;
   font-size: medium !important;
   border-radius: 12px !important;
+}
+
+
+.btn-danger {
+  margin-right: 15px;
+  margin-left: 15px;
+  font-size: medium !important;
+  border-radius: 12px !important;
+  background-color: #bc2813 !important;
+}
+
+.blue-text {
+  color: #005EB8;
+  font-weight: 500;
 }
 
 .e_title {
