@@ -6,10 +6,11 @@ body {
   font-family: "Roboto", sans-serif !important;
   font-weight: 300;
 }
-
+F
 .note-container {
   height: 120%;
   padding: 20px 0px;
+  overflow: hiddenx;
 }
 
 .body-bg {
@@ -119,17 +120,41 @@ textarea {
 .dropdown-menu>li:hover>.dropdown-submenu {
   display: block;
 }
+
 .content-head {
   width: 100%;
+}
+
+.first-row {
+  height: 100% !important;
+}
+
+.first-row-left {
+  margin: auto;
+  height: 100%;
+}
+
+.first-row-pics {
+  margin: auto;
+}
+
+.first-row-details {
+  margin: auto;
+}
+
+.second-row {
+  margin-top: 15px;
 }
 
 @keyframes blinker {
   0% {
     opacity: 1.0;
   }
+
   50% {
     opacity: 0.0;
   }
+
   100% {
     opacity: 1.0;
   }
@@ -146,7 +171,10 @@ textarea {
 
 }
 
-#rendered_text table, th, td, tr {
+#rendered_text table,
+th,
+td,
+tr {
   border: 1px solid !important;
 }
 
@@ -155,6 +183,7 @@ textarea {
     width: 100px !important;
   }
 }
+
 @media only screen and (max-width: 2047px) {
   .profile_img {
     width: 100px !important;
@@ -166,4 +195,18 @@ textarea {
   .profile_img {
     width: 120px !important;
   }
+}
+
+@media only screen and (max-width: 575px) {
+  .create-note{
+    margin-top: 20px !important;
+  }
+  .containter-box{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+  }
+}
+
+.create-note{
+  margin-top: 0px ;
 }

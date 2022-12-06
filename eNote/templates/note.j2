@@ -15,41 +15,42 @@
 {% endblock %}
 {% block row1 %}
 <div class="col-sm-6 col-md-6">
-  <div class="containter-box">
-    <div class="row">
-      <div class="col-sm col-2-md">
-      <div class="profile_img mx-auto">
-      {% if not current_user.profile_img %}
+  <div class="containter-box first-row">
+    <div class="row first-row-left">
+      <div class="col-sm col-2-md first-row-pics">
+        <div class="profile_img mx-auto">
+          {% if not current_user.profile_img %}
           <a href="/user/pict" data-mdb-toggle="tooltip" title="Change your profile image">
-            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;" src="https://ui-avatars.com/api/?name={{current_user.first_name[0]}}+{{current_user.last_name[0]}}&size=256"></a>
-      {% else %}
+            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;"
+              src="https://ui-avatars.com/api/?name={{current_user.first_name[0]}}+{{current_user.last_name[0]}}&size=256"></a>
+          {% else %}
           <a href="/user/pict/view">
-            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;" src="static/uploads/profile/t_{{ current_user.profile_img }}"
-              alt="{{ current_user.first_name }}"></a>
-      {% endif %}
+            <img class="img-thumbnail rounded-circle" style="display:block; margin:auto;"
+              src="static/uploads/profile/t_{{ current_user.profile_img }}" alt="{{ current_user.first_name }}"></a>
+          {% endif %}
+        </div>
       </div>
-      </div>
-      <div class="col">
-      <span class="mx-auto">
-        <h3>Hello, {{ current_user.first_name}}</h3>
-        <p style="font-size:medium;">{{ current_user.email}}<br />
-        {% if note_count > 1 %}
-        You currently have {{ note_count }} notes.
-        {% else %}
-        {% if note_count == 1 %}
-        You currently have 1 note.
-        {% else %}
-        You don't have any notes... yet
-        {% endif %}
-        {% endif %}
-        </p>
+      <div class="col first-row-details">
+        <span class="mx-auto">
+          <h3>Hello, {{ current_user.first_name}}</h3>
+          <p style="font-size:medium;">{{ current_user.email}}<br />
+            {% if note_count > 1 %}
+            You currently have {{ note_count }} notes.
+            {% else %}
+            {% if note_count == 1 %}
+            You currently have 1 note.
+            {% else %}
+            You don't have any notes... yet
+            {% endif %}
+            {% endif %}
+          </p>F
         </span>
       </div>
     </div>
   </div>
 </div>
-<div class="col-sm-6 col-md-6">
-  <div class="containter-box">
+<div class="col-sm-6 col-md-6 create-note">
+  <div class="containter-box first-row">
     <div id="blinker">
       <h4>Create Note</h4>
       <form action=" /note/edit" method="POST">
