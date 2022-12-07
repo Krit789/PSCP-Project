@@ -13,9 +13,10 @@
     /*min-height: calc(100vh - 50px);
     padding: 25vh 10px;
     */
-    min-height: calc(65vh - 60px);
-    background-color: #f7fff9;
+    height: calc(100vh - 60px);
+    background-color: #aadeff;
     padding: auto;
+    width: 100vw;
 
 }
 
@@ -33,7 +34,7 @@
 
 /* Two column */
 .row {
-    min-height: calc(65vh - 60px);
+    min-height: calc(100vh - 60px);
     display: flex;
     max-width: 100%;
     display: flex;
@@ -55,16 +56,26 @@
 }
 
 .left {
-    width: 250px;
-    height: auto;
+    padding-top: 20vh;
+    height: calc(100vh - 60px);
+    width: fit-content;
     margin: auto 0px;
 
 }
 
 .right {
-    width: fit-content;
+    width: 645px;
+    height: auto;
     margin: auto 0px;
+}
 
+.devices-img {
+    margin-left: 150px;
+    width: 150%;
+}
+
+.info {
+    margin: auto 0px;
 }
 
 .welcome-img {
@@ -110,6 +121,16 @@
         font-size: 70px;
     }
 
+    .left {
+        padding-top: 40px;
+        height: auto;
+    }
+
+    .devices-img {
+        width: 500px;
+        margin: 60px 0px 0px 0px;
+        object-fit: fill;
+    }
 }
 
 @media only screen and (max-width: 595px) {
