@@ -12,3 +12,8 @@ def home_page():
 @pages.route('/about')
 def about_page():
     return render_template('about.html')
+
+@pages.route('/flash/<flash_t>')
+def flash_test(flash_t):
+    flash('This is a test', category=flash_t)
+    return render_template('login.html')

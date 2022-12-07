@@ -164,6 +164,27 @@ body {
   backdrop-filter: blur(0px) !important;
 }
 
+.swal2-icon.swal2-info {
+  border-color: #5fd7ff !important;
+}
+
+.swal2-success-ring {
+  border-color: #81ff39 !important;
+}
+
+.swal2-success-line-tip, .swal2-success-line-long {
+  background-color: #81ff39 !important;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: #ffb811 !important;
+  color: #ffb811 !important;
+}
+
+.swal2-icon.swal2-question {
+  border-color: #97a3a9 !important;
+}
+
 .home-icon {
   float: left;
   margin-right: -45px;

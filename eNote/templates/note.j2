@@ -31,16 +31,16 @@
         </div>
       </div>
       <div class="col first-row-details">
-        <span class="mx-auto">
+        <span class="mx-auto" style="padding-top: 10px !important;">
           <h3>Hello, {{ current_user.first_name}}</h3>
-          <p style="font-size:medium;">{{ current_user.email}}<br />
+          <p class="user-detail">{{ current_user.email}}<br />
             {% if note_count > 1 %}
             You currently have {{ note_count }} notes.
             {% else %}
             {% if note_count == 1 %}
             You currently have 1 note.
             {% else %}
-            You don't have any notes... yet
+            You don't have any notes
             {% endif %}
             {% endif %}
           </p>
@@ -57,21 +57,22 @@
         <div class="row">
           <input type="text" name="action" value="create" hidden />
           <div class="col">
-            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type"
               value="blank" data-mdb-toggle="tooltip" title="Create a blank note">
-              <i class="fa-solid fa-border-top-left"></i>&nbsp;&nbsp;Blank
+              <i style="font-size: xx-large;" class="fa-solid fa-border-top-left mb-2"></i><br />Blank
             </button>
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type"
               value="simple" data-mdb-toggle="tooltip" title="Create note with simple plaintext editor">
-              <i class="fa-solid fa-note-sticky"></i>&nbsp;&nbsp;Quick
+              <i style="font-size: xx-large;" class="fa-solid fa-note-sticky  mb-2"></i><br />Quick
             </button>
+            
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-tertiary" data-mdb-ripple-color="light" name="editor_type" value="full"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type" value="full"
               data-mdb-toggle="tooltip" title="Create note with full feature editor">
-              <i class="fa-solid fa-list"></i>&nbsp;&nbsp;Advanced
+              <i style="font-size: xx-large;" class="fa-solid fa-list  mb-2"></i><br />Advanced
             </button>
           </div>
         </div>
