@@ -10,7 +10,7 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 UPLOAD_FOLDER = abspath(dirname(__file__)) + '/static/uploads'
 PROFILE_IMG_FOLDER = abspath(dirname(__file__)) + '/static/uploads/profile'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'heic', 'avif'}
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'jfif', 'png', 'webp', 'heic', 'avif', 'tiff', 'tif'}
 
 def create_app():
     '''Create an instance of Flask app'''

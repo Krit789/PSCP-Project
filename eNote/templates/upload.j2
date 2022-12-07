@@ -5,27 +5,6 @@
   td {
     padding-right: 10px;
   }
-
-  .btn-primary {
-    margin: 15px 0px 15px 0px !important;
-    background-color: #005EB8 !important;
-    font-size: medium !important;
-    border-radius: 12px !important;
-  }
-
-
-  .btn-danger {
-    margin-right: 15px;
-    margin-left: 15px;
-    font-size: medium !important;
-    border-radius: 12px !important;
-    background-color: #bc2813 !important;
-  }
-
-  .blue-text {
-    color: #005EB8;
-    font-weight: 500;
-  }
 </style>
 <h3>Profile Picture Upload</h3>
 <div class="my-2 d-flex justify-content-center">
@@ -39,14 +18,14 @@
   </a>
   {% endif %}
 </div>
-<p>Supported formats included <code>jpeg png webp heic avif</code> with size under 8 MB</p>
+<p>Supported formats included <code>jpeg png tiff webp heic avif</code> with size under 8 MB</p>
 <form method=post enctype=multipart/form-data>
   <label class="form-label" for="customFile">Your Picture</label>
-  <input type="file" name=file class="form-control" id="customFile" style="width: 75%; margin:auto;" required />
+  <input type="file" accept=".jpg, .jpeg, .jfif, .png, .heic, .webp, .avif, .tiff, .tif" name=file class="form-control" id="customFile" style="width: 75%; margin:auto;" required />
   <br>
   <input type=submit class="btn btn-primary" name="action" value=Upload />
 </form>
-<form method=post>
+<form method=post class="my-2">
   <input type=submit class="btn btn-danger" name="action" value="Delete" />
 </form>
 {% endblock %}

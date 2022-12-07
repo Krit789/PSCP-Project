@@ -5,6 +5,8 @@ from os import remove
 from flask import current_app as app
 from secrets import token_urlsafe
 
+lossy_formats = ('jpg', 'jpeg', 'webp', 'heic', 'avif', 'jfif', 'tiff', 'tif')
+
 def make_square(filename):
     file_ext = filename.rsplit('.', 1)[1].lower()
     new_name = token_urlsafe(16)
@@ -44,7 +46,7 @@ def make_square(filename):
             (left, upper, right, lower) = (0, cut_off//2, width, height-cut_off//2)
             im = im.crop((left, upper, right, lower))
         width, height = im.size
-        if file_ext in ('jpg', 'jpeg', 'webp', 'heic', 'avif'):
+        if file_ext in lossy_formats:
             full_width = 2048 if width > 2048 else width
         elif file_ext == 'png':
             full_width = 1024 if width > 1024 else width
@@ -59,7 +61,7 @@ def make_square(filename):
             thumb += 'png'
             img_full.save(join(app.config['PROFILE_IMG_FOLDER'], full).replace('\\', '/'), optimize=True)
             img_thumb.save(join(app.config['PROFILE_IMG_FOLDER'], thumb).replace('\\', '/'), optimize=True)
-        elif file_ext in ('jpg', 'jpeg', 'webp', 'heic', 'avif'):
+        elif file_ext in lossy_formats:
             full += 'webp'
             thumb += 'webp'
             img_full.save(join(app.config['PROFILE_IMG_FOLDER'], full).replace('\\', '/'), quality=80)

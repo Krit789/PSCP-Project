@@ -190,6 +190,7 @@ def webp_viewer():
     <!DOCTYPE html>
     <html lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/static/images/logo/favicon.ico">
     <head>
     <title>Profile Image Viewer</title>
     </head>

@@ -65,7 +65,6 @@ body {
 }
 
 .btn-primary {
-  margin: 15px 0px 15px 0px !important;
   background-color: #005EB8 !important;
   font-size: medium !important;
   border-radius: 12px !important;
@@ -73,8 +72,6 @@ body {
 
 
 .btn-danger {
-  margin-right: 15px;
-  margin-left: 15px;
   font-size: medium !important;
   border-radius: 12px !important;
   background-color: #bc2813 !important;
