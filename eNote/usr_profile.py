@@ -38,12 +38,13 @@ def user_profile():
         if delete:
             account = User.query.filter_by(id=current_user.id).one()
             notes = Note.query.filter_by(user_id=current_user.id)
-            filename = 't_' + account.profile_img
-            try:
-                remove(join(app.config['PROFILE_IMG_FOLDER'], account.profile_img).replace('\\', '/'))
-                remove(join(app.config['PROFILE_IMG_FOLDER'], filename).replace('\\', '/'))
-            except FileNotFoundError:
-                flash("FileNotFoundError was rasied", category='warning')
+            if account.profile_img is not None:
+                filename = 't_' + account.profile_img
+                try:
+                    remove(join(app.config['PROFILE_IMG_FOLDER'], account.profile_img).replace('\\', '/'))
+                    remove(join(app.config['PROFILE_IMG_FOLDER'], filename).replace('\\', '/'))
+                except FileNotFoundError:
+                    flash("FileNotFoundError was rasied", category='warning')
             try:
                 db.session.delete(notes)
             except:

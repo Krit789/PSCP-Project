@@ -4,7 +4,8 @@ from time import time as tme
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .scrypt_hashing import generate_password_hash, check_password_hash
-from .models import User
+from .models import User, Note
+from os.path import join
 import secrets
 
 auth = Blueprint('auth', __name__)
@@ -79,6 +80,15 @@ def register_page():
                     new_user.last_name = None
                 db.session.add(new_user)
                 db.session.commit()
+                try:
+                    with open(join('eNote/static/demo_file.txt'), 'r') as f:
+                        demo_content = f.read()
+                    new_user_search = User.query.filter_by(username=username).first()
+                    demo_page = Note(title='Demo Note', content=demo_content, user_id=new_user_search.id)
+                    db.session.add(demo_page)
+                    db.session.commit()
+                except:
+                    print("Demo File not found")
                 flash('Account created!', category='success')
                 return redirect(url_for('auth.login_page'))
             return render_template('register.html', bg_img=rand_img)

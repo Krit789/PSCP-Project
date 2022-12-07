@@ -80,12 +80,13 @@
 </table>
 <hr />
 <div id="rendered_text" class="p-4 rounded bg-white"></div>
-<textarea id="note_unedited" hidden>{{ note.content }}</textarea>
+<pre id="note_unedited" hidden>{{ note.content|safe }}</pre>
 {% endblock %}
 {% block foot %}
 <script>
-  const converter = new showdown.Converter({ tables: true });
-  converter.setOption('simpleLineBreaks', true);
-  document.getElementById("rendered_text").innerHTML = converter.makeHtml(document.getElementById("note_unedited").value);
+  var converter = new showdown.Converter({ tables: true, simpleLineBreaks: true }), 
+  raw_note = document.getElementById("note_unedited").innerHTML.replace("\n\n-----\n\n", "<hr />").replace(/\n{2,}/g, m => m.replace(/\n/g, "<br/>"));
+  raw_note = raw_note.replace(/<br\/>([^<])/g, "<br\/>\n\n$1");
+  document.getElementById("rendered_text").innerHTML = converter.makeHtml(raw_note);
 </script>
 {% endblock %}

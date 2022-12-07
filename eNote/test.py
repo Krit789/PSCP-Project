@@ -1,3 +1,3 @@
-from os.path import abspath, dirname, join
-DB_NAME = 'database.db'
-print(join(abspath(dirname(__file__)), '..', str('instance/' + DB_NAME)))
+from os.path import join, exists
+
+print(exists(join('eNote/static/demo_file.txt')))

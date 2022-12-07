@@ -32,7 +32,7 @@
       </div>
       <div class="col first-row-details">
         <span class="mx-auto" style="padding-top: 10px !important;">
-          <h3>Hello, {{ current_user.first_name}}</h3>
+          <h3>Hello, {{ current_user.first_name }}</h3>
           <p class="user-detail">{{ current_user.email}}<br />
             {% if note_count > 1 %}
             You currently have {{ note_count }} notes.
@@ -57,20 +57,19 @@
         <div class="row">
           <input type="text" name="action" value="create" hidden />
           <div class="col">
-            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2 create-button" data-mdb-ripple-color="light" name="editor_type"
               value="blank" data-mdb-toggle="tooltip" title="Create a blank note">
               <i style="font-size: xx-large;" class="fa-solid fa-border-top-left mb-2"></i><br />Blank
             </button>
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2 create-button" data-mdb-ripple-color="light" name="editor_type"
               value="simple" data-mdb-toggle="tooltip" title="Create note with simple plaintext editor">
               <i style="font-size: xx-large;" class="fa-solid fa-note-sticky  mb-2"></i><br />Quick
             </button>
-            
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2" style="padding: 0 !important; box-shadow: 0px 4px 18px rgb(0 0 0 / 10%); border-radius: 10px" data-mdb-ripple-color="light" name="editor_type" value="full"
+            <button type="submit" class="btn btn-tertiary w-100 h-100 my-2 create-button"data-mdb-ripple-color="light" name="editor_type" value="full"
               data-mdb-toggle="tooltip" title="Create note with full feature editor">
               <i style="font-size: xx-large;" class="fa-solid fa-list  mb-2"></i><br />Advanced
             </button>
@@ -83,7 +82,8 @@
 {% endblock %}
 {% block row2 %}
 <h3>My Notes</h3>
-{% if note_count < 1 %} <ul class="list-group list-group-light">
+{% if note_count < 1 %}
+<ul class="list-group list-group-light">
   <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
     <div>
       <div class="fw-bold">You don't have any notes.
@@ -95,6 +95,16 @@
 
     {% else %}
     <ul class="list-group list-group-light">
+{% if current_user.total_notes < 1 %}
+  <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+    <div>
+      <div class="fw-bold">You don't have any notes.
+      </div>
+      <div class="text-muted">Begin creating one using the options under <a href="javascript:{}"
+          onclick="divBlink()">'Create Note'</a> category</div>
+    </div>
+{% else %}
+{% endif %}
       {% for note in all_note %}
       <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
         <div>

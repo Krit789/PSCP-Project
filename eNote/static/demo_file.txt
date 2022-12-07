@@ -1,0 +1,47 @@
+# Hello! Welcome to <e>Note
+##### This is demo page to help you get started
+##### Begin creating note using the options under 'Create Note' category
+
+
+
+
+-----
+
+
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+Paragraph
+
+**Bold Text**
+*Italic Text*
+Regular Text
+
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| Text     | Text     | Text     |
+| Text     | Text     | Text     |
+| Text     | Text     | Text     |
+
+
+
+*Table Description*
+Unordered List
+* Item 1
+* Item 2
+* Item 3
+* Item 4
+
+Ordered List
+1.  Item 1
+2.  Item 2
+3.  Item 3
+4.  Item 4
+
+[Sample Link](https://www.it.kmitl.ac.th)
+	
+Sample Image
+![Image](/static/images/login/3.jpeg)
