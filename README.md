@@ -71,13 +71,27 @@ Now you're set to begin the next step<br />
 
 ## <b>Running the app</b>
 *Accessible from all network interfaces
+
+### <b>Windows</b>
+
 ### <b>For developemnt</b>
-    python main_dev.py
+    python -m main_dev
 
 ### <b>For production</b>
 Powered by FastWSGI
 
-    python main_prod.py
+    python -m main_prod
+
+### <b>macOS / Linux</b>
+
+### <b>For developemnt</b>
+    python3 -m main_dev
+
+### <b>For production</b>
+Powered by FastWSGI
+
+    python3 -m main_prod
+
 
 ## Built with
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
