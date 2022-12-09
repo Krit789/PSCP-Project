@@ -138,6 +138,22 @@ textarea {
   animation: blinker 0.6s 2;
 }
 
+.blur-effect {
+  background: rgba(251, 251, 253, .6);
+  backdrop-filter: blur(15px) saturate(85px);
+  -webkit-backdrop-filter: blur(15px) saturate(85px);
+
+  -webkit-backdrop-filter: blur(15px) saturate(86%);
+  backdrop-filter: blur(15px) saturate(86%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 
 .user-detail {
   font-size: medium !important;

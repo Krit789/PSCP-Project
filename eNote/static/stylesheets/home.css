@@ -132,6 +132,18 @@
   content: url("/static/images/home/devices_2.avif");
 }
 
+.wide-img {
+  content: url("/static/images/home/home01-WIDE.jpeg");
+}
+
+.webp .wide-img {
+  content: url("/static/images/home/home01-WIDE.webp");
+}
+
+.avif .wide-img {
+  content: url("/static/images/home/home01-WIDE.avif");
+}
+
 /* retina support */
 @media screen and (-webkit-min-device-pixel-ratio: 2),
   screen and (min-resolution: 192dpi),
@@ -147,6 +159,20 @@
   .avif .devices-img {
     content: url("/static/images/home/devices_2@2x.avif");
   }
+  .wide-img {
+    content: url("/static/images/home/home01-WIDE@2x.jpeg");
+  }
+  
+  .webp .wide-img {
+    content: url("/static/images/home/home01-WIDE@2x.webp");
+  }
+  
+  .avif .wide-img {
+    content: url("/static/images/home/home01-WIDE@2x.avif");
+  }
+
+
+
 }
 
 .info {
