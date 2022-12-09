@@ -227,7 +227,7 @@
 
   .devices-img {
     width: 500px;
-    margin: 30px 0px 0px 0px;
+    margin: auto;
     object-fit: fill;
   }
 }
