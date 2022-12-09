@@ -2,6 +2,7 @@
 from flask import Flask, render_template
 from flask_compress import Compress
 from flask_sqlalchemy import SQLAlchemy
+from os import makedirs
 from os.path import exists, abspath, dirname, join
 from flask_login import LoginManager
 import secrets
@@ -69,6 +70,7 @@ def generate_secrets() -> str:
     secrets_path = join('instance/secrets')
     if not exists(secrets_path):
         print("Secrets not generated yet. Generating secrets...")
+        makedirs(join('instance/'))
         with open(secrets_path, 'w') as f:
             conf_secret = secrets.token_hex()
             f.write(conf_secret)

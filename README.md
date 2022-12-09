@@ -26,26 +26,42 @@ Enter project directory
 
     cd PSCP-Project
 
+Python 3.11 Installation for Ubuntu 22.04 LTS
+
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.11
+    sudo apt-get install python3-dev
+    sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin python3.11 2
+Then select number that represent Python 3.11
+
 ## <b>Environments</b>
 It's strongly recommended that you work under python virtual environment
 
 Make sure you have <code>venv</code> installed.
+Windows / macOS
 
     pip install virtualenv
 
-Creating virtual environment
 
-    py -m venv <virtual-environment-name>
+Linux
 
-Activating virtual environment
+    sudo apt-get install python3.11-venv
 
-(Windows - Powershell)
+<b>Creating virtual environment</b>
+
+Windows / macOS / Linux
+
+    python3 -m venv <virtual-environment-name>
+
+<b>Activating virtual environment</b>
+
+Windows Powershell
 
     env/Scripts/Activate.ps1
 
-(macOS / Linux)
+macOS / Linux
 
-    .\/env/Scripts/activate
+    source venv/bin/activate
 
 Now you're set to begin the next step<br />
 
