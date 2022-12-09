@@ -74,7 +74,7 @@ Now you're set to begin the next step<br />
 
 ### <b>Windows</b>
 
-### <b>For developemnt</b>
+### <b>For development</b>
     python -m main_dev
 
 ### <b>For production</b>
@@ -84,7 +84,7 @@ Powered by FastWSGI
 
 ### <b>macOS / Linux</b>
 
-### <b>For developemnt</b>
+### <b>For development</b>
     python3 -m main_dev
 
 ### <b>For production</b>

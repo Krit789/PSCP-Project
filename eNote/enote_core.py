@@ -95,8 +95,6 @@ def note_view(note_id):
     user_note = Note.query.filter_by(id=note_id).first_or_404()
     if user_note.user_id != current_user.id:
         abort(403)
-    print(repr(user_note.content))
-    print(user_note.content)
     return render_template('note_view.j2', note=user_note, bg_img=rand_img())
 
 @core.route('/note/edit', methods=['POST'])
