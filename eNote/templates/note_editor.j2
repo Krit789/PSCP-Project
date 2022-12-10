@@ -80,7 +80,7 @@
   <tr style="border: 0 !important;"">
     <td style="text-align: left; border: 0 !important;">
       <h3>Content</h3>
-    <td style="text-align: right; font-size: x-large; border: 0 !important;vertical-align:text-top; "><span class="badge rounded-pill badge-primary" style="font-size: 12px !important; vertical-align: 43% !important;">{% if editor == 'full' %}Advanced{% else %}Simple{% endif %}</span>&nbsp;&nbsp;&nbsp;{% if not draft %}<a href="/note/{{ note.id }}"
+    <td style="text-align: right; font-size: x-large; border: 0 !important; vertical-align:text-top; "><span class="badge rounded-pill badge-primary" style="font-size: 12px !important; vertical-align: 43% !important;">{% if editor == 'full' %}Advanced{% else %}Simple{% endif %}</span>&nbsp;&nbsp;&nbsp;{% if not draft %}<a href="/note/{{ note.id }}"
         data-mdb-toggle="tooltip" title="Exit discarding changes"><i
           class="fa-solid fa-arrow-right-from-bracket"></i></a>&nbsp;&nbsp;&nbsp;{% else %}{% endif %}<a
         href="javascript:{}" onclick="document.getElementById('note_edit').submit();" data-mdb-toggle="tooltip"

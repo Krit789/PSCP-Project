@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_required, current_user
+from flask import Blueprint, render_template, redirect, url_for, flash
+from flask_login import current_user
 
 pages = Blueprint('pages', __name__)
 
@@ -16,4 +16,4 @@ def about_page():
 @pages.route('/flash/<flash_t>')
 def flash_test(flash_t):
     flash('This is a test', category=flash_t)
-    return render_template('login.html')
+    return redirect(url_for('core.note_home', bg_img=6))

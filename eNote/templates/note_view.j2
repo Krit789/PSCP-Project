@@ -2,6 +2,12 @@
 {% block title %}{{ note.title }}{% endblock %}
 {% block head %}
 <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+<script>
+function changeEditor(etype){
+  document.form_edit_note.editor_type.value = etype;
+  document.getElementById('edit_note').submit();
+}
+</script>
 {% endblock %}
 
 {% block row1 %}
@@ -52,23 +58,29 @@
       <h3>Content</h3>
     </td>
     <td style="text-align: right; font-size: x-large; border: 0 !important;">
-      <form action="/note/edit" method="POST" id="edit_note">
+      <form action="/note/edit" method="POST" id="edit_note" name="form_edit_note">
         <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
-        <div class="dropdown">
+        <input type="hidden" name="editor_type" value=""/>
+<a href="javascript:{}" onclick="changeEditor('share');" data-mdb-toggle="tooltip"
+        title="Note Sharing">
+         <i class="fa-solid fa-share-from-square"></i></a>&nbsp;&nbsp;
+
+        <div class="dropdown" style="display: inline;" >
           <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-pen-to-square"></i></a>
+          <i class="fa-solid fa-pen-to-square" data-mdb-toggle="tooltip"
+        title="Edit Note"></i></a>
           <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
             <p class="px-3 pt-3 text-muted">Editor Type</p>
             <hr style="margin: 0;">
             <li>
-              <button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type"
-                value="full" data-mdb-toggle="tooltip" title="Edit with advanced markdown editor" style="width: 100%;">
+              <button type="submit" onclick="changeEditor('full');" class="btn btn-link" role="link" data-mdb-ripple-color="light"
+                data-mdb-toggle="tooltip" title="Edit with advanced markdown editor" style="width: 100%;">
                 Advanced
               </button>
             </li>
             <hr style="margin: 0;">
-            <li><button type="submit" class="btn btn-link" role="link" data-mdb-ripple-color="light" name="editor_type"
-                value="simple" data-mdb-toggle="tooltip" title="Edit with simple plaintext editor" style="width: 100%;">
+            <li><button type="submit" onclick="changeEditor('simple');" class="btn btn-link" role="link" data-mdb-ripple-color="light"
+                data-mdb-toggle="tooltip" title="Edit with simple plaintext editor" style="width: 100%;">
                 Simple
               </button></li>
           </ul>

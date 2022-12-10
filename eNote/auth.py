@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from time import time as tme
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
+from .md_bleach import bleach
 from .scrypt_hashing import generate_password_hash, check_password_hash
 from .models import User, Note
 from os.path import join
@@ -84,7 +85,7 @@ def register_page():
                     with open(join('eNote/static/demo_file.txt'), 'r') as f:
                         demo_content = f.read()
                     new_user_search = User.query.filter_by(username=username).first()
-                    demo_page = Note(title='Demo Note', content=demo_content, user_id=new_user_search.id)
+                    demo_page = Note(title='Demo Note', content=bleach.clean(demo_content), user_id=new_user_search.id)
                     db.session.add(demo_page)
                     db.session.commit()
                 except:

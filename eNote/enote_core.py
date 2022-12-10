@@ -2,35 +2,13 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from flask_login import login_required, current_user
 from sqlalchemy import desc
 from . import db
-from time import time as tme
 from .models import Note, User
-import bleach
+from .md_bleach import md_cleaner, bleach
 
 core = Blueprint('core', __name__)
 
 def rand_img() -> int:
-    # return (int(str(tme()*1000)[-1]) % 9) + 1
     return 6
-
-def md_cleaner(text: str) -> str:
-    ALLOWED_TAGS = [
-    "h1", "h2", "h3", "h4", "h5", "h6", "hr",
-    "ul", "ol", "li", "p", "br",
-    "pre", "code", "blockquote",
-    "strong", "em", "a", "img", "b", "i",
-    "table", "thead", "tbody", "tr", "th", "td",
-    ]
-    ALLOWED_ATTRIBUTES = {
-        "h1": ["id"], "h2": ["id"], "h3": ["id"],  "h4": ["id"],
-        "a": ["href", "title"],
-        "img": ["src", "title", "alt"],
-    }
-    ALLOWED_PROTOCOLS = ["http", "https", "mailto"]
-    cleaner = bleach.Cleaner(
-                tags=ALLOWED_TAGS,
-                attributes=ALLOWED_ATTRIBUTES,
-                protocols=ALLOWED_PROTOCOLS)
-    return cleaner.clean(text)
 
 @core.errorhandler(404)
 @login_required
@@ -111,6 +89,9 @@ def editor():
             return render_template('note_editor.j2', note=placeholder, bg_img=rand_img(), draft=True, editor=editor_type)
     elif note_id is not None:
         user_note = Note.query.filter_by(id=note_id).first_or_404()
+        if editor_type == 'share':
+            flash('Link Sharing Toggled', category='success')
+            return redirect(url_for('core.note_home'))
         if user_note.user_id != current_user.id:
             abort(403)
         if editor_type not in ('simple', 'full'):

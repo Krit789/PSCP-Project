@@ -13,7 +13,7 @@ body {
 }
 
 .inner-body{
-  z-index: 0;
+  z-index: 10;
 }
 
 .body-bg {
