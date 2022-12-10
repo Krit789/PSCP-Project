@@ -1,4 +1,4 @@
-# Hello! Welcome to <e>Note
+# Hello! Welcome to <e> Note
 ##### This is demo page to help you get started
 ##### Begin creating note using the options under 'Create Note' category
 
