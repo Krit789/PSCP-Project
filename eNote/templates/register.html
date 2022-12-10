@@ -3,34 +3,34 @@
 {% block form %}
 <h3>Registration</h3>
 <form action="/register" method="POST">
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">First Name<label style="color: red;">*</label></label>
-      <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" required />
-    </div>
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Last Name</label>
-      <input type="text" class="form-control" name="lastname" aria-describedby="emailHelp" />
-    </div>
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Username<label style="color: red;">*</label></label>
-      <input type="text" class="form-control" name="username" aria-describedby="emailHelp" required />
-    </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">First Name<label style="color: red;">*</label></label>
+    <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" required />
+  </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+    <input type="text" class="form-control" name="lastname" aria-describedby="emailHelp" />
+  </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Username<label style="color: red;">*</label></label>
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp" required />
+  </div>
 
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Email Address<label style="color: red;">*</label></label>
-      <input type="text" class="form-control" name="email" aria-describedby="emailHelp" required />
-    </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Email Address<label style="color: red;">*</label></label>
+    <input type="text" class="form-control" name="email" aria-describedby="emailHelp" required />
+  </div>
 
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Password<label style="color: red;">*</label></label>
-      <input type="password" class="form-control" name="passwd" aria-describedby="emailHelp" required />
-    </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Password<label style="color: red;">*</label></label>
+    <input type="password" class="form-control" name="passwd" aria-describedby="emailHelp" required />
+  </div>
 
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputPassword1" class="form-label">Confirm Password<label style="color: red;">*</label></label>
-      <input type="password" class="form-control" name="passwdconfirmed" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Create account</button>
-  </form>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputPassword1" class="form-label">Confirm Password<label style="color: red;">*</label></label>
+    <input type="password" class="form-control" name="passwdconfirmed" required />
+  </div>
+  <button type="submit" class="btn btn-primary">Create account</button>
+</form>
 {% endblock %}
 {% block form_desc %}Already have an account? <a href="/login">Log-in here!</a>{% endblock %}

@@ -3,23 +3,23 @@
 {% block form %}
 <h3>Password Editor</h3>
 <form action="/user/password" method="POST">
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Current Password<label style="color: red;">*</label></label>
-      <input type="password" class="form-control" name="currentpass" aria-describedby="emailHelp" required />
-      <hr/>
-    </div>
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">New Password<label style="color: red;">*</label></label>
-      <input type="password" class="form-control" name="newpass" aria-describedby="emailHelp" />
-    </div>
-    <div class="mb-3 ms-4 me-4 align-left form-label">
-      <label for="exampleInputEmail1" class="form-label">Confirm New Password<label style="color: red;">*</label></label>
-      <input type="password" class="form-control" name="confnewpass" aria-describedby="emailHelp" required />
-    </div>
-    <div class="mb-3 ms-4 me-4 form-check align-left">
-      <label class="form-check-label" for="exampleCheck1">Logout of all sessions (recommended)</label>
-      <input type="checkbox" class="form-check-input" name="logout" />
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Current Password<label style="color: red;">*</label></label>
+    <input type="password" class="form-control" name="currentpass" aria-describedby="emailHelp" required />
+    <hr />
   </div>
-    <button type="submit" class="btn btn-primary">Save changes</button>
-  </form>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">New Password<label style="color: red;">*</label></label>
+    <input type="password" class="form-control" name="newpass" aria-describedby="emailHelp" />
+  </div>
+  <div class="mb-3 ms-4 me-4 align-left form-label">
+    <label for="exampleInputEmail1" class="form-label">Confirm New Password<label style="color: red;">*</label></label>
+    <input type="password" class="form-control" name="confnewpass" aria-describedby="emailHelp" required />
+  </div>
+  <div class="mb-3 ms-4 me-4 form-check align-left">
+    <label class="form-check-label" for="exampleCheck1">Logout of all sessions (recommended)</label>
+    <input type="checkbox" class="form-check-input" name="logout" />
+  </div>
+  <button type="submit" class="btn btn-primary">Save changes</button>
+</form>
 {% endblock %}

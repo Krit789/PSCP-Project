@@ -49,9 +49,9 @@
 @font-face {
   font-family: 'sf_thonburibold';
   src: url('../fonts/sfthonburi-bold-webfont.woff2') format('woff2'),
-       url('../fonts/sfthonburi-bold-webfont.woff') format('woff'),
-       url('../fonts/sfthonburi-bold-webfont.ttf') format('truetype'),
-       url('../fonts/sfthonburi-bold-webfont.svg#sf_thonburibold') format('svg');
+    url('../fonts/sfthonburi-bold-webfont.woff') format('woff'),
+    url('../fonts/sfthonburi-bold-webfont.ttf') format('truetype'),
+    url('../fonts/sfthonburi-bold-webfont.svg#sf_thonburibold') format('svg');
   font-weight: normal;
   font-style: normal;
 
@@ -60,9 +60,9 @@
 @font-face {
   font-family: 'sf_thonburiregular';
   src: url('../fonts/sfthonburi-regular-webfont.woff2') format('woff2'),
-       url('../fonts/sfthonburi-regular-webfont.woff') format('woff'),
-       url('../fonts/sfthonburi-regular-webfont.ttf') format('truetype'),
-       url('../fonts/sfthonburi-regular-webfont.svg#sf_thonburiregular') format('svg');
+    url('../fonts/sfthonburi-regular-webfont.woff') format('woff'),
+    url('../fonts/sfthonburi-regular-webfont.ttf') format('truetype'),
+    url('../fonts/sfthonburi-regular-webfont.svg#sf_thonburiregular') format('svg');
   font-weight: normal;
   font-style: normal;
 
@@ -71,9 +71,9 @@
 @font-face {
   font-family: 'sf_thonburisemibold';
   src: url('../fonts/sfthonburi-semibold-webfont.woff2') format('woff2'),
-       url('../fonts/sfthonburi-semibold-webfont.woff') format('woff'),
-       url('../fonts/sfthonburi-semibold-webfont.ttf') format('truetype'),
-       url('../fonts/sfthonburi-semibold-webfont.svg#sf_thonburisemibold') format('svg');
+    url('../fonts/sfthonburi-semibold-webfont.woff') format('woff'),
+    url('../fonts/sfthonburi-semibold-webfont.ttf') format('truetype'),
+    url('../fonts/sfthonburi-semibold-webfont.svg#sf_thonburisemibold') format('svg');
   font-weight: normal;
   font-style: normal;
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>{% block title %}{% endblock %} - &lt;e&gt;Note</title>
@@ -26,17 +27,32 @@
   <style>
     .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.jpeg");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
 
     .webp .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.webp");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
 
     .avif .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.avif");
-      {{ custom_bg|safe }}
+
+        {
+          {
+          custom_bg|safe
+        }
+      }
     }
 
     /* retina support */
@@ -45,17 +61,32 @@
     screen and (min-resolution: 2dppx) {
       .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.jpeg");
-        {{ custom_bg|safe }}
+
+          {
+            {
+            custom_bg|safe
+          }
+        }
       }
 
       .webp .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.webp");
-        {{ custom_bg|safe }}
+
+          {
+            {
+            custom_bg|safe
+          }
+        }
       }
 
       .avif .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.avif");
-        {{ custom_bg|safe }}
+
+          {
+            {
+            custom_bg|safe
+          }
+        }
       }
     }
   </style>
@@ -64,85 +95,85 @@
 <body class="img1">
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-      {% for category, message in messages %}
-      {% if category == 'error' %}
-      <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: "{{message|safe}}",
-        customClass: {
-          confirmButton: 'btn btn-primary',
-        }
-      })
-      </script>
-      {% else %}
-      {% if category == 'success' %}
-      <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: "{{message|safe}}",
-          customClass: {
-            confirmButton: 'btn btn-primary',
-          }
-        })
-        </script>
-        {% else %}
-        {% if category == 'warning' %}
-        <script>
-          Swal.fire({
-            icon: 'warning',
-            title: 'Warning!',
-            text: "{{message|safe}}",
-            customClass: {
-              confirmButton: 'btn btn-primary',
-            }
-          })
-          </script>
-          {% else %}
-        {% if category == 'question' %}
-      <script>
-        Swal.fire({
-          icon: 'question',
-          title: 'Do you want to?',
-          text: "{{message|safe}}",
-          customClass: {
-            confirmButton: 'btn btn-primary',
-          }
-        })
-        </script>
-        {% else %}
-        {% if category == 'talert' %}
-      <script>
-        Swal.fire({
-          icon: 'info',
-          title: 'Info',
-          showConfirmButton: false,
-          timer: 1500,
-          text: "{{message|safe}}",
-          customClass: {
-            confirmButton: 'btn btn-primary',
-          }
-        })
-        </script>
-        {% else %}
-      <script>
-        Swal.fire({
-          icon: 'info',
-          title: 'Info',
-          text: "{{message|safe}}",
-          customClass: {
-            confirmButton: 'btn btn-primary',
-          }
-        })
-        </script>
-        {% endif %}
-        {% endif %}
-      {% endif %}
-      {% endif %}
-      {% endif %}
-      {% endfor %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'success' %}
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: 'Success!',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'warning' %}
+  <script>
+    Swal.fire({
+      icon: 'warning',
+      title: 'Warning!',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'question' %}
+  <script>
+    Swal.fire({
+      icon: 'question',
+      title: 'Do you want to?',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  {% if category == 'talert' %}
+  <script>
+    Swal.fire({
+      icon: 'info',
+      title: 'Info',
+      showConfirmButton: false,
+      timer: 1500,
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% else %}
+  <script>
+    Swal.fire({
+      icon: 'info',
+      title: 'Info',
+      text: "{{message|safe}}",
+      customClass: {
+        confirmButton: 'btn btn-primary',
+      }
+    })
+  </script>
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  {% endfor %}
   {% endif %}
   {% endwith %}
   <div class="box_center">

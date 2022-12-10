@@ -4,6 +4,8 @@
   color: black;
 }
 
+
+
 .welcome-button {
   margin-top: 10px;
 }
@@ -313,8 +315,12 @@ screen and (min-resolution: 2dppx) {
 
   /******************* Part2 *******************/
 
+  .sec2-left {
+    padding-bottom: 8px;
+  }
+
   .default-flex {
-    padding-top: 100px;
+    padding-top: 40px;
   }
 
   .detail-title {
@@ -323,21 +329,22 @@ screen and (min-resolution: 2dppx) {
   }
 
   .note-ui {
+    padding: 0px;
     max-width: 90vw;
     margin: 0px auto;
   }
 
   /******************* Part3 *******************/
 
-  .sec3-title{
-    padding:0%;
+  .sec3-title {
+    padding: 0%;
   }
 
-  .flex-sec3{
+  .flex-sec3 {
     flex-direction: column-reverse;
   }
 
-  .sec3-img{
+  .sec3-img {
     margin-top: 50px;
     max-height: 80vh;
     max-width: 60vw;

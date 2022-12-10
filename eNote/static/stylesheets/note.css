@@ -12,7 +12,7 @@ body {
 
 }
 
-.inner-body{
+.inner-body {
   z-index: 10;
 }
 
@@ -43,8 +43,8 @@ body {
   z-index: 2;
 }
 
-.row{
-  margin:-10px 0px;
+.row {
+  margin: -10px 0px;
 }
 
 blockquote {

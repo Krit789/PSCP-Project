@@ -151,6 +151,7 @@ body {
   backdrop-filter: blur(80px) !important;
   -webkit-backdrop-filter: blur(80px) !important;
 }
+
 .swal2-success-circular-line-left {
   backdrop-filter: blur(0px) !important;
 }
@@ -172,7 +173,8 @@ body {
   border-color: #81ff39 !important;
 }
 
-.swal2-success-line-tip, .swal2-success-line-long {
+.swal2-success-line-tip,
+.swal2-success-line-long {
   background-color: #81ff39 !important;
 }
 
