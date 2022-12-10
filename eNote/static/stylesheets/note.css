@@ -9,7 +9,7 @@ body {
 .note-container {
   height: 120%;
   padding: 20px 0px;
-  overflow: hidden;
+
 }
 
 .inner-body{
@@ -33,7 +33,6 @@ body {
   margin-top: 20px;
   text-align: center !important;
   padding: 15px;
-
   background-color: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(15px) saturate(86%);
   -webkit-backface-visibility: hidden;
@@ -41,6 +40,7 @@ body {
   backdrop-filter: blur(15px) saturate(86%);
   border-radius: 10px;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
 .row{
@@ -218,11 +218,6 @@ tr {
 @media only screen and (max-width: 575px) {
   .create-note {
     margin-top: 20px !important;
-  }
-
-  .containter-box {
-    margin-left: 15px !important;
-    margin-right: 15px !important;
   }
 }
 
