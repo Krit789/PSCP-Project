@@ -200,7 +200,7 @@ screen and (min-resolution: 2dppx) {
 
 /******************* Part2 *******************/
 
-.section-2 {
+.default-flex {
   background-color: white;
   width: 100%;
   height: 100%;
@@ -268,6 +268,7 @@ screen and (min-resolution: 2dppx) {
   object-fit: cover;
 }
 
+
 @media only screen and (max-width: 990px) {
   .column {
     padding: 10px 0px;
@@ -307,11 +308,12 @@ screen and (min-resolution: 2dppx) {
   .flex-item-right,
   .flex-item-left {
     flex: 100%;
+    width: 100vw;
   }
 
   /******************* Part2 *******************/
 
-  .section-2 {
+  .default-flex {
     padding-top: 100px;
   }
 
@@ -325,6 +327,21 @@ screen and (min-resolution: 2dppx) {
     margin: 0px auto;
   }
 
+  /******************* Part3 *******************/
+
+  .sec3-title{
+    padding:0%;
+  }
+
+  .flex-sec3{
+    flex-direction: column-reverse;
+  }
+
+  .sec3-img{
+    margin-top: 50px;
+    max-height: 80vh;
+    max-width: 60vw;
+  }
 
 
 
