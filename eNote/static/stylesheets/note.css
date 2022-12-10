@@ -1,16 +1,15 @@
 body {
-  width: 100%;
-  min-height: calc(100% - 60px);
   margin: 0;
   margin-top: 60px;
   font-family: "Roboto", sans-serif !important;
   font-weight: 300;
+  overflow-x: hidden !important;
 }
 
 .note-container {
   height: 120%;
   padding: 20px 0px;
-  overflow: hiddenx;
+  overflow: hidden;
 }
 
 .body-bg {
@@ -41,6 +40,10 @@ body {
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
 }
 
+.row{
+  margin:-10px 0px;
+}
+
 blockquote {
   background-color: #e2e2e2;
   padding: 15px;
@@ -61,11 +64,18 @@ textarea {
   background-color: white !important;
 }
 
-#rendered_text, .EasyMDEContainer, #rendered_text h4, #rendered_text h5, #rendered_text h6 {
+#rendered_text,
+.EasyMDEContainer,
+#rendered_text h4,
+#rendered_text h5,
+#rendered_text h6 {
   font-family: "sf_thonburiregular", Arial, Helvetica, sans-serif;
 }
 
-#rendered_text h1, #rendered_text h2, #rendered_text h3, #rendered_text strong {
+#rendered_text h1,
+#rendered_text h2,
+#rendered_text h3,
+#rendered_text strong {
   font-family: "sf_thonburibold", Arial, Helvetica, sans-serif !important;
 }
 
@@ -167,6 +177,7 @@ textarea {
   border-collapse: collapse;
 
 }
+
 #rendered_text table,
 th,
 td,
@@ -202,17 +213,18 @@ tr {
 }
 
 @media only screen and (max-width: 575px) {
-  .create-note{
+  .create-note {
     margin-top: 20px !important;
   }
-  .containter-box{
+
+  .containter-box {
     margin-left: 15px !important;
     margin-right: 15px !important;
   }
 }
 
-.create-note{
-  margin-top: 0px ;
+.create-note {
+  margin-top: 0px;
 }
 
 .create-button {
@@ -225,5 +237,5 @@ tr {
 .create-button:hover {
   background-color: rgba(255, 255, 255, 0.35) !important;
   box-shadow: 0px 4px 18px rgb(0 0 0 / 20%) !important;
-  transform: scale(1.05 );
+  transform: scale(1.05);
 }
