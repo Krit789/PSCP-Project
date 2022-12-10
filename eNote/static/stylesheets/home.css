@@ -4,8 +4,6 @@
   color: black;
 }
 
-
-
 .welcome-button {
   margin-top: 10px;
 }
@@ -236,7 +234,7 @@ screen and (min-resolution: 2dppx) {
   content: url("/static/images/home/train02.png");
   background-repeat: no-repeat;
   object-fit: cover;
-  max-height: 105%;
+  max-height: 90vh;
   z-index: 0;
 }
 
@@ -345,7 +343,7 @@ screen and (min-resolution: 2dppx) {
   }
 
   .sec3-img {
-    margin-top: 50px;
+    margin-top: 20px;
     max-height: 80vh;
     max-width: 60vw;
   }
