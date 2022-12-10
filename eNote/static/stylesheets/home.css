@@ -109,10 +109,10 @@
 }
 
 .left {
-  padding-top: 20vh;
-  height: calc(100vh - 60px);
+  /*height: calc(100vh - 60px);*/
   width: fit-content;
   margin: auto 0px;
+  padding-bottom: 10vh;
 }
 
 .right {
@@ -231,6 +231,7 @@ screen and (min-resolution: 2dppx) {
   .left {
     padding-top: 40px;
     height: auto;
+    flex: 100%;
   }
 
   .devices-img {
