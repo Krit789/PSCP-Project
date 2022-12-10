@@ -180,8 +180,6 @@ screen and (min-resolution: 2dppx) {
     content: url("/static/images/home/home01-WIDE@2x.avif");
   }
 
-
-
 }
 
 .info {
@@ -193,6 +191,13 @@ screen and (min-resolution: 2dppx) {
   border-radius: 30px;
 }
 
+.flex-item-right,
+.flex-item-left {
+  flex: 50%;
+  width: 50vh;
+  margin: auto;
+}
+
 /******************* Part2 *******************/
 
 .section-2 {
@@ -201,11 +206,11 @@ screen and (min-resolution: 2dppx) {
   height: 100%;
   z-index: 0;
   position: relative;
-  padding: 25px 0px;
+  padding: 35px 0px;
 }
 
-.sec2-title {
-  font-size: 50px;
+.detail-title {
+  font-size: 45px;
   font-weight: 400;
   color: black;
 }
@@ -214,16 +219,14 @@ screen and (min-resolution: 2dppx) {
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
+  max-height: 100%;
 }
 
-.flex-item-left {
-  flex: 50%;
-  margin: auto;
+.sec2-left {
   padding: 0px 7vw 60px 7vw;
 }
 
-.flex-item-right {
-  flex: 50%;
+.sec2-right {
   width: 50vw;
 }
 
@@ -233,6 +236,24 @@ screen and (min-resolution: 2dppx) {
   object-fit: cover;
   max-height: 105%;
   z-index: 0;
+}
+
+/******************* Part3 *******************/
+
+.section-3 {
+  max-height: 100%
+}
+
+.sec3-img {
+  content: url("/static/images/home/responsive-mobile.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  max-width: 360px;
+  z-index: 0;
+}
+
+.sec3-title {
+  padding-right: 8%;
 }
 
 /*not responsive pls fix*/
@@ -282,21 +303,20 @@ screen and (min-resolution: 2dppx) {
     object-fit: fill;
   }
 
-  /******************* Part2 *******************/
-
-  .section-2 {
-    padding-top: 100px;
-  }
-
 
   .flex-item-right,
   .flex-item-left {
     flex: 100%;
   }
 
+  /******************* Part2 *******************/
 
-  .sec2-title {
-    font-size: 30px;
+  .section-2 {
+    padding-top: 100px;
+  }
+
+  .detail-title {
+    font-size: 24px;
 
   }
 
