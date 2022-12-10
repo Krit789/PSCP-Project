@@ -11,13 +11,11 @@
 .welcome_outer {
   width: 100vw;
   background: rgb(41, 128, 185);
-  background: linear-gradient(
-    45deg,
-    rgba(41, 128, 185, 1) 0%,
-    rgba(109, 213, 250, 1) 50%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  animation: welcome-head 15s ease infinite;
+  background: linear-gradient(45deg,
+      rgb(143, 225, 254) 0%,
+      rgba(184, 250, 254, 1)50%,
+      rgba(255, 255, 255, 1) 100%);
+  animation: welcome-head 40s ease infinite;
   background-size: 400% 400%;
   height: calc(100vh - 60px);
   background-color: #aadeff;
@@ -29,9 +27,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -45,10 +45,14 @@
 }
 
 .sub-title {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid rgba(255, 255, 255, 0); /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid rgba(255, 255, 255, 0);
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
   animation: typing 4.5s steps(40, end), blink-caret 0.75s step-end 10;
 }
 
@@ -57,6 +61,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -64,10 +69,12 @@
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
+
   from,
   to {
     border-color: transparent;
   }
+
   50% {
     border-color: rgb(255, 255, 255);
   }
@@ -147,8 +154,8 @@
 
 /* retina support */
 @media screen and (-webkit-min-device-pixel-ratio: 2),
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
   .devices-img {
     content: url("/static/images/home/devices_2@2x.png");
   }
@@ -160,14 +167,15 @@
   .avif .devices-img {
     content: url("/static/images/home/devices_2@2x.avif");
   }
+
   .wide-img {
     content: url("/static/images/home/home01-WIDE@2x.jpeg");
   }
-  
+
   .webp .wide-img {
     content: url("/static/images/home/home01-WIDE@2x.webp");
   }
-  
+
   .avif .wide-img {
     content: url("/static/images/home/home01-WIDE@2x.avif");
   }
