@@ -12,9 +12,12 @@ body {
   overflow: hidden;
 }
 
+.inner-body{
+  z-index: 0;
+}
+
 .body-bg {
   position: fixed;
-  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 60px 0px 0px 0px;
