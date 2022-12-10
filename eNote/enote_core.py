@@ -68,12 +68,15 @@ def note_home():
             return redirect(url_for('core.note_home', bg_img=rand_img()))
 
 @core.route('/note/<int:note_id>')
-@login_required
 def note_view(note_id):
     user_note = Note.query.filter_by(id=note_id).first_or_404()
+    if user_note.is_public:
+        return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public)
+    if current_user.is_anonymous:
+        abort(403)
     if user_note.user_id != current_user.id:
         abort(403)
-    return render_template('note_view.j2', note=user_note, bg_img=rand_img())
+    return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public)
 
 @core.route('/note/edit', methods=['POST'])
 @login_required
@@ -90,7 +93,10 @@ def editor():
     elif note_id is not None:
         user_note = Note.query.filter_by(id=note_id).first_or_404()
         if editor_type == 'share':
-            flash('Link Sharing Toggled', category='success')
+            user_note.is_public = False if user_note.is_public else True
+            db.session.commit()
+            note_link = f'<a href="{str(request.base_url)[:-4] + str(user_note.id)}">' + str(request.base_url)[:-4] + str(user_note.id) + '</a>'
+            flash(f'Link Sharing has been {"<b>enabled</b>" if user_note.is_public else "<b>disabled</b>"} for <br/><strong>{user_note.title}</strong> {"<br/>" if user_note.is_public else ""} {note_link if user_note.is_public else ""}', category='success')
             return redirect(url_for('core.note_home'))
         if user_note.user_id != current_user.id:
             abort(403)

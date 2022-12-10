@@ -14,11 +14,13 @@ function changeEditor(etype){
 <div class="col" style="z-index: 2 !important;">
   <div class="containter-box" style="text-align: left !important; ">
     <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i
-          class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;My Notes</h3>
+          class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;{% if note.user_id == current_user.id %}My Note{% else %}Shared Note{% endif %}</h3>
     <ul class="list-group list-group-light">
       <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
         <div>
-          <div class="fw-bold">{{ note.title }}</div>
+          <div class="fw-bold">{% if note.is_public %}
+          <i class="fa-solid fa-globe" data-mdb-toggle="tooltip"
+              title="Shared Note"></i>&nbsp;{% else %}{% endif %}{{ note.title }}</div>
           <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span
               id="lastedit{{ note.id }}"></span></div>
           <script>
@@ -26,6 +28,7 @@ function changeEditor(etype){
             document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
           </script>
         </div>
+        {% if note.user_id == current_user.id %}
         <form action="/note" method="POST" id="delete_note">
           <input type="text" name="action" value="delete" readonly hidden>
           <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
@@ -44,6 +47,7 @@ function changeEditor(etype){
           </div>
 
         </form>
+        {% else %}{% endif %}
   </div>
 
   </li>
@@ -58,6 +62,7 @@ function changeEditor(etype){
       <h3>Content</h3>
     </td>
     <td style="text-align: right; font-size: x-large; border: 0 !important;">
+    {% if note.user_id == current_user.id %}
       <form action="/note/edit" method="POST" id="edit_note" name="form_edit_note">
         <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
         <input type="hidden" name="editor_type" value=""/>
@@ -87,6 +92,7 @@ function changeEditor(etype){
         </div>
 
       </form>
+      {% else %}{% endif %}
     </td>
   </tr>
 </table>

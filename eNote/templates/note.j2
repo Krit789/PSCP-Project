@@ -108,7 +108,10 @@
       {% for note in all_note %}
       <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
         <div>
-          <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{{ note.title
+          <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{% if note.is_public %}
+          <i class="fa-solid fa-globe" data-mdb-toggle="tooltip"
+              title="Shared Note"></i>{% else %}{% endif %}
+          {{ note.title
               }}</a>
           </div>
           <div class="text-muted">
