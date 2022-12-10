@@ -4,6 +4,10 @@ Versitile, beautiful, personalized just for you.
 
 &lt;e&gt;Note is more than a note it's a personal diary.
 
+### Projects Report
+
+&emsp; Please sign-in with KMITL's office 365 account to view this file : https://bit.ly/mypscpprojectreport
+
 ### Features 
 <li>Keep your credentials safe with hashing-salting using Scrypt algorithm.</li>
 <li>Stand out with profile image with support for WebP HEIC and AVIF format.</li>
