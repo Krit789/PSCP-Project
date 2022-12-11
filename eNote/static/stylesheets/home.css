@@ -198,6 +198,10 @@ screen and (min-resolution: 2dppx) {
   margin: auto;
 }
 
+.detail-img {
+  object-fit: cover;
+}
+
 /******************* Part2 *******************/
 
 .default-flex {
@@ -213,12 +217,14 @@ screen and (min-resolution: 2dppx) {
   font-size: 45px;
   font-weight: 400;
   color: black;
+  line-height: 135%;
+
 }
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  width: 100%;
   max-height: 100%;
 }
 
@@ -227,10 +233,10 @@ screen and (min-resolution: 2dppx) {
 }
 
 .sec2-right {
-  width: 50vw;
+  width: 50%;
 }
 
-.note-ui {
+.sec2-img {
   content: url("/static/images/home/train02.png");
   background-repeat: no-repeat;
   object-fit: cover;
@@ -245,16 +251,38 @@ screen and (min-resolution: 2dppx) {
 }
 
 .sec3-img {
-  content: url("/static/images/home/responsive-mobile.png");
+  content: url("/static/images/home/appledevices.png");
   background-repeat: no-repeat;
   object-fit: cover;
-  max-width: 360px;
+  max-height: 600px;
+  max-width: 100%;
   z-index: 0;
 }
 
 .sec3-title {
   padding-right: 8%;
 }
+
+/******************* Part4 *******************/
+
+.section-4 {
+  max-height: 100%
+}
+
+.sec4-img {
+  content: url("/static/images/home/iphoneandmac.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  max-height: 600px;
+  max-width: 100%;
+  z-index: 0;
+}
+
+.sec4-title {
+  padding-right: 8%;
+}
+
+
 
 /*not responsive pls fix*/
 .wide {
@@ -308,7 +336,21 @@ screen and (min-resolution: 2dppx) {
   .flex-item-right,
   .flex-item-left {
     flex: 100%;
-    width: 100vw;
+    width: 100%;
+  }
+
+  .detail-img {
+    max-height: 45vh;
+
+  }
+
+  .default-flex {
+    padding: 65px 10px 0px 10px;
+  }
+
+  .detail-title {
+    font-size: 22px;
+    line-height: 120%;
   }
 
   /******************* Part2 *******************/
@@ -317,18 +359,10 @@ screen and (min-resolution: 2dppx) {
     padding-bottom: 8px;
   }
 
-  .default-flex {
-    padding-top: 40px;
-  }
-
-  .detail-title {
-    font-size: 24px;
-
-  }
-
-  .note-ui {
+  .sec2-img {
     padding: 0px;
     max-width: 90vw;
+    max-height: 55vh;
     margin: 0px auto;
   }
 
@@ -344,11 +378,20 @@ screen and (min-resolution: 2dppx) {
 
   .sec3-img {
     margin-top: 20px;
-    max-height: 80vh;
-    max-width: 60vw;
   }
 
+  /******************* Part4 *******************/
 
+  .sec4-left {
+    padding-bottom: 8px;
+  }
+
+  .sec4-img {
+    padding: 0px;
+    max-width: 90vw;
+    max-height: 55vh;
+    margin: 0px auto;
+  }
 
 }
 
