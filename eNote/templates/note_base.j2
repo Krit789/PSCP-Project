@@ -10,6 +10,21 @@
       const date = new Date(date_in.slice(0, date_in.indexOf(".")).replace(/-/g, "/") + ' UTC');
       return date.toLocaleString();
     }
+    function copyToClipboard() {
+      var copyText = document.getElementById("copyText").textContent;
+      var mockInput = document.createElement("input");
+      document.body.appendChild(mockInput);
+      mockInput.type = "text";
+      mockInput.value = copyText;
+      mockInput.style.opacity = 0;
+      mockInput.style.position = "absolute";
+      mockInput.style.top = "0px";
+      mockInput.style.left = "0px";
+      mockInput.select();
+      document.execCommand("Copy");
+      mockInput.parentNode.removeChild(mockInput);
+      document.getElementById("copyStatus").innerHTML = "<i>Link Copied!</i>";
+}
   </script>
   <!--AVIF WebP support detection script-->
   <script src="/static/scripts/avif-webp.min.js"></script>
@@ -140,6 +155,18 @@
         </div>
       </div>
       {% else %}
+ {% if category == 'success_show' %}
+      <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+        <div class="toast-header">
+          <strong class="me-auto">&lt;e&gt;Note</strong>
+          <span class="badge badge-success">Success</span>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{ message }}
+        </div>
+      </div>
+      {% else %}
       <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
         <div class="toast-header">
           <strong class="me-auto">&lt;e&gt;Note</strong>
@@ -150,6 +177,7 @@
           {{ message }}
         </div>
       </div>
+      {% endif %}
       {% endif %}
       {% endif %}
       {% endif %}

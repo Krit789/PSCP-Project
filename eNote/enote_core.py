@@ -119,8 +119,8 @@ def editor():
         if editor_type == 'share':
             user_note.is_public = False if user_note.is_public else True
             db.session.commit()
-            note_link = f'<a href="{str(request.base_url)[:-4] + str(user_note.id)}">' + str(request.base_url)[:-4] + str(user_note.id) + '</a>'
-            flash(f'Link Sharing has been {"<b>enabled</b>" if user_note.is_public else "<b>disabled</b>"} for <br/><strong>{user_note.title}</strong> {"<br/>" if user_note.is_public else ""} {note_link if user_note.is_public else ""}', category='success')
+            note_link = f'<a onclick="copyToClipboard();" href="#" id="copyText" >' + str(request.base_url)[:-4] + str(user_note.id) + '</a><br /><span id="copyStatus">Click the link to copy to clipboard</span>'
+            flash(f'Link Sharing has been {"<b>enabled</b>" if user_note.is_public else "<b>disabled</b>"} for <strong>{user_note.title}</strong> {"<br/>" if user_note.is_public else ""} {note_link if user_note.is_public else ""}', category='success_show' if user_note.is_public else 'success')
             return redirect(url_for('core.note_home'))
         if user_note.user_id != current_user.id:
             abort(403)
