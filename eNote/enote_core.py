@@ -16,12 +16,16 @@ def rand_img() -> int:
 @login_required
 def note_not_found(e):
     flash('This note does not exist', category='error')
+    if current_user.is_anonymous:
+        return redirect(url_for('pages.home_page'))
     return redirect(url_for('core.note_home'))
 
 @core.errorhandler(403)
 @login_required
 def note_not_found(e):
     flash('You don\'t have permission to access this note', category='error')
+    if current_user.is_anonymous:
+        return redirect(url_for('pages.home_page'))
     return redirect(url_for('core.note_home'))
 
 @core.route('/note', methods=['GET', 'POST'])
