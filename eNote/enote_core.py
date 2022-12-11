@@ -8,6 +8,8 @@ from .md_bleach import md_cleaner, bleach
 core = Blueprint('core', __name__)
 
 def rand_img() -> int:
+    if current_user.is_anonymous:
+        return 6
     return current_user.note_bg if current_user.note_bg is not None else 6
 
 @core.errorhandler(404)
@@ -72,7 +74,7 @@ def note_view(note_id):
     user_note = Note.query.filter_by(id=note_id).first_or_404()
     note_owner = User.query.filter_by(id=user_note.user_id).first_or_404()
     if user_note.is_public:
-        return render_template('note_view.j2', note=user_note, bg_img=6, public=user_note.is_public, owner=note_owner)
+        return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public, owner=note_owner)
     if current_user.is_anonymous:
         abort(403)
     if user_note.user_id != current_user.id:
