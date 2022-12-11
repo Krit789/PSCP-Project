@@ -82,7 +82,16 @@
 </div>
 {% endblock %}
 {% block row2 %}
-<h3>My Notes</h3>
+<table style="width: 100%; border: 0 !important;">
+  <tr style="border: 0 !important;">
+    <td style="border: 0 !important;">
+      <h3>My Notes</h3>
+    </td>
+    <td style="text-align: right; border: 0 !important; font-size: x-large;">
+      <a href="/note/settings"><i class="fa-solid fa-image" data-mdb-toggle="tooltip" title="Change Background Image"></i></a>&nbsp;
+    </td>
+  </tr>
+</table>
 {% if note_count < 1 %} <ul class="list-group list-group-light">
   <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
     <div>
@@ -110,7 +119,7 @@
           <div>
             <div class="fw-bold"><a href="/note/{{ note.id }}" title="View Content of {{ note.title }}">{% if
                 note.is_public %}
-                <i class="fa-solid fa-globe" data-mdb-toggle="tooltip" title="Shared Note"></i>{% else %}{% endif %}
+                <i class="fa-solid fa-earth-asia" data-mdb-toggle="tooltip" title="Shared Note"></i>{% else %}{% endif %}
                 {{ note.title
                 }}</a>
             </div>

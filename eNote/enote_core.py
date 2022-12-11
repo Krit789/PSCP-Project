@@ -8,7 +8,7 @@ from .md_bleach import md_cleaner, bleach
 core = Blueprint('core', __name__)
 
 def rand_img() -> int:
-    return 6
+    return current_user.note_bg if current_user.note_bg is not None else 6
 
 @core.errorhandler(404)
 @login_required
@@ -70,13 +70,35 @@ def note_home():
 @core.route('/note/<int:note_id>')
 def note_view(note_id):
     user_note = Note.query.filter_by(id=note_id).first_or_404()
+    note_owner = User.query.filter_by(id=user_note.user_id).first_or_404()
     if user_note.is_public:
-        return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public)
+        return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public, owner=note_owner)
     if current_user.is_anonymous:
         abort(403)
     if user_note.user_id != current_user.id:
         abort(403)
     return render_template('note_view.j2', note=user_note, bg_img=rand_img(), public=user_note.is_public)
+
+@core.route('/note/settings', methods=['GET', 'POST'])
+@login_required
+def note_settings():
+    this_user = User.query.filter_by(id=current_user.id).first_or_404()
+    bg_img = 6
+    if request.method == 'GET':
+        if current_user.note_bg is None:
+            bg_img = 6
+        else:
+            bg_img = current_user.note_bg
+    if request.method == 'POST':
+        if 0 > int(request.form.get('background')) > 14:
+            flash('Invalid Background', category='error')
+        else:
+            this_user.note_bg = request.form.get('background')
+            db.session.commit()
+            flash('Background changed!', category='success')
+        bg_img = current_user.note_bg
+    return render_template("note_settings.j2", bg_img=bg_img)
+
 
 @core.route('/note/edit', methods=['POST'])
 @login_required

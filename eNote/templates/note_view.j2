@@ -13,47 +13,76 @@
 {% block row1 %}
 <div class="col" style="z-index: 2 !important;">
   <div class="containter-box" style="text-align: left !important; ">
-    <h3><a href="/note" data-mdb-toggle="tooltip" title="Go back to home"><i
-          class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;{% if note.user_id == current_user.id %}My
-      Note{% else %}Shared Note{% endif %}</h3>
-    <ul class="list-group list-group-light">
-      <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
-        <div>
-          <div class="fw-bold">{% if note.is_public %}
-            <i class="fa-solid fa-globe" data-mdb-toggle="tooltip" title="Shared Note"></i>&nbsp;{% else %}{% endif %}{{
-            note.title }}
+    <h3><a href="/" data-mdb-toggle="tooltip" title="Go back to home"><i
+          class="fa-sharp fa-solid fa-house home-icon"></i></a>&nbsp;&nbsp;
+      {% if note.user_id == current_user.id %}My Note
+      {% else %}
+      Shared Note
+      {% endif %}
+    </h3>
+    <div class="row" style="padding: 0; margin: -5px;">
+      <div class="col m-2" style="padding: 0;">
+        <ul class="list-group list-group-light">
+          <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+            <div>
+              <div class="fw-bold" style="font-size: xx-large;">{% if note.is_public and note.user_id == current_user.id
+                %}
+                <i class="fa-solid fa-earth-asia" data-mdb-toggle="tooltip" title="Shared Note"></i>&nbsp;{% else %}{%
+                endif %}
+                {{ note.title }}
+              </div>
+              {% if note.last_edit == note.creation_date %}
+              <span id="datetime{{ note.id }}"></span>
+              <script>
+                document.getElementById("datetime{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
+              </script>
+              {% else %}
+              <span id="datetime{{ note.id }}"></span>
+              <script>
+                document.getElementById("datetime{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
+              </script>
+              {% endif %}
+            </div>
+
+            {% if note.user_id == current_user.id %}
+            <form action="/note" method="POST" id="delete_note">
+              <input type="text" name="action" value="delete" readonly hidden>
+              <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
+              <div class="dropdown">
+                <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <span class="badge rounded-pill badge-danger">Delete</span></a>
+                <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+                  <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
+                  <hr style="margin: 0;">
+                  <li><a class="dropdown-item text-danger" href="javascript:{}"
+                      onclick="document.getElementById('delete_note').submit();">Yes</a></li>
+                  <hr style="margin: 0;">
+                  <li><a class="dropdown-item">No</a></li>
+                </ul>
+              </div>
+            </form>
+            {% else %}{% endif %}
+
+          </li>
+        </ul>
+      </div>
+      {% if note.is_public and note.user_id != current_user.id %}
+      <div class="col-md-4 col-sm-10 col-lg-3 col-10 m-2 bg-light" style="border-radius: 8px;">
+        <h6 class="border-bottom pt-1">Owned by</h6>
+        <div class="d-flex align-items-center">
+          <img
+            src="{% if owner.profile_img != None %}/static/uploads/profile/t_{{ owner.profile_img }}{% else %}https://ui-avatars.com/api/?name={{owner.first_name[0]}}+{{owner.last_name[0]}}&size=256{% endif %}"
+            class="rounded-circle" alt="{{ owner.first_name }}" style="width: 45px; height: 45px" />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{ owner.first_name }}&nbsp;{{ owner.last_name }}</p>
+            <p class="text-muted mb-0">@{{ owner.username }}</p>
           </div>
-          <div class="text-muted">Created: <span id="creation{{ note.id }}"></span><br />Last Edit: <span
-              id="lastedit{{ note.id }}"></span></div>
-          <script>
-            document.getElementById("creation{{ note.id }}").innerHTML = convert_date("{{ note.creation_date }}");
-            document.getElementById("lastedit{{ note.id }}").innerHTML = convert_date("{{ note.last_edit }}");
-          </script>
         </div>
-        {% if note.user_id == current_user.id %}
-        <form action="/note" method="POST" id="delete_note">
-          <input type="text" name="action" value="delete" readonly hidden>
-          <input type="text" name="note_id" value="{{ note.id }}" readonly hidden>
-
-          <div class="dropdown">
-            <a href="#" role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
-              <span class="badge rounded-pill badge-danger">Delete</span></a>
-            <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
-              <p class="px-3 pt-3 text-muted">Are you sure? This action cannot be undone!</p>
-              <hr style="margin: 0;">
-              <li><a class="dropdown-item text-danger" href="javascript:{}"
-                  onclick="document.getElementById('delete_note').submit();">Yes</a></li>
-              <hr style="margin: 0;">
-              <li><a class="dropdown-item">No</a></li>
-            </ul>
-          </div>
-
-        </form>
-        {% else %}{% endif %}
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
   </div>
-
-  </li>
-  </ul>
 </div>
 {% endblock %}
 {% block row2 %}
@@ -68,7 +97,8 @@
       <form action="/note/edit" method="POST" id="edit_note" name="form_edit_note">
         <input type="number" name="note_id" value="{{ note.id }}" readonly hidden>
         <input type="hidden" name="editor_type" value="" />
-        <a href="javascript:{}" onclick="changeEditor('share');" data-mdb-toggle="tooltip" title="Note Sharing">
+        <a href="javascript:{}" onclick="changeEditor('share');" data-mdb-toggle="tooltip"
+          title="{% if note.is_public %}Stop sharing this note{% else %}Share this note{% endif %}">
           <i class="fa-solid fa-share-from-square"></i></a>&nbsp;&nbsp;
 
         <div class="dropdown" style="display: inline;">
