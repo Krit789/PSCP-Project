@@ -13,7 +13,6 @@ def rand_img() -> int:
     return current_user.note_bg if current_user.note_bg is not None else 6
 
 @core.errorhandler(404)
-@login_required
 def note_not_found(e):
     flash('This note does not exist', category='error')
     if current_user.is_anonymous:
@@ -21,7 +20,6 @@ def note_not_found(e):
     return redirect(url_for('core.note_home'))
 
 @core.errorhandler(403)
-@login_required
 def note_not_found(e):
     flash('You don\'t have permission to access this note', category='error')
     if current_user.is_anonymous:
