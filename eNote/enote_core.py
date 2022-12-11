@@ -96,12 +96,15 @@ def note_settings():
     if request.method == 'POST':
         if request.form.get('background') is None:
             flash('Nothing changes', category='info')
-        elif 0 < int(request.form.get('background')) > 14:
-            flash('Invalid Background', category='error')
+        elif request.form.get('background').isnumeric():
+            if int(request.form.get('background')) > 14 or int(request.form.get('background')) <= 0:
+                flash('Invalid Background', category='error')
+            else:
+                this_user.note_bg = request.form.get('background')
+                db.session.commit()
+                flash('Background changed!', category='success')
         else:
-            this_user.note_bg = request.form.get('background')
-            db.session.commit()
-            flash('Background changed!', category='success')
+            flash('Unknown Failure', category='error')
         bg_img = current_user.note_bg
     return render_template("note_settings.j2", bg_img=bg_img)
 
