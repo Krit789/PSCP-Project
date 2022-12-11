@@ -90,7 +90,9 @@ def note_settings():
         else:
             bg_img = current_user.note_bg
     if request.method == 'POST':
-        if 0 > int(request.form.get('background')) > 14:
+        if request.form.get('background') is None:
+            flash('Nothing changes', category='info')
+        elif 0 > int(request.form.get('background')) > 14:
             flash('Invalid Background', category='error')
         else:
             this_user.note_bg = request.form.get('background')

@@ -6,9 +6,9 @@ function updateBgPreivew() {
     var selected_img = document.getElementById("bg_selector").value;
     document.getElementById("img_preview").src = '/static/images/login/' + selected_img + '.jpeg';
     if (selected_img != "{{ bg_img }}") {
-    document.getElementById("current_img").innerHTML = "Chosen Image";
+    document.getElementById("current_img").innerHTML = "Chosen image";
     } else {
-        document.getElementById("current_img").innerHTML = "Current Image";
+        document.getElementById("current_img").innerHTML = "Current image";
     }
 
 }
@@ -20,7 +20,7 @@ function updateBgPreivew() {
     <span id="current_img" class="form-label">Current image</label>
 </div>
     <img id="img_preview" src="/static/images/login/{{bg_img}}.jpeg" class="rounded" style="width: 80%; margin: 10px;">
-<div class="mb-3 ms-4 me-4 align-left form-label">
+<div class="mb-3 ms-4 me-4 mb-3 align-left form-label">
 <label for="background" class="form-label">Background images</label>
 <select class="form-select" aria-label="Select background image" id="bg_selector" name="background">
 <option disabled selected value="default">Choose a background</option>
@@ -45,6 +45,6 @@ function updateBgPreivew() {
   
 </select>
 </div>
-<input type="submit" class="btn btn-primary mt-3" value="Apply">
+<input type="submit" class="btn btn-primary" value="Apply">
 </form>
 {% endblock %}
