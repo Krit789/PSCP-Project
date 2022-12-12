@@ -85,7 +85,7 @@
 }
 
 /* Two column */
-.row {
+.head-row {
   min-height: calc(100vh - 60px);
   display: flex;
   max-width: 100%;
@@ -282,7 +282,57 @@ screen and (min-resolution: 2dppx) {
   padding-right: 8%;
 }
 
+/******************* New About Us *******************/
+h1 {
+  font-size: 50px;
+  color: black
+}
 
+.abt-flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.abt-child {
+  flex: 50%;
+}
+
+.abt-outer {
+  background-color: #e3f1ff;
+  padding: 45px 40px;
+  margin-top: 50px;
+}
+
+.abt-innerbox {
+  background-color: white;
+  border-radius: 15px;
+  min-height: 30vh;
+  margin: 30px;
+  width: 15vw;
+  padding: 15px;
+}
+
+.abt-txt {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+
+}
+
+.abt-name {
+  color: black;
+  font-size: 25px;
+}
+
+.abt-detail {
+  font-size: 15px;
+}
+
+.abt-userpics {
+  width: 15%;
+  border-radius: 100%;
+  border: rgba(0, 0, 0, 0.8) solid 0.1px;
+}
 
 /*not responsive pls fix*/
 .wide {
@@ -341,6 +391,7 @@ screen and (min-resolution: 2dppx) {
 
   .detail-img {
     max-height: 45vh;
+    padding: 5px 25px;
 
   }
 
@@ -360,7 +411,6 @@ screen and (min-resolution: 2dppx) {
   }
 
   .sec2-img {
-    padding: 0px;
     max-width: 90vw;
     max-height: 55vh;
     margin: 0px auto;
@@ -387,7 +437,6 @@ screen and (min-resolution: 2dppx) {
   }
 
   .sec4-img {
-    padding: 0px;
     max-width: 90vw;
     max-height: 55vh;
     margin: 0px auto;
@@ -595,11 +644,7 @@ screen and (min-resolution: 2dppx) {
   grid-area: 1 / 2 / span 3 / 2;
 }
 
-.userpics {
-  width: 90%;
-  border-radius: 100%;
-  border: rgba(0, 0, 0, 1) solid 1px;
-}
+
 
 .username {
   font-size: 150%;
