@@ -177,6 +177,53 @@
   content: url("/static/images/home/iphoneandmac.avif");
 }
 
+.id-15 {
+  content: url("/static/images/home/profileimg/65070015.jpeg");
+}
+
+.webp .id-15 {
+  content: url("/static/images/home/profileimg/65070015.webp");
+}
+
+.avif .id-15 {
+  content: url("/static/images/home/profileimg/65070015.avif");
+}
+
+.id-30 {
+  content: url("/static/images/home/profileimg/65070030.jpeg");
+}
+
+.webp .id-30 {
+  content: url("/static/images/home/profileimg/65070030.webp");
+}
+
+.avif .id-30 {
+  content: url("/static/images/home/profileimg/65070030.avif");
+}
+
+.id-64 {
+  content: url("/static/images/home/profileimg/65070064.jpeg");
+}
+
+.webp .id-64 {
+  content: url("/static/images/home/profileimg/65070064.webp");
+}
+
+.avif .id-64 {
+  content: url("/static/images/home/profileimg/65070064.avif");
+}
+
+.id-89 {
+  content: url("/static/images/home/profileimg/65070089.jpeg");
+}
+
+.webp .id-89 {
+  content: url("/static/images/home/profileimg/65070089.webp");
+}
+
+.avif .id-89 {
+  content: url("/static/images/home/profileimg/65070089.avif");
+}
 
 /* retina support */
 @media screen and (-webkit-min-device-pixel-ratio: 2),
@@ -350,7 +397,7 @@ h1 {
   min-width: 85px;
   width: 15%;
   border-radius: 100%;
-  border: rgba(0, 0, 0, 0.8) solid 0.1px;
+  /* border: rgba(0, 0, 0, 0.8) solid 0.1px; */
 }
 
 
