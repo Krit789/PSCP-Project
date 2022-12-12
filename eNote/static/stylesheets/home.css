@@ -309,6 +309,13 @@ h1 {
   flex: 50%;
 }
 
+.card-body{
+  min-height: 160px;
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+}
+
 .abt-outer {
   background-color: #e3f1ff;
   padding: 45px 40px;
@@ -340,6 +347,7 @@ h1 {
 }
 
 .abt-userpics {
+  min-width: 85px;
   width: 15%;
   border-radius: 100%;
   border: rgba(0, 0, 0, 0.8) solid 0.1px;
