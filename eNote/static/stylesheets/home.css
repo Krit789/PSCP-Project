@@ -194,11 +194,6 @@ screen and (min-resolution: 2dppx) {
     content: url("/static/images/home/devices_2@2x.avif");
   }
 
-
-
-
-
-
 }
 
 .info {
@@ -269,7 +264,6 @@ screen and (min-resolution: 2dppx) {
 }
 
 .sec3-img {
-  content: url("/static/images/home/appledevices.png");
   background-repeat: no-repeat;
   object-fit: cover;
   max-height: 600px;
@@ -288,7 +282,6 @@ screen and (min-resolution: 2dppx) {
 }
 
 .sec4-img {
-  content: url("/static/images/home/iphoneandmac.png");
   background-repeat: no-repeat;
   object-fit: cover;
   max-height: 600px;
@@ -350,18 +343,6 @@ h1 {
   width: 15%;
   border-radius: 100%;
   border: rgba(0, 0, 0, 0.8) solid 0.1px;
-}
-
-/*not responsive pls fix*/
-.wide {
-  width: 100%;
-}
-
-.wide-img {
-  width: 100%;
-  height: 40vh;
-  display: block;
-  object-fit: cover;
 }
 
 
