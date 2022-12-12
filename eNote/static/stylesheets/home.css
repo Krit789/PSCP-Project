@@ -140,17 +140,43 @@
   content: url("/static/images/home/devices_2.avif");
 }
 
-.wide-img {
-  content: url("/static/images/home/home01-WIDE.jpeg");
+.sec2-img {
+  content: url("/static/images/home/train02.png");
 }
 
-.webp .wide-img {
-  content: url("/static/images/home/home01-WIDE.webp");
+.webp .sec2-img {
+  content: url("/static/images/home/train02.webp");
 }
 
-.avif .wide-img {
-  content: url("/static/images/home/home01-WIDE.avif");
+.avif .sec2-img {
+  content: url("/static/images/home/train02.avif");
 }
+
+.sec3-img {
+  content: url("/static/images/home/appledevices.png");
+}
+
+.webp .sec3-img {
+  content: url("/static/images/home/appledevices.webp");
+}
+
+.avif .sec3-img {
+  content: url("/static/images/home/appledevices.avif");
+}
+
+
+.sec4-img {
+  content: url("/static/images/home/iphoneandmac.png");
+}
+
+.webp .sec4-img {
+  content: url("/static/images/home/iphoneandmac.webp");
+}
+
+.avif .sec4-img {
+  content: url("/static/images/home/iphoneandmac.avif");
+}
+
 
 /* retina support */
 @media screen and (-webkit-min-device-pixel-ratio: 2),
@@ -168,17 +194,10 @@ screen and (min-resolution: 2dppx) {
     content: url("/static/images/home/devices_2@2x.avif");
   }
 
-  .wide-img {
-    content: url("/static/images/home/home01-WIDE@2x.jpeg");
-  }
 
-  .webp .wide-img {
-    content: url("/static/images/home/home01-WIDE@2x.webp");
-  }
 
-  .avif .wide-img {
-    content: url("/static/images/home/home01-WIDE@2x.avif");
-  }
+
+
 
 }
 
@@ -237,7 +256,6 @@ screen and (min-resolution: 2dppx) {
 }
 
 .sec2-img {
-  content: url("/static/images/home/train02.png");
   background-repeat: no-repeat;
   object-fit: cover;
   max-height: 90vh;

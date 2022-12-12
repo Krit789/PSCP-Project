@@ -5,27 +5,6 @@
   td {
     padding-right: 10px;
   }
-
-  .btn-primary {
-    margin: 15px 0px 15px 0px !important;
-    background-color: #005EB8 !important;
-    font-size: medium !important;
-    border-radius: 12px !important;
-  }
-
-
-  .btn-danger {
-    margin-right: 15px;
-    margin-left: 15px;
-    font-size: medium !important;
-    border-radius: 12px !important;
-    background-color: #bc2813 !important;
-  }
-
-  .blue-text {
-    color: #005EB8;
-    font-weight: 500;
-  }
 </style>
 <h3>User Profile</h3>
 <table style="text-align: left; display: flex; justify-content: center;">
@@ -60,9 +39,9 @@
 </table>
 {% endblock %}
 {% block form_desc %}
-<form action="/user" id="wipeout" method="POST">
+<form action="/user" class="mt-4" id="wipeout" method="POST">
   <input type="text" name="delete" value="Delete Account" hidden>
-  <input type="submit" class="btn btn-danger" style="margin: 15px 0px 0px 0px !important;" value="Delete Account" />
+  <input type="submit" class="btn btn-danger" value="Delete Account" />
 </form><br />
 <a href="/user/edit" class="blue-text">Edit Your Profile</a><br />
 <a href="/user/password" class="blue-text">Change Your Password</a><br />
@@ -79,8 +58,8 @@
       text: "You will not be able to recover any of your data!",
       icon: "warning",
       customClass: {
-        confirmButton: 'btn btn-primary',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-primary btn-custom-1',
+        cancelButton: 'btn btn-danger btn-custom-2'
       },
       buttonsStyling: false,
       showCancelButton: true,
@@ -95,7 +74,7 @@
           text: "Your notes are safe :)",
           icon: "error",
           customClass: {
-            confirmButton: 'btn btn-primary',
+            confirmButton: 'btn btn-primary btn-custom-1',
           },
           buttonsStyling: false
         })

@@ -25,34 +25,18 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
+  {% block styles %}
     .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.jpeg");
-
-        {
-          {
-          custom_bg|safe
-        }
-      }
     }
 
     .webp .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.webp");
 
-        {
-          {
-          custom_bg|safe
-        }
-      }
     }
 
     .avif .img1 {
       background-image: url("/static/images/login/{{ bg_img }}.avif");
-
-        {
-          {
-          custom_bg|safe
-        }
-      }
     }
 
     /* retina support */
@@ -61,34 +45,17 @@
     screen and (min-resolution: 2dppx) {
       .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.jpeg");
-
-          {
-            {
-            custom_bg|safe
-          }
-        }
       }
 
       .webp .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.webp");
-
-          {
-            {
-            custom_bg|safe
-          }
-        }
       }
 
       .avif .img1 {
         background-image: url("/static/images/login/{{ bg_img }}@2x.avif");
-
-          {
-            {
-            custom_bg|safe
-          }
-        }
       }
     }
+{% endblock %}
   </style>
 </head>
 
