@@ -13,6 +13,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login_page():
+    '''Login Page'''
     if current_user.is_anonymous:
         rand_img = (int(str(tme()*1000)[-1]) % 10)+1
         if request.method == 'GET':
@@ -44,6 +45,7 @@ def login_page():
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register_page():
+    '''Registration Page'''
     if current_user.is_anonymous:
         rand_img = (int(str(tme()*1000)[-1]) % 9)+1
         if request.method == 'GET':
@@ -100,6 +102,7 @@ def register_page():
 @auth.route('/logoutall')
 @login_required
 def logout_all():
+    '''Logout all sessions'''
     user = User.query.filter_by(id=current_user.id).first()
     user.session_token = secrets.token_hex(16)
     db.session.commit()
@@ -110,6 +113,7 @@ def logout_all():
 @auth.route('/logout')
 @login_required
 def logout():
+    '''Logout current sessions'''
     logout_user()
     flash('You have logged out!', category='talert')
     return redirect(url_for('auth.login_page'))

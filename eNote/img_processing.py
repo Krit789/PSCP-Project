@@ -1,3 +1,4 @@
+'''Crop image to square then resize it to 2048 and 512 and compress to WebP'''
 from PIL import Image, ExifTags
 import pillow_heif
 from os.path import join
