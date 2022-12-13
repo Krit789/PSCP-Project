@@ -6,19 +6,19 @@ Versitile, beautiful, personalized just for you.
 
 ### Projects Report
 
-&emsp; Please sign-in with KMITL's office 365 account to view this file : https://bit.ly/mypscpprojectreport
+&emsp; Please sign-in with KMITL's Office 365 account to view our report : https://bit.ly/mypscpprojectreport
 
 ### Features 
 <li>Keep your credentials safe with hashing-salting using Scrypt algorithm.</li>
 <li>Stand out with profile image with support for WebP HEIC and AVIF format.</li>
 <li>You can create an infinite number of notes.</li>
-<li>Markdown formatting allowed you to personalize your notes like inserting images, making a table and more.</li>
+<li>Markdown formatting allowed you to personalize your notes by inserting images, making your statements even clearer.</li>
 <li>Support for all-session logout for additional security.</li>
 <li>Notes stats for keeping track of your creation.</li>
+<li>Customize your note background and choose your own profile picture.</li>
+<li>With link sharing your notes can be shared with the rest of the world.</li>
 
 <br>
-
-## <mark style="background-color: #FF5632">Please read the instruction before creating a pull request</mark>
 
 # Setup
 ## <b>Projects</b>
@@ -45,7 +45,6 @@ Make sure you have <code>venv</code> installed.
 Windows / macOS
 
     pip install virtualenv
-
 
 Linux
 
@@ -79,22 +78,22 @@ Now you're set to begin the next step<br />
 ### <b>Windows</b>
 
 ### <b>For development</b>
-    python -m main_dev
+    python main_dev.py
 
 ### <b>For production</b>
 Powered by FastWSGI
 
-    python -m main_prod
+    python main_prod.py
 
 ### <b>macOS / Linux</b>
 
 ### <b>For development</b>
-    python3 -m main_dev
+    python3 main_dev.py
 
 ### <b>For production</b>
 Powered by FastWSGI
 
-    python3 -m main_prod
+    python3 main_prod.py
 
 
 ## Built with

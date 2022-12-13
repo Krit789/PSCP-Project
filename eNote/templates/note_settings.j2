@@ -2,49 +2,49 @@
 {% block title %}Background Setting{% endblock %}
 {% block form %}
 <script>
-function updateBgPreivew() {
-    var selected_img = document.getElementById("bg_selector").value;
-    document.getElementById("img_preview").src = '/static/images/login/' + selected_img + '.jpeg';
-    if (selected_img != "{{ bg_img }}") {
-    document.getElementById("current_img").innerHTML = "Chosen image";
-    } else {
-        document.getElementById("current_img").innerHTML = "Current image";
-    }
+    function updateBgPreivew() {
+        var selected_img = document.getElementById("bg_selector").value;
+        document.getElementById("img_preview").src = '/static/images/login/' + selected_img + '.jpeg';
+        if (selected_img != "{{ bg_img }}") {
+            document.getElementById("current_img").innerHTML = "Chosen image";
+        } else {
+            document.getElementById("current_img").innerHTML = "Current image";
+        }
 
-}
+    }
 
 </script>
 <h3>Change Note Background</h3>
 <form action="" method="post" onchange="updateBgPreivew();">
-<div class="ms-4 align-left">
-    <span id="current_img" class="form-label">Current image</label>
-</div>
+    <div class="ms-4 align-left">
+        <span id="current_img" class="form-label">Current image</label>
+    </div>
     <img id="img_preview" src="/static/images/login/{{bg_img}}.jpeg" class="rounded" style="width: 80%; margin: 10px;">
-<div class="mb-3 ms-4 me-4 mb-3 align-left form-label">
-<label for="background" class="form-label">Background images</label>
-<select class="form-select" aria-label="Select background image" id="bg_selector" name="background">
-<option disabled selected value="default">Choose a background</option>
-<optgroup label="Day">
-  <option value="1">Lopburi Palace</option>
-  <option value="2">Grassy Pathway</option>
-  <option value="3">Pra Chom Klao Train</option>
-  <option value="4">Mangrove</option>
-  <option value="5">Bangkok Skyline</option>
-  <option value="6">Samui Dock</option>
-  <option value="7">Bo Put Beach</option>
-  <option value="8">Samui Morning</option>
-  <option value="9">Eucalyptus Road</option>
-  <option value="10">Assumption College Samutprakarn</option>
-</optgroup>
-<optgroup label="Night">
-<option value="11">Starry Night</option>
-<option value="12">Bangkok New Year</option>
-<option value="13">Bangkok Skyline</option>
-<option value="14">Borommaratchachonnani</option>
-</optgroup>
-  
-</select>
-</div>
-<input type="submit" class="btn btn-primary" value="Apply">
+    <div class="mb-3 ms-4 me-4 mb-3 align-left form-label">
+        <label for="background" class="form-label">Background images</label>
+        <select class="form-select" aria-label="Select background image" id="bg_selector" name="background">
+            <option disabled selected value="default">Choose a background</option>
+            <optgroup label="Day">
+                <option value="1">Lopburi Palace</option>
+                <option value="2">Grassy Pathway</option>
+                <option value="3">Pra Chom Klao Train</option>
+                <option value="4">Mangrove</option>
+                <option value="5">Bangkok Skyline</option>
+                <option value="6">Samui Dock</option>
+                <option value="7">Bo Put Beach</option>
+                <option value="8">Samui Morning</option>
+                <option value="9">Eucalyptus Road</option>
+                <option value="10">Assumption College Samutprakarn</option>
+            </optgroup>
+            <optgroup label="Night">
+                <option value="11">Starry Night</option>
+                <option value="12">Bangkok New Year</option>
+                <option value="13">Bangkok Skyline</option>
+                <option value="14">Borommaratchachonnani</option>
+            </optgroup>
+
+        </select>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Apply">
 </form>
 {% endblock %}

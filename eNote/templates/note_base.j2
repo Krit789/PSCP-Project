@@ -24,7 +24,7 @@
       document.execCommand("Copy");
       mockInput.parentNode.removeChild(mockInput);
       document.getElementById("copyStatus").innerHTML = "<i>Link Copied!</i>";
-}
+    }
   </script>
   <!--AVIF WebP support detection script-->
   <script src="/static/scripts/avif-webp.min.js"></script>
@@ -72,9 +72,10 @@
 
     .avif .body-bg {
       background-image: url("/static/images/login/{{ bg_img }}@2x.avif");
-  }
+    }
   }
 </style>
+
 <body>
   <div class="body-bg"></div>
   <div class="position-relative inner-body">
@@ -118,7 +119,7 @@
         </div>
       </div>
       {% else %}
- {% if category == 'success_show' %}
+      {% if category == 'success_show' %}
       <div class="toast fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
         <div class="toast-header">
           <strong class="me-auto">&lt;e&gt;Note</strong>
