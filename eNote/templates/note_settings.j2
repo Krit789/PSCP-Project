@@ -4,22 +4,17 @@
 <script>
     function updateBgPreivew() {
         var selected_img = document.getElementById("bg_selector").value;
-        document.getElementById("img_preview").src = '/static/images/login/' + selected_img + '.jpeg';
-        if (selected_img != "{{ bg_img }}") {
-            document.getElementById("current_img").innerHTML = "Chosen image";
-        } else {
-            document.getElementById("current_img").innerHTML = "Current image";
+        document.getElementById("img_preview").src = '/static/images/bg_preview/' + selected_img + '.jpeg';
+        if (selected_img != "{{ bg_img }}") { document.getElementById("current_img").innerHTML = "Chosen image";}
+        else { document.getElementById("current_img").innerHTML = "Current image";}
         }
-
-    }
-
 </script>
 <h3>Change Note Background</h3>
 <form action="" method="post" onchange="updateBgPreivew();">
     <div class="ms-4 align-left">
         <span id="current_img" class="form-label">Current image</label>
     </div>
-    <img id="img_preview" src="/static/images/login/{{bg_img}}.jpeg" class="rounded" style="width: 80%; margin: 10px;">
+    <img id="img_preview" src="/static/images/bg_preview/{{bg_img}}.jpeg" class="rounded" style="width: 80%; margin: 10px;">
     <div class="mb-3 ms-4 me-4 mb-3 align-left form-label">
         <label for="background" class="form-label">Background images</label>
         <select class="form-select" aria-label="Select background image" id="bg_selector" name="background">

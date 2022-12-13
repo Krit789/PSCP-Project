@@ -50,7 +50,7 @@ def note_home():
             db.session.add(memo)
             db.session.commit()
             flash(f'<b>{title}</b> was created successfully!', category='success')
-            return redirect(url_for('core.note_home', bg_img=rand_img()))
+            return redirect(url_for('core.note_home'))
         user_note = Note.query.filter_by(id=request.form.get('note_id')).first_or_404()
         if user_note.user_id != current_user.id:
             abort(403)
