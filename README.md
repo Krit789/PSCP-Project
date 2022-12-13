@@ -65,7 +65,7 @@ Windows Powershell
 
 macOS / Linux
 
-    source venv/bin/activate
+    source <virtual-environment-name>/bin/activate
 
 Now you're set to begin the next step<br />
 
