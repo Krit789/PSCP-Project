@@ -55,7 +55,11 @@ Linux
 
 <b>Creating virtual environment</b>
 
-Windows / macOS / Linux
+Windows
+
+    python -m venv <virtual-environment-name>
+
+macOS / Linux
 
     python3 -m venv <virtual-environment-name>
 
