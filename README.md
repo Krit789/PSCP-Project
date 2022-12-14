@@ -23,7 +23,7 @@ Versitile, beautiful, personalized just for you.
 # Setup
 ## <b>Projects</b>
 
-<b>Python 3.11 is recommended to run this project. Anything older may work but try at your own risk!</b>
+<b>Python 3.11 is recommended to run our project. Anything older may work but try at your own risk!</b>
 
 Start by cloning the repository
 
