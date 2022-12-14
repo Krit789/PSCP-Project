@@ -69,6 +69,12 @@ Windows Powershell
 
     <virtual-environment-name>/Scripts/Activate.ps1
 
+Windows Command Prompt
+
+change directory into \<virtual-environment-name\>/Scripts/
+
+    activate.bat
+
 macOS / Linux
 
     source <virtual-environment-name>/bin/activate
@@ -88,7 +94,7 @@ Now you're set to begin the next step<br />
     python main_dev.py
 
 ### <b>For production</b>
-Powered by FastWSGI
+Powered by waitress
 
     python main_prod.py
 
@@ -98,7 +104,7 @@ Powered by FastWSGI
     python3 main_dev.py
 
 ### <b>For production</b>
-Powered by FastWSGI
+Powered by waitress
 
     python3 main_prod.py
 

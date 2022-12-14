@@ -9,12 +9,14 @@ from .md_bleach import md_cleaner, bleach
 core = Blueprint('core', __name__)
 
 def rand_img() -> int:
+    '''Get note background from database if NULL use #6'''
     if current_user.is_anonymous:
         return 6
     return current_user.note_bg if current_user.note_bg is not None else 6
 
 @core.errorhandler(404)
 def note_not_found(e):
+    '''404 Error Handler'''
     flash('This note does not exist', category='error')
     if current_user.is_anonymous:
         return redirect(url_for('pages.home_page'))
@@ -22,6 +24,7 @@ def note_not_found(e):
 
 @core.errorhandler(403)
 def note_not_found(e):
+    '''403 Error Handler'''
     flash('You don\'t have permission to access this note', category='error')
     if current_user.is_anonymous:
         return redirect(url_for('pages.home_page'))
@@ -30,6 +33,7 @@ def note_not_found(e):
 @core.route('/note', methods=['GET', 'POST'])
 @login_required
 def note_home():
+    '''Note Home Page'''
     if request.method == 'GET':
         user_note = Note.query.filter_by(user_id=current_user.id).order_by(desc(Note.last_edit))
         return render_template("note.j2", all_note=user_note, bg_img=rand_img())
@@ -74,6 +78,7 @@ def note_home():
 
 @core.route('/note/<int:note_id>')
 def note_view(note_id):
+    '''Note Viewer'''
     user_note = Note.query.filter_by(id=note_id).first_or_404()
     note_owner = User.query.filter_by(id=user_note.user_id).first_or_404()
     if user_note.is_public:
@@ -87,6 +92,7 @@ def note_view(note_id):
 @core.route('/note/settings', methods=['GET', 'POST'])
 @login_required
 def note_settings():
+    '''Note Background Changer'''
     this_user = User.query.filter_by(id=current_user.id).first_or_404()
     bg_img = 6
     if request.method == 'GET':
@@ -113,6 +119,7 @@ def note_settings():
 @core.route('/note/edit', methods=['POST'])
 @login_required
 def editor():
+    '''Note Editor'''
     editor_type = request.form.get('editor_type')
     note_id = request.form.get('note_id')
     if note_id is None and editor_type is not None:

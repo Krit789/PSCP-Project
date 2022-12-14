@@ -1,8 +1,8 @@
 '''For use in production. Powered by FastWSGI'''
 from eNote import create_app
-import fastwsgi
+from waitress import serve
 
 app = create_app()
 
 if __name__ == '__main__':
-    fastwsgi.run(wsgi_app=app, host='0.0.0.0', port=5000, loglevel=5)
+    serve(app=app, host='0.0.0.0', port=5000)
