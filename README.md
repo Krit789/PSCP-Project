@@ -22,6 +22,9 @@ Versitile, beautiful, personalized just for you.
 
 # Setup
 ## <b>Projects</b>
+
+<b>Python 3.11 is recommended to run this project. Anything older may work but try at your risk!</b>
+
 Start by cloning the repository
 
     git clone https://github.com/Krit789/PSCP-Project.git
@@ -30,7 +33,7 @@ Enter project directory
 
     cd PSCP-Project
 
-Python 3.11 Installation for Ubuntu 22.04 LTS
+Installation for Ubuntu 22.04 LTS with Python 3.11 
 
     sudo add-apt-repository ppa:deadsnakes/ppa
     sudo apt install python3.11
