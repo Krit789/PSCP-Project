@@ -1,4 +1,4 @@
-'''For use in production. Powered by FastWSGI'''
+'''For use in production. Powered by waitress'''
 from eNote import create_app
 from waitress import serve
 
