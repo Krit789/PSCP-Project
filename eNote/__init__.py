@@ -1,6 +1,5 @@
 '''Flask Initialization'''
 from flask import Flask, render_template
-from flask_compress import Compress
 from flask_sqlalchemy import SQLAlchemy
 from os import makedirs
 from os.path import exists, abspath, dirname, join
@@ -17,14 +16,6 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'jfif', 'png', 'webp', 'heic', 'avif', 'tif
 def create_app():
     '''Create an instance of Flask app'''
     app = Flask(__name__)
-    app.config['COMPRESS_MIMETYPES'] = ['text/html',
-                                        'text/css',
-                                        'text/xml',
-                                        'application/json',
-                                        'application/javascript',
-                                        'image/svg+xml'
-                                        ]
-    app.config['COMPRESS_BR_LEVEL'] = 9
     app.config['SECRET_KEY'] = generate_secrets()
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -60,8 +51,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(session_token):
         return User.query.filter_by(session_token=session_token).first()
-    compress = Compress()
-    compress.init_app(app)
     return app
 
 
