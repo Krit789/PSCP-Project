@@ -67,6 +67,7 @@ macOS / Linux
 
 Windows Powershell
 
+    Set-ExecutionPolicy RemoteSigned
     <virtual-environment-name>/Scripts/Activate.ps1
 
 Windows Command Prompt
