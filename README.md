@@ -67,7 +67,7 @@ macOS / Linux
 
 Windows Powershell
 
-    env/Scripts/Activate.ps1
+    <virtual-environment-name>/Scripts/Activate.ps1
 
 macOS / Linux
 
