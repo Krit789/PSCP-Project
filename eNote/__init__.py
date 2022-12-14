@@ -51,6 +51,7 @@ def create_app():
     @login_manager.user_loader
     def load_user(session_token):
         return User.query.filter_by(session_token=session_token).first()
+    print("STATUS: READY TO SERVE!")
     return app
 
 
