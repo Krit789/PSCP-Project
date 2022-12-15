@@ -45,14 +45,19 @@ Then select number that represent Python 3.11
 It's strongly recommended that you work under python virtual environment
 
 Make sure you have <code>venv</code> installed.
-Windows / macOS
+
+&ensp; Windows
 
     pip install virtualenv
+    
+&ensp; MacOS
 
-Linux
+    pip3 install virtualenv
+
+&ensp; Linux
 
     sudo apt-get install python3.11-venv
-
+<br/>
 <b>Creating virtual environment</b>
 
 Windows
@@ -62,6 +67,8 @@ Windows
 macOS / Linux
 
     python3 -m venv <virtual-environment-name>
+
+<br/>
 
 <b>Activating virtual environment</b>
 
@@ -79,6 +86,7 @@ change directory into \<virtual-environment-name\>/Scripts/
 macOS / Linux
 
     source <virtual-environment-name>/bin/activate
+<br/>
 
 Now you're set to begin the next step<br />
 
