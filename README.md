@@ -116,6 +116,10 @@ Powered by waitress
 Powered by waitress
 
     python3 main_prod.py
+### <b>For mac user:</b>
+if you encounter an address already in use error, please turn off the Airplay Reciever by open  
+&emsp;System Setting --> Airdrop & Handoff --> AirPlay Reciever.
+
 
 
 ## Built with
